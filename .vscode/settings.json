@@ -1,0 +1,17 @@
+{
+  "sqltools.useNodeRuntime": true,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "DuckDB",
+      "name": "test",
+      "database": "${workspaceFolder:tutorial-project}/data/database.duckdb",
+      "group": "IRIS"
+    }
+  ],
+  "cSpell.words": [
+    "Acurio",
+    "artefacto",
+    "reloj"
+  ]
+}

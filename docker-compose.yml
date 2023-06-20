@@ -1,0 +1,17 @@
+version: '3.0'
+services:
+  mobilitydb:
+    build: 
+      context: .
+      dockerfile: Dockerfile    
+    volumes:
+      - ./data_db:/var/lib/postgresql/data     
+    ports:
+      - 45432:5432        
+    # environment:
+    #   - POSTGRES_DB=llactalabs
+    #   - POSTGRES_USER=llactalab      
+    #   - POSTGRES_PASSWORD=movilidad.llactalab
+    env_file:
+      - .env
+    restart: on-failure
