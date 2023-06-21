@@ -287,7 +287,9 @@ factory_assets_trajectory_smooth_db = [
 # factory_assets_trajectory_smooth.append( smooth_result)
 
 
-# factory_assets_trajectory_clean_jupyter = [make_trajectory_clean_smooth_jupyter(asset) for asset in data]
+factory_assets_trajectory_clean_jupyter = [
+    make_trajectory_clean_smooth_jupyter(asset) for asset in data
+]
 
 
 def make_trajectory_tipo_dia(code, group, date, type, asset_inputs):
