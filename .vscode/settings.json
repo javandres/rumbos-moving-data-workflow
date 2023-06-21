@@ -13,5 +13,13 @@
     "Acurio",
     "artefacto",
     "reloj"
-  ]
+  ],
+  "python.formatting.provider": "none",
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true,
+  "eslint.codeActionsOnSave.rules": null,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  }
 }
