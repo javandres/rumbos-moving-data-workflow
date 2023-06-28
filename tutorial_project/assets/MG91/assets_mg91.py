@@ -1,4 +1,4 @@
-import pandas as pd  # Add new imports to the top of `assets.py`
+import pandas as pd
 import requests
 
 import gpxpy
@@ -35,6 +35,18 @@ assets_df = pd.DataFrame(data)
 print(assets_df)
 
 
+config = {
+    "clean": {"speed": 0.5},
+    "smooth": {
+        "process_noise_std": 0.1,
+        "measurement_noise_std": 10,
+        "measurement_noise_std": 10,
+    },
+}
+
+print("CONFIG=====", config["smooth"]["process_noise_std"])
+
+
 def make_gpx_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_gpx",
@@ -48,7 +60,8 @@ def make_gpx_assets(asset_to_make):
             + "/"
             + asset_to_make["folder_name"]
             + "/"
-            + asset_to_make["file_name"]
+            + asset_to_make["file_name"],
+            asset_to_make,
         )
         return Output(
             value=gdf,
@@ -139,7 +152,9 @@ def make_trajectory_clean_assets(asset_to_make):
 
         cleaned.add_speed(overwrite=True)
         for i in range(0, 10):
-            cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 0.5})
+            cleaned = mpd.OutlierCleaner(cleaned).clean(
+                {"speed": config["clean"]["speed"]}
+            )
 
         traj_gdf = cleaned.to_point_gdf()
 
@@ -159,42 +174,18 @@ def make_trajectory_clean_assets(asset_to_make):
     return asset_template
 
 
-# def make_trajectory_clean_assets_db(asset_to_make):
-#     @asset(
-#         name=asset_to_make["asset_name"]+"_traj_clean_db",
-#         group_name=asset_to_make["group"],
-#         compute_kind="postgres",
-#         ins={"traj": AssetIn(asset_to_make["asset_name"]+"_traj_clean")},
-#     )
-#     def asset_template(traj):
-#             traj_gdf = traj.to_traj_gdf()
-#             print(traj_gdf.head())
-#             return Output(
-#                     value=traj,
-#                     metadata={
-#                         "description": "",
-#                         "rows": traj_gdf.size(),
-#                         # "duration": "{}".format(traj_gdf.time.max() - traj_gdf.time.min()),
-#                         # "start_time": MetadataValue.text(cleaned.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")),
-#                         # "end_time": cleaned.get_end_time().strftime(("%m/%d/%Y, %H:%M:%S")),
-#                         # "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
-#                     },
-
-#         )
-#     return asset_template
-
-
 def make_trajectory_smooth_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_traj_smooth",
         group_name=asset_to_make["group"],
         compute_kind="trajectory",
         ins={"traj": AssetIn(asset_to_make["asset_name"] + "_traj_clean")},
-        key_prefix=["workdir"],
+        io_manager_key="trajectory_manager",
     )
     def asset_template(traj):
         smoothed = mpd.KalmanSmootherCV(traj).smooth(
-            process_noise_std=0.1, measurement_noise_std=10
+            process_noise_std=config["smooth"]["process_noise_std"],
+            measurement_noise_std=config["smooth"]["measurement_noise_std"],
         )
         traj_gdf = smoothed.to_point_gdf()
         return Output(
@@ -206,32 +197,6 @@ def make_trajectory_smooth_assets(asset_to_make):
                     smoothed.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")
                 ),
                 "end_time": smoothed.get_end_time().strftime(("%m/%d/%Y, %H:%M:%S")),
-                "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
-            },
-        )
-
-    return asset_template
-
-
-def make_trajectory_smooth_assets_db(asset_to_make):
-    @asset(
-        name=asset_to_make["asset_name"] + "_traj_smooth_db",
-        group_name=asset_to_make["group"],
-        compute_kind="postgres",
-        ins={"traj": AssetIn(asset_to_make["asset_name"] + "_traj_smooth")},
-        io_manager_key="mobilityDb_manager",
-    )
-    def asset_template(traj):
-        traj_gdf = traj.to_line_gdf()
-        return Output(
-            value=traj_gdf,
-            metadata={
-                "description": "",
-                "rows": traj.size(),
-                "start_time": MetadataValue.text(
-                    traj.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")
-                ),
-                "end_time": traj.get_end_time().strftime(("%m/%d/%Y, %H:%M:%S")),
                 "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
             },
         )
@@ -265,26 +230,6 @@ factory_assets_trajectory_clean = [
 factory_assets_trajectory_smooth = [
     make_trajectory_smooth_assets(asset) for asset in data
 ]
-factory_assets_trajectory_smooth_db = [
-    make_trajectory_smooth_assets_db(asset) for asset in data
-]
-# factory_assets_trajectory_clean_db = [make_trajectory_clean_assets_db(asset) for asset in data]
-
-# factory_assets_trajectory_smooth = []
-
-# for index, row in assets_df.iterrows():
-#     row_dict = row.to_dict()
-#     # Perform operations with the row dictionary
-#     print(row_dict)  # Replace this with your desired logic
-# smooth_result =  make_trajectory_clean_assets(row_dict)
-# print("===>", asset, smooth_result)
-# factory_assets_trajectory_smooth.append( smooth_result)
-
-# for asset in assets_df:
-#     print("===>", asset)
-# smooth_result =  make_trajectory_clean_assets(asset)
-# print("===>", asset, smooth_result)
-# factory_assets_trajectory_smooth.append( smooth_result)
 
 
 factory_assets_trajectory_clean_jupyter = [
@@ -292,25 +237,35 @@ factory_assets_trajectory_clean_jupyter = [
 ]
 
 
-def make_trajectory_tipo_dia(code, group, date, type, asset_inputs):
+def make_trajectory_collection_asset(name, group_name, asset_inputs):
     ins = {
-        f"asset_gpx{i+1}": AssetIn(asset_input["asset_name"] + "_traj_smooth")
+        f"asset{i+1}": AssetIn(key=[asset_input])
         for i, asset_input in enumerate(asset_inputs)
     }
 
     @asset(
-        name=group + "_traj",
-        group_name=code + "_" + date + "_" + type,
+        name=name,
+        group_name=group_name,
         compute_kind="trajectory_collection",
         ins=ins,
-        key_prefix=["workdir"],
+        io_manager_key="trajectory_collection_manager",
     )
     def asset_template(**kargs):
-        lst = []
+        trajectoriesList = []
+        trajectoriesCollectionList = []
         for arg in kargs:
-            lst.append(kargs[arg])
+            if isinstance(kargs[arg], mpd.Trajectory):
+                trajectoriesList.append(kargs[arg])
+            else:
+                trajectoriesCollectionList.append(kargs[arg])
 
-        traj_collection = mpd.TrajectoryCollection(lst, "track_id", t="time")
+        for trajectoryCollection in trajectoriesCollectionList:
+            for i in range(len(trajectoryCollection)):
+                trajectoriesList.append(trajectoryCollection.trajectories[i])
+
+        traj_collection = mpd.TrajectoryCollection(
+            trajectoriesList, "track_id", t="time"
+        )
 
         traj_gdf = traj_collection.to_point_gdf()
         traj_gdf["time"] = traj_gdf.index
@@ -366,23 +321,24 @@ def make_assets_db(
 
 
 factory_assets_trajectory_by_date_type = []
-factory_assets_trajectory_by_date_type_db = []
 factory_assets_trajectory_by_date_type_db_track = []
 
+factory_assets_trajectory_by_date_type_names = []
 grouped = assets_df.groupby(["code", "group", "date", "type"])
 for (code, group, date, type), group_data in grouped:
-    result = make_trajectory_tipo_dia(
-        code, group, date, type, group_data.to_dict("records")
-    )
+    name = group + "_traj"
+    group_name = code + "_" + date + "_" + type
+    inputs = []
+
+    for index, row in group_data.iterrows():
+        inputs.append(row["asset_name"] + "_traj_smooth")
+
+    result = make_trajectory_collection_asset(name, group_name, inputs)
+
     factory_assets_trajectory_by_date_type.append(result)
-    print("RESULT", result)
-    result = make_assets_db(
-        group + "_traj", group + "_traj_db", code + "_" + date + "_" + type, "postgres"
-    )
-    factory_assets_trajectory_by_date_type_db.append(result)
     result_track = make_assets_db(
         group + "_traj",
-        group + "_traj_db_track",
+        group + "_traj_line",
         code + "_" + date + "_" + type,
         "postgres",
         "line",
@@ -390,676 +346,25 @@ for (code, group, date, type), group_data in grouped:
     factory_assets_trajectory_by_date_type_db_track.append(result_track)
 
 
-# print("+_+_+_+_+", factory_assets_trajectory_by_date_type)
-
-# for te in factory_assets_trajectory_by_date_type:
-#     print (te)
-
-# factory_assets_ins = dict(zip(data, [AssetIn(i) for i in data]))
+factory_assets_trajectory_by_code_type = []
 
 
-# @asset
-# def downstream_of_factory_one(MG91):
-#     pass
+all_inputs = []
+factory_assets_trajectory_by_code_type = []
+grouped = assets_df.groupby(["code", "type"])
+for (code, type), group_data in grouped:
+    grouped2 = group_data.groupby(["group"])
+    inputs = []
+    for (group2), group_data2 in grouped2:
+        inputs.append(group2 + "_traj")
 
-# @asset(
-#     ins=factory_assets_ins
-# )
-# def downstream_of_factory_all(**kwargs):
-#     pass
+    name = code + "_" + type + "_traj"
+    group_name = code + "_" + type
+    result = make_trajectory_collection_asset(name, group_name, inputs)
+    factory_assets_trajectory_by_code_type.append(result)
 
-#################################### MG91_20230428
-#### MG91_artefacto_reloj_20230428_01
-# @asset(group_name="MG91_20230428", compute_kind="gpx", key_prefix=["MG91", "gpx"], metadata={"owner": "Emilia Acurio"})
-# def MG91_artefacto_reloj_20230428_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230428_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
+    all_inputs.append(name)
 
-# @asset(group_name="MG91_20230428", io_manager_key="mobilityDb_manager", compute_kind="postgres")
-# def MG91_artefacto_reloj_20230428_01(MG91_artefacto_reloj_20230428_01_gpx):
-#     gdf = MG91_artefacto_reloj_20230428_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230428_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230428_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230428_01")),
-#     },
-#     group_name="MG91_20230428",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# @asset(group_name="MG91_20230428", compute_kind="trajectory", key_prefix=["MG91", "trajectories"])
-# def MG91_persona_reloj_20230428_01_traj(MG91_artefacto_reloj_20230428_01: gpd.GeoDataFrame):
-#     gdf = MG91_artefacto_reloj_20230428_01
-#     traj = mpd.Trajectory(gdf, traj_id='id', t='time')
-
-#     traj_gdf = traj.to_traj_gdf()
-#     traj_gdf.drop('geometry', axis='columns', inplace=True)
-
-#     return Output(
-#             value=traj,
-#             metadata={
-#                 "description": "",
-#                 "rows": traj.size(),
-#                 "duration": "{}".format(gdf.time.max() - gdf.time.min()),
-#                 "start_time": MetadataValue.text(traj.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")),
-#                 "end_time": traj.get_end_time().strftime(("%m/%d/%Y, %H:%M:%S")),
-#                 "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
-#             },
-
-#         )
-
-# #### MG91_artefacto_reloj_20230428_02
-# @asset(group_name="MG91_20230428", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230428_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230428_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230428", io_manager_key="mobilityDb_manager", compute_kind="postgres")
-# def MG91_artefacto_reloj_20230428_02(MG91_artefacto_reloj_20230428_02_gpx):
-#     gdf = MG91_artefacto_reloj_20230428_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230428_02_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230428_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230428_02")),
-#     },
-#     group_name="MG91_20230428",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #### MG91_persona_reloj_20230428_01
-# @asset(group_name="MG91_20230428", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230428_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230428_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230428", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230428_01(MG91_persona_reloj_20230428_01_gpx):
-#     gdf = MG91_persona_reloj_20230428_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230428_01_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230428_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230428_01")),
-#     },
-#     group_name="MG91_20230428",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_persona_reloj_20230428_02
-# @asset(group_name="MG91_20230428", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230428_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20220428_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230428", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230428_02(MG91_persona_reloj_20230428_02_gpx):
-#     gdf = MG91_persona_reloj_20230428_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230428_02_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230428_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230428_02")),
-#     },
-#     group_name="MG91_20230428",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #################################### MG91_20230503
-# ####  MG91_persona_reloj_20230503_01
-# @asset(group_name="MG91_20230503", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230503_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230503_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230503", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230503_01(MG91_persona_reloj_20230503_01_gpx):
-#     gdf = MG91_persona_reloj_20230503_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230503_01_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230503_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230503_01")),
-#     },
-#     group_name="MG91_20230503",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_persona_reloj_20230503_02
-# @asset(group_name="MG91_20230503", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230503_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230503_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230503", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230503_02(MG91_persona_reloj_20230503_02_gpx):
-#     gdf = MG91_persona_reloj_20230503_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230503_02_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230503_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230503_02")),
-#     },
-#     group_name="MG91_20230503",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #### MG91_artefacto_reloj_20230503_01
-# @asset(group_name="MG91_20230503", compute_kind="gpx", key_prefix=["MG91", "gpx"], metadata={"owner": "Emilia Acurio"})
-# def MG91_artefacto_reloj_20230503_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230503_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230503", io_manager_key="mobilityDb_manager", compute_kind="postgres")
-# def MG91_artefacto_reloj_20230503_01(MG91_artefacto_reloj_20230503_01_gpx):
-#     gdf = MG91_artefacto_reloj_20230503_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230503_01_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230503_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230503_01")),
-#     },
-#     group_name="MG91_20230503",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #### MG91_artefacto_reloj_20230503_02
-# @asset(group_name="MG91_20230503", compute_kind="gpx", key_prefix=["MG91", "gpx"], metadata={"owner": "Emilia Acurio"})
-# def MG91_artefacto_reloj_20230503_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230503_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230503", io_manager_key="mobilityDb_manager", compute_kind="postgres")
-# def MG91_artefacto_reloj_20230503_02(MG91_artefacto_reloj_20230503_02_gpx):
-#     gdf = MG91_artefacto_reloj_20230503_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230503_02_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230503_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230503_02")),
-#     },
-#     group_name="MG91_20230503",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #################################### MG91_20230505
-# ####  MG91_persona_reloj_20230505_01
-# @asset(group_name="MG91_20230505", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230505_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230505_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230505", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230505_01(MG91_persona_reloj_20230505_01_gpx):
-#     gdf = MG91_persona_reloj_20230505_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230505_01_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230505_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230505_01")),
-#     },
-#     group_name="MG91_20230505",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_persona_reloj_20230505_02
-# @asset(group_name="MG91_20230505", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230505_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230505_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230505", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230505_02(MG91_persona_reloj_20230505_02_gpx):
-#     gdf = MG91_persona_reloj_20230505_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230505_02_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230505_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230505_02")),
-#     },
-#     group_name="MG91_20230505",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_artefacto_reloj_20230505_01
-# @asset(group_name="MG91_20230505", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230505_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230505_01.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230505", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_artefacto_reloj_20230505_01(MG91_artefacto_reloj_20230505_01_gpx):
-#     gdf = MG91_artefacto_reloj_20230505_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230505_01_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230505_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230505_01")),
-#     },
-#     group_name="MG91_20230505",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_artefacto_reloj_20230505_02
-# @asset(group_name="MG91_20230505", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230505_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230505_02.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230505", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_artefacto_reloj_20230505_02(MG91_artefacto_reloj_20230505_02_gpx):
-#     gdf = MG91_artefacto_reloj_20230505_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230505_02_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230505_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230505_02")),
-#     },
-#     group_name="MG91_20230505",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #################################### MG91_20230508
-# ####  MG91_persona_reloj_20230508_01
-# @asset(group_name="MG91_20230508", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230508_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230508_1.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230508", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230508_01(MG91_persona_reloj_20230508_01_gpx):
-#     gdf = MG91_persona_reloj_20230508_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230508_01_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230508_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230508_01")),
-#     },
-#     group_name="MG91_20230508",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_persona_reloj_20230508_02
-# @asset(group_name="MG91_20230508", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230508_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230508_2.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230508", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230508_02(MG91_persona_reloj_20230508_02_gpx):
-#     gdf = MG91_persona_reloj_20230508_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230508_02_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230508_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230508_02")),
-#     },
-#     group_name="MG91_20230508",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_artefacto_reloj_20230508_01
-# @asset(group_name="MG91_20230508", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230508_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230508_1.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230508", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_artefacto_reloj_20230508_01(MG91_artefacto_reloj_20230508_01_gpx):
-#     gdf = MG91_artefacto_reloj_20230508_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230508_01_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230508_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230508_01")),
-#     },
-#     group_name="MG91_20230508",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_artefacto_reloj_20230508_02
-# @asset(group_name="MG91_20230508", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230508_02_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230508_2.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230508", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_artefacto_reloj_20230508_02(MG91_artefacto_reloj_20230508_02_gpx):
-#     gdf = MG91_artefacto_reloj_20230508_02_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230508_02_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230508_02_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230508_02")),
-#     },
-#     group_name="MG91_20230508",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# #################################### MG91_20230510
-# ####  MG91_persona_reloj_20230510_01
-# @asset(group_name="MG91_20230510", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_persona_reloj_20230510_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230510_1.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230510", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_persona_reloj_20230510_01(MG91_persona_reloj_20230510_01_gpx):
-#     gdf = MG91_persona_reloj_20230510_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_persona_reloj_20230510_01_explore = define_dagstermill_asset(
-#     name="MG91_persona_reloj_20230510_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_persona_reloj_20230510_01")),
-#     },
-#     group_name="MG91_20230510",
-#     key_prefix=["MG91", "raw_explore"],
-# )
-
-# ####  MG91_artefacto_reloj_20230510_01
-# @asset(group_name="MG91_20230510", compute_kind="gpx", key_prefix=["MG91", "gpx"],)
-# def MG91_artefacto_reloj_20230510_01_gpx():
-#     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230510_1.gpx")
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# @asset(group_name="MG91_20230510", io_manager_key="mobilityDb_manager",compute_kind="postgres")
-# def MG91_artefacto_reloj_20230510_01(MG91_artefacto_reloj_20230510_01_gpx):
-#     gdf = MG91_artefacto_reloj_20230510_01_gpx
-#     print(gdf.head())
-#     return Output(
-#             value=gdf,
-#             metadata={
-#                 "num_records": len(gdf),  # Metadata can be any key-value pair
-#                 "preview": MetadataValue.md(gdf.head().to_markdown()),
-#             },
-#         )
-
-# MG91_artefacto_reloj_20230510_01_explore = define_dagstermill_asset(
-#     name="MG91_artefacto_reloj_20230510_01_explore",
-#     notebook_path="tutorial_project/notebooks_templates/gpx_explore.ipynb",
-#     ins={
-#         "data": AssetIn(key=AssetKey("MG91_artefacto_reloj_20230510_01")),
-#     },
-#     group_name="MG91_20230510",
-#     key_prefix=["MG91", "raw_explore"],
-# )
+all_assets = make_trajectory_collection_asset(
+    "trajectories", "trajectories", all_inputs
+)

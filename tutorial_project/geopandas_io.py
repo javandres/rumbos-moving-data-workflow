@@ -160,19 +160,32 @@ class PostGISGeoPandasIOManager(PostgreSQLPandasIOManager):
         return df
 
 
-class TrajectoryIOManager(PostGISGeoPandasIOManager):
-    """This IOManager will take in a geopandas dataframe and store it in postgis."""
+class TrajectoryCollectionIOManager(PostgreSQLPandasIOManager):
+    """This IOManager will take in a MovingPandas TrajectoryCollection and store it in postgis."""
 
-    def handle_output(self, context, obj: mpd.Trajectory):
-        if isinstance(obj, mpd.Trajectory):
-            # write df to table
-            # obj.to_sql(name=context.asset_key.path[-1], con=self._con, if_exists="replace")
-            pass
-        elif obj is None:
-            # dbt has already written the data to this table
-            pass
+    # TODO add obj_id_col, x, y, crs, min_length, min_duration
+    trackIdColumn: Optional[str]
+    timeColumn: Optional[str]
+
+    def handle_output(self, context: OutputContext, obj: mpd.TrajectoryCollection):
+        schema, table = self._get_schema_table(context.asset_key)
+
+        if isinstance(obj, mpd.TrajectoryCollection):
+            # row_count = len(obj)
+            # context.log.info(f"Row count: {row_count}")
+            gdf = obj.to_point_gdf()
+            gdf[self.timeColumn] = gdf.index
+            # TODO make chunksize configurable
+            with connect_postgresql(config=self._config) as con:
+                gdf.to_postgis(
+                    con=con,
+                    name=table,
+                    schema=schema,
+                    if_exists="replace",
+                    chunksize=500,
+                )
         else:
-            raise ValueError(f"Unsupported object type {type(obj)} for DbIOManager.")
+            super().handle_output(context, obj)
 
     def _load_input(
         self,
@@ -181,7 +194,7 @@ class TrajectoryIOManager(PostGISGeoPandasIOManager):
         schema: str,
         columns: Optional[Sequence[str]],
         context: InputContext,
-    ) -> geopandas.GeoDataFrame:
+    ) -> mpd.TrajectoryCollection:
         df = geopandas.read_postgis(
             sql=self._get_select_statement(
                 table,
@@ -191,100 +204,59 @@ class TrajectoryIOManager(PostGISGeoPandasIOManager):
             geom_col=(context.metadata or {}).get("geom_col", "geometry"),
             con=con,
         )
-        return df
 
-        """Load the contents of a table as a pandas DataFrame."""
-        # model_name = context.asset_key.path[-1]
-        # return pd.read_sql(f"SELECT * FROM {model_name}", con=self.con_string)
+        traj_collection = mpd.TrajectoryCollection(
+            df, self.trackIdColumn, t=self.timeColumn
+        )
 
-    # def handle_output(self, context: OutputContext, obj: geopandas.GeoDataFrame):
-    # 	schema, table = self._get_schema_table(context.asset_key)
-
-    # 	if isinstance(obj, geopandas.GeoDataFrame):
-    # 		traj = mpd.Trajectory(obj, traj_id='id', t='time')
-    # 	# 	row_count = len(obj)
-    # 	# 	context.log.info(f"Row count: {row_count}")
-    # 	# 	# TODO make chunksize configurable
-    # 	# 	with connect_postgresql(config=self._config) as con:
-    # 	# 		obj.to_postgis(con=con,
-    # 	# 			name=table,
-    # 	# 			schema=schema,
-    # 	# 			if_exists='replace',
-    # 	# 			chunksize=500
-    # 	# 		)
-    # 		return traj
-    # 	else:
-    # 		super().handle_output(context, obj)
-
-    # def _load_input(
-    # 	self,
-    # 	con: Connection,
-    # 	table: str,
-    # 	schema: str,
-    # 	columns: Optional[Sequence[str]],
-    # 	context: InputContext
-    # ) -> geopandas.GeoDataFrame:
-    # 	df = geopandas.read_postgis(
-    # 		sql=self._get_select_statement(
-    # 			table,
-    # 			schema,
-    # 			columns,
-    # 		),
-    # 		geom_col=(context.metadata or {}).get("geom_col", "geometry"),
-    # 		con=con,
-    # 	)
-
-    # 	traj = mpd.Trajectory(df, traj_id='id', t='time')
-
-    # 	return traj
+        return traj_collection
 
 
-# from dagster import ConfigurableIOManager, InputContext, OutputContext
+class TrajectoryIOManager(PostgreSQLPandasIOManager):
+    """This IOManager will take in a MovingPandas TrajectoryCollection and store it in postgis."""
 
+    # TODO add obj_id_col, x, y, crs, min_length, min_duration
+    trackIdColumn: Optional[str]
+    timeColumn: Optional[str]
 
-# class DataframeTableIOManager(ConfigurableIOManager):
-#     def handle_output(self, context, obj):
-#         # name is the name given to the Out that we're storing for
-#         table_name = context.name
-#         write_dataframe_to_table(name=table_name, dataframe=obj)
+    def handle_output(self, context: OutputContext, obj: mpd.Trajectory):
+        schema, table = self._get_schema_table(context.asset_key)
 
-#     def load_input(self, context):
-#         # upstream_output.name is the name given to the Out that we're loading for
-#         table_name = context.upstream_output.name
-#         return read_dataframe_from_table(name=table_name)
+        if isinstance(obj, mpd.Trajectory):
+            # row_count = len(obj)
+            # context.log.info(f"Row count: {row_count}")
+            gdf = obj.to_point_gdf()
+            gdf[self.timeColumn] = gdf.index
+            # TODO make chunksize configurable
+            with connect_postgresql(config=self._config) as con:
+                gdf.to_postgis(
+                    con=con,
+                    name=table,
+                    schema=schema,
+                    if_exists="replace",
+                    chunksize=500,
+                )
+        else:
+            super().handle_output(context, obj)
 
-# # import geopandas as gpd
-# # from dagster import IOManager, OutOfProcessIOManager, OutputContext, TypeCheck, check
+    def _load_input(
+        self,
+        con: Connection,
+        table: str,
+        schema: str,
+        columns: Optional[Sequence[str]],
+        context: InputContext,
+    ) -> mpd.Trajectory:
+        df = geopandas.read_postgis(
+            sql=self._get_select_statement(
+                table,
+                schema,
+                columns,
+            ),
+            geom_col=(context.metadata or {}).get("geom_col", "geometry"),
+            con=con,
+        )
 
+        traj = mpd.Trajectory(df, self.trackIdColumn, t=self.timeColumn)
 
-# # class GeoPandasIOManager(IOManager):
-# #     def _compute_path(self, context):
-# #         """Compute the path for the output file."""
-# #         output_name = context.name
-# #         output_dir = context.step_context.pipeline_run.run_id
-# #         return f'{output_dir}/{output_name}.gpkg'
-
-# #     def handle_output(self, context: OutputContext, obj: gpd.GeoDataFrame):
-# #         """Handle the output of the step by saving the GeoDataFrame to a file."""
-# #         path = self._compute_path(context)
-# #         obj.to_file(path, driver='GPKG')
-
-# #         # Return metadata about the output file
-# #         return {'path': path}
-
-# #     def load_input(self, context: OutputContext) -> gpd.GeoDataFrame:
-# #         """Loading input is not supported."""
-# #         check.failed('Loading input is not supported.')
-
-# #     def can_load_input(self, context: OutputContext) -> bool:
-# #         """Check if loading input is supported."""
-# #         return False
-
-# #     def handle_output_types(self) -> TypeCheck:
-# #         """Specify the type of the output object."""
-# #         return TypeCheck(gpd.GeoDataFrame)
-
-# #     def get_output_asset_key(self, context: OutputContext) -> str:
-# #         """Return the asset key for the output file."""
-# #         path = self._compute_path(context)
-# #         return path
+        return traj

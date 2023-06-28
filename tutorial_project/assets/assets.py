@@ -25,7 +25,7 @@
 # # @asset(io_manager_key="mobilityDb_manager")
 # # def topstory_ids():
 # #     data = [10,20,30,40,50,60]
-  
+
 # #     # Create the pandas DataFrame with column name is provided explicitly
 # #     df = pd.DataFrame(data, columns=['Numbers'])
 # #     return df
@@ -79,12 +79,11 @@
 # #     return top_words
 
 
-
 # # def load_gpx_file(file_path):
 
 # #     with open(file_path, "r") as gpx_file:
 # #         gpx = gpxpy.parse(gpx_file)
-    
+
 # #     file_name = file_path.split("/")[-1]
 # #     track_id = file_name.split(".")[0]
 # #     route_info = []
@@ -117,7 +116,7 @@
 # def LH52_persona_reloj_20230425_gpx():
 #     gdf = load_gpx_file("data/LH52/LH52_persona_reloj_20230425.gpx")
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -129,7 +128,7 @@
 # def LH52_persona_reloj_20230425(LH52_persona_reloj_20230425_gpx):
 #     gdf = LH52_persona_reloj_20230425_gpx
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -151,7 +150,7 @@
 # def MG91_artefacto_reloj_20230428_01_gpx():
 #     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230428_01.gpx")
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -163,7 +162,7 @@
 # def MG91_artefacto_reloj_20230428_01(MG91_artefacto_reloj_20230428_01_gpx):
 #     gdf = MG91_artefacto_reloj_20230428_01_gpx
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -185,7 +184,7 @@
 # def MG91_artefacto_reloj_20230428_02_gpx():
 #     gdf = load_gpx_file("data/MG91/MG91_artefacto_reloj_20230428_02.gpx")
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -197,7 +196,7 @@
 # def MG91_artefacto_reloj_20230428_02(MG91_artefacto_reloj_20230428_02_gpx):
 #     gdf = MG91_artefacto_reloj_20230428_02_gpx
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -218,7 +217,7 @@
 # def MG91_persona_reloj_20230428_01_gpx():
 #     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20230428_01.gpx")
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -230,7 +229,7 @@
 # def MG91_persona_reloj_20230428_01(MG91_persona_reloj_20230428_01_gpx):
 #     gdf = MG91_persona_reloj_20230428_01_gpx
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -252,7 +251,7 @@
 # def MG91_persona_reloj_20230428_02_gpx():
 #     gdf = load_gpx_file("data/MG91/MG91_persona_reloj_20220428_02.gpx")
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -264,7 +263,7 @@
 # def MG91_persona_reloj_20230428_02(MG91_persona_reloj_20230428_02_gpx):
 #     gdf = MG91_persona_reloj_20230428_02_gpx
 #     print(gdf.head())
-#     return Output( 
+#     return Output(
 #             value=gdf,
 #             metadata={
 #                 "num_records": len(gdf),  # Metadata can be any key-value pair
@@ -302,7 +301,7 @@
 # #     },
 # # )
 
-      
+
 # # iris_notebook2 = define_dagstermill_asset(
 # #     name="iris_notebook2",
 # #     notebook_path="tutorial_project/iris.ipynb",
@@ -310,5 +309,3 @@
 # #         "iris": AssetIn(key=AssetKey("iris_dataset"))
 # #     }
 # # )
-            
-

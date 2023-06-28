@@ -6,7 +6,7 @@ import uuid
 from fiona.crs import from_epsg
 
 
-def load_gpx_file(file_path):
+def load_gpx_file(file_path, asset_to_make):
     with open(file_path, "r") as gpx_file:
         gpx = gpxpy.parse(gpx_file)
 
@@ -30,6 +30,9 @@ def load_gpx_file(file_path):
                         "fila_name": file_name,
                         "track_id": track_id,
                         "codigo": codigo,
+                        "type": asset_to_make["type"],
+                        "date": asset_to_make["date"],
+                        "group": asset_to_make["group"],
                         "id": 1,
                     }
                 )
