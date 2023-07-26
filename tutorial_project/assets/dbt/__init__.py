@@ -7,5 +7,7 @@ DBT_PROJECT_PATH = file_relative_path(__file__, "../../../dbt_project")
 DBT_PROFILES = file_relative_path(__file__, "../../../dbt_project")
 
 dbt_assets = load_assets_from_dbt_project(
-    project_dir=DBT_PROJECT_PATH, profiles_dir=DBT_PROFILES, key_prefix=["dbt"]
+    project_dir=DBT_PROJECT_PATH,
+    profiles_dir=DBT_PROFILES,
+    key_prefix=["public"],
 )

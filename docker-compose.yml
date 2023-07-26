@@ -1,17 +1,31 @@
-version: '3.0'
+version: "3.0"
 services:
   mobilitydb:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile    
+      dockerfile: Dockerfile
     volumes:
-      - ./data_db:/var/lib/postgresql/data     
+      - ./data_db:/var/lib/postgresql/data
     ports:
-      - 45432:5432        
+      - 45432:5432
     # environment:
     #   - POSTGRES_DB=llactalabs
-    #   - POSTGRES_USER=llactalab      
+    #   - POSTGRES_USER=llactalab
     #   - POSTGRES_PASSWORD=movilidad.llactalab
     env_file:
       - .env
     restart: on-failure
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=foursquare-studio-panel
+      - GF_PANELS_DISABLE_SANITIZE_HTML=true
+    # - GF_SMTP_ENABLED=true
+    # - GF_SMTP_HOST=smtp.gmail.com:587
+    # - GF_SMTP_SKIP_VERIFY=true
+    volumes:
+      - ./grafana-data:/var/lib/grafana

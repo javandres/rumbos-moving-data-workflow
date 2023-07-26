@@ -5,7 +5,6 @@ from .geopandas_io import (
     PostgreSQLPandasIOManager,
     PostGISGeoPandasIOManager,
     TrajectoryCollectionIOManager,
-    TrajectoryIOManager,
 )
 
 from . import assets
@@ -56,21 +55,21 @@ defs = Definitions(
             trackIdColumn="track_id",
             timeColumn="time",
         ),
-        "trajectory_manager": TrajectoryIOManager(
-            user=os.getenv("POSTGRES_USER"),
-            password=os.getenv("POSTGRES_PASSWORD"),
-            host=os.getenv("POSTGRES_HOST"),
-            port=os.getenv("POSTGRES_PORT"),
-            database=os.getenv("POSTGRES_DB"),
-            trackIdColumn="track_id",
-            timeColumn="time",
-        ),
+        # "trajectory_manager": TrajectoryIOManager(
+        #     user=os.getenv("POSTGRES_USER"),
+        #     password=os.getenv("POSTGRES_PASSWORD"),
+        #     host=os.getenv("POSTGRES_HOST"),
+        #     port=os.getenv("POSTGRES_PORT"),
+        #     database=os.getenv("POSTGRES_DB"),
+        #     trackIdColumn="track_id",
+        #     timeColumn="time",
+        # ),
         "dbt": DbtCliClientResource(
             project_dir=DBT_PROJECT_PATH,
             profiles_dir=DBT_PROFILES,
         ),
     },
-    jobs=[hello_job],
+    # jobs=[hello_job],
 )
 
 # defs = Definitions(

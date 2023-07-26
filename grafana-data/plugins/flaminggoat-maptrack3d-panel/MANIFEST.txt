@@ -1,0 +1,37 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "community",
+  "signedByOrg": "flaminggoat",
+  "signedByOrgName": "flaminggoat",
+  "plugin": "flaminggoat-maptrack3d-panel",
+  "version": "0.1.9",
+  "time": 1616623035394,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "README.md": "8af3a6621d6ef7ccccb103d6ff75c10e754a6615e5ecda1e3ab161eb59ef7d45",
+    "img/earthBumpMap.jpg": "64dbac0c49c48a9ad85c6468efe3a2a16767ea89e39e9bf4b069a364dba9d555",
+    "img/screenshot_csv.png": "0facf37ee57b7af2d8067fbb24ac1485920d28a80b41a1d84c106be83f526f3b",
+    "img/logo.svg": "8c6ef5f6029a575333439289531035fdbfdae7c4fcc4183f364b864a2b277fae",
+    "img/earth.jpg": "e8dc1334b7d3b3c02cb51d216ff00318ffaf4008530c557bb6f1024abc7085bb",
+    "img/screenshot.png": "b237a9664906ade4aa78be9dbe039879c6491be5c84ddf8d83bba06b6fd2d868",
+    "LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "CHANGELOG.md": "44cccd96f51a6b76183a098e9ccdb9054121fc6ec7a6a1b67c06664103dc69e3",
+    "module.js": "144be82e1eb64b564cf324e9d9ceb4c2aeab15a184b83d0ff6475b9249e623bb",
+    "module.js.map": "f7d33192d3ad44a3d0e3fc55341ea582c43f16a0b384781fd0917619f3497d91",
+    "plugin.json": "8a2a4548526964b90211ab26ef25a68962ff8cfa8ea2e6af2bf629bc7a0b9977"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+Version: OpenPGP.js v4.10.1
+Comment: https://openpgpjs.org
+
+wqAEARMKAAYFAmBbtbsACgkQfk0ManCIZufxFwIECm5/13nFcFlQQ8bFffpK
+xT1YRB4WoBcy/L15Oh79gj3GRMV0qzzASUNzo3VM9W4Rni+ZKQn+eEpfkbe6
+VBkg26cCBAgLTZ1VuhJYSFXCkJelVpyPpMrwejVUueiF6Shyb72IjxG8J9vl
+uBudny3Z4E3O/uWgWQBDshIUCqOswLuDRtVA
+=ejvg
+-----END PGP SIGNATURE-----

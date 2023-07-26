@@ -1,0 +1,134 @@
+[
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230612",
+        "file_name": "ML24_persona_reloj_20230612.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230612_persona",
+        "date": "20230612",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230614",
+        "file_name": "ML24_artefacto_reloj_20230614.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230614_artefacto",
+        "date": "20230614",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230619",
+        "file_name": "ML24_artefacto_reloj_20230619.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230619_artefacto",
+        "date": "20230619",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230607",
+        "file_name": "ML24_artefacto_reloj_20230607.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230607_artefacto",
+        "date": "20230607",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230616",
+        "file_name": "ML24_artefacto_reloj_20230616.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230616_artefacto",
+        "date": "20230616",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230619",
+        "file_name": "ML24_persona_reloj_20230619.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230619_persona",
+        "date": "20230619",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230609",
+        "file_name": "ML24_persona_reloj_20230609.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230609_persona",
+        "date": "20230609",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230609",
+        "file_name": "ML24_artefacto_reloj_20230609.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230609_artefacto",
+        "date": "20230609",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230607",
+        "file_name": "ML24_persona_reloj_20230607.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230607_persona",
+        "date": "20230607",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230616",
+        "file_name": "ML24_persona_reloj_20230616.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230616_persona",
+        "date": "20230616",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_artefacto_reloj_20230612",
+        "file_name": "ML24_artefacto_reloj_20230612.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230612_artefacto",
+        "date": "20230612",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML24",
+        "asset_name": "ML24_persona_reloj_20230614",
+        "file_name": "ML24_persona_reloj_20230614.gpx",
+        "folder_name": "ML24",
+        "owner": "",
+        "group": "ML24_20230614_persona",
+        "date": "20230614",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    }
+]

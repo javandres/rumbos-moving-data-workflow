@@ -1,0 +1,134 @@
+[
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230520",
+        "file_name": "MV79_artefacto_reloj_20230520.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230520_artefacto",
+        "date": "20230520",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230527",
+        "file_name": "MV79_persona_reloj_20230527.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230527_persona",
+        "date": "20230527",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230516",
+        "file_name": "MV79_artefacto_reloj_20230516.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230516_artefacto",
+        "date": "20230516",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230601",
+        "file_name": "MV79_artefacto_reloj_20230601.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230601_artefacto",
+        "date": "20230601",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230601",
+        "file_name": "MV79_persona_reloj_20230601.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230601_persona",
+        "date": "20230601",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230525",
+        "file_name": "MV79_artefacto_reloj_20230525.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230525_artefacto",
+        "date": "20230525",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230523",
+        "file_name": "MV79_persona_reloj_20230523.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230523_persona",
+        "date": "20230523",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230520",
+        "file_name": "MV79_persona_reloj_20230520.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230520_persona",
+        "date": "20230520",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230525",
+        "file_name": "MV79_persona_reloj_20230525.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230525_persona",
+        "date": "20230525",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_persona_reloj_20230516",
+        "file_name": "MV79_persona_reloj_20230516.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230516_persona",
+        "date": "20230516",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230527",
+        "file_name": "MV79_artefacto_reloj_20230527.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230527_artefacto",
+        "date": "20230527",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MV79",
+        "asset_name": "MV79_artefacto_reloj_20230523",
+        "file_name": "MV79_artefacto_reloj_20230523.gpx",
+        "folder_name": "MV79",
+        "owner": "",
+        "group": "MV79_20230523_artefacto",
+        "date": "20230523",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    }
+]

@@ -1,0 +1,39 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "commercial",
+  "signedByOrg": "foursquare",
+  "signedByOrgName": "Foursquare",
+  "plugin": "foursquare-studio-panel",
+  "version": "1.0.1",
+  "time": 1665405051345,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "index.html": "d238e030aa78e5257b902ad7bb0efa7d875ccd284da5143f4ae85f0796d93296",
+    "LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "CHANGELOG.md": "9887861350ae671fcd0f581c47bbd9e53b344df073494cf0ef7f8e924595df1a",
+    "module.js.LICENSE.txt": "b92196cb5ed148a424f57ef8b3c859e76a4d97601f79ee82658cf6025ea87807",
+    "module.js.map": "e3c678e9b46864193698fca813a6874041ffdea6bd17f2c5882d4d4936fca5de",
+    "plugin.json": "df458da01c7788b74871aa477e64059abce86d9f1973e5ce298d869e3c372ce2",
+    "README.md": "68d121eea236566402e3c16f0f96bf4b151d8d4e50e7231ee28350a701657b5f",
+    "img/FINAL - 8px Logo 8px Padding.svg": "676a79e411925f213c0bc6d8425b9edcac60356b8b9cc624b3a5b160c1d0699f",
+    "img/SVG-FSQ-secondary-icon_SQ-white (1).svg": "833c7711559da8a6731b8c1a1dc9073342ef648e1d050fb9e64f9a140303b384",
+    "img/close.svg": "29e11e06e4f9b3474603fef1d0502a6937b539d8438bca0bbf863946c27a8ee5",
+    "img/logo.svg": "833c7711559da8a6731b8c1a1dc9073342ef648e1d050fb9e64f9a140303b384",
+    "module.js": "e5d11402d26585c3736c0aed604845afa88c1f19c970cb5f4300bebc344bc378"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+Version: OpenPGP.js v4.10.10
+Comment: https://openpgpjs.org
+
+wrgEARMKAAYFAmNEEHsAIQkQfk0ManCIZucWIQTzOyW2kQdOhGNlcPN+TQxq
+cIhm58aZAgkBPpLWUAHZarB7RoSFudDpG9MqaBdOz2yG/UeSdk4SnDH74LY3
+CD9ljNMGj8DR3BgIY1q2m7bO/o3NQhaJOa2WDuwCB2wLj4frTAg59rr2gJw+
+ZtPw9yxV7xQCgLA5xNZCb5I9oucQuPLbcITKp9jv8iEQPzW9x31YZzPlTTiD
+OrTxRdTT
+=60N6
+-----END PGP SIGNATURE-----

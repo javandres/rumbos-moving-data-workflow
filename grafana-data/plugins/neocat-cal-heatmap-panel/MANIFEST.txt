@@ -1,0 +1,53 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "community",
+  "signedByOrg": "grafana",
+  "signedByOrgName": "Grafana Labs",
+  "plugin": "neocat-cal-heatmap-panel",
+  "version": "0.0.4",
+  "time": 1622741001271,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "cal_heatmap_ctrl.js": "046215720bc703336a9054fab01163f9f13041c42709349c37d0a1ea4ba62034",
+    "images/icon-large.png": "fd7a45d5528fd09565fe1cafe798a47e2494501edbcbd2b50277806bbb34ddf3",
+    "images/icon-small.png": "106b885e057f72494f25f340ad68fa98a7d7dcb4f4b3d876eebaf750459f302e",
+    "images/screenshot1.png": "3ea94f577c727f855f667c19e60ed0d46ed2258eb866887746e94ac01af8b5d4",
+    "images/screenshot2.png": "4f390d33a2c4f176d83a59a58fbaee4f2d47e7374c923bd56cc59ae653aed766",
+    "bower_components/cal-heatmap/cal-heatmap.source-map.js": "aba8bb9ebfa70fac7f95a139ce1fd66a6ab500bc1106f61db388663712fec482",
+    "bower_components/cal-heatmap/CHANGELOG.md": "568d4a3714c6c51fe628552dda98d0cc4563da290f9f3f5945adc91b5d7231a2",
+    "bower_components/cal-heatmap/LICENCE-MIT": "6650021a7549a5b8057a45e43565e68bc57b5305d63f1c893d3bd58c33ece0b0",
+    "bower_components/cal-heatmap/cal-heatmap.min.js": "9b504ef3fc1f71699c81af9119af83589b9d2970e00d4ae819ed4335c50341aa",
+    "bower_components/cal-heatmap/bower.json": "54f897bf0e082fba7dc192ff7234356e94d93ab39f4d3fe6929845434771ad61",
+    "bower_components/cal-heatmap/cal-heatmap.js": "2dabca565f12b9740a58113e1b429f431d7feb764268eef53814909753b79176",
+    "bower_components/cal-heatmap/README.md": "2647d9b746dd6d57f0396e3e62387c6c70adda4695767e9ebf5d4bb2984e2323",
+    "bower_components/cal-heatmap/component.json": "83b45facfe5df6dec5b7ccf33bcb44ee2b56a442bfd0e992fc34e9ea51a47f4f",
+    "bower_components/cal-heatmap/CONTRIBUTING.md": "1a42041364024ad9bbdedb5b01cade81f1dab44c8f716a7fc59f8b4a17059e72",
+    "bower_components/cal-heatmap/cal-heatmap.css": "35411f052c15fc47f2787bc68916a47d296006bbf55d97ec186469501bc34ead",
+    "bower_components/d3/d3.min.js": "76c39718d1c0a3fb321676b3b7e29306c0907919a5716d5728bd1b08ae0169e7",
+    "bower_components/d3/LICENSE": "e4796bd1fdc09e06a3683957a177d59b38aec4143df81b2d25472438f5763482",
+    "bower_components/d3/bower.json": "40dd2b610acb43eec81d38e27c37e56ba7221614ae33f5aa84e8c00cc82e0df8",
+    "bower_components/d3/d3.js": "81f43003a3e5919b0ba96bb86d4e215cfadb4eace2c66d01e4c76f04b23e39ab",
+    "bower_components/d3/README.md": "96447816b834fe31f0acb391fa5537e446a3cbcf804051aa2865ab81fffe8410",
+    "module.html": "5675bcbb867e6fdc2e8a24dd40e2935da7e2efc75c792e842f852f5e20ecd9a3",
+    "editor.html": "c4e971c02ec5519582e83f997ab5f26ffd34b2b5250e667ee3e7996737ef2c09",
+    "module.js.map": "b81ffb13244afac0babffce04831703b03637d6208f2faf1ca378e32a2018a83",
+    "plugin.json": "21cbd8ac384231ab34db5f05b1efc75dc2533bee64b8ff79c6ff5c3ccd6251ca",
+    "README.md": "546873ec0275877221ad291225d962c576dcb33e2e3abbf7dbc15f6523285fee",
+    "module.js": "688a013a52a5da3faa97bb2e45ac4ecda8f3abb6b8890c6c370a0e7811218124",
+    "cal_heatmap_ctrl.js.map": "c22d4747823bbd3d54967d3daeedfb1b14c662407f0c1701be63a301c234b13a"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+Version: OpenPGP.js v4.10.1
+Comment: https://openpgpjs.org
+
+wqEEARMKAAYFAmC5EAkACgkQfk0ManCIZucFEgIGJMTMW+R1TZSg0akN7MR7
+eD786I40McO1fsIaA/OjSzV57ZafE41SrRQbAsGlEuSvYLyJFx4ZUL/mVnQM
+TzSmQsUCCQFgs47IaDkNLSnYMrBbVBs4y2pV9VcgwbFSVkLSLNYNza9dp+Om
+dj2rqP7FNiFPBKU+4lYg6y4qHmmo6SXbkPUpwQ==
+=rT3X
+-----END PGP SIGNATURE-----

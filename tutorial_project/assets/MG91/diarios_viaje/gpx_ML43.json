@@ -1,0 +1,112 @@
+[
+  {
+    "code": "ML43",
+    "asset_name": "ML43_artefacto_reloj_20230424",
+    "file_name": "ML43_artefacto_reloj_20230424.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230424_artefacto",
+    "date": "20230424",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_artefacto_reloj_20230426",
+    "file_name": "ML43_artefacto_reloj_20230426.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230426_artefacto",
+    "date": "20230426",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_artefacto_reloj_20230628",
+    "file_name": "ML43_artefacto_reloj_20230628.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230628_artefacto",
+    "date": "20230628",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_artefacto_reloj_20230630",
+    "file_name": "ML43_artefacto_reloj_20230630.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230630_artefacto",
+    "date": "20230630",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_artefacto_reloj_20230703",
+    "file_name": "ML43_artefacto_reloj_20230703.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230703_artefacto",
+    "date": "20230703",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_persona_reloj_20230424",
+    "file_name": "ML43_persona_reloj_20230424.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230424_persona",
+    "date": "20230424",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_persona_reloj_20230426",
+    "file_name": "ML43_persona_reloj_20230426.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230426_persona",
+    "date": "20230426",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_persona_reloj_20230628",
+    "file_name": "ML43_persona_reloj_20230628.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230628_persona",
+    "date": "20230628",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_persona_reloj_20230630",
+    "file_name": "ML43_persona_reloj_20230630.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230630_persona",
+    "date": "20230630",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "ML43",
+    "asset_name": "ML43_persona_reloj_20230703",
+    "file_name": "ML43_persona_reloj_20230703.gpx",
+    "folder_name": "diarios_viaje/MG91",
+    "owner": "",
+    "group": "ML43_20230703_persona",
+    "date": "20230703",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  }
+]

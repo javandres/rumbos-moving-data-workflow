@@ -1,0 +1,90 @@
+[
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230623",
+        "file_name": "TQ38_persona_reloj_20230623.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230623_persona",
+        "date": "20230623",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_sujeto_reloj_20230629",
+        "file_name": "TQ38_sujeto_reloj_20230629.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230629_sujeto",
+        "date": "20230629",
+        "type": "sujeto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230622",
+        "file_name": "TQ38_persona_reloj_20230622.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230622_persona",
+        "date": "20230622",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230620",
+        "file_name": "TQ38_persona_reloj_20230620.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230620_persona",
+        "date": "20230620",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230616",
+        "file_name": "TQ38_persona_reloj_20230616.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230616_persona",
+        "date": "20230616",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_2023012",
+        "file_name": "TQ38_persona_reloj_2023012.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_2023012_persona",
+        "date": "2023012",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230627",
+        "file_name": "TQ38_persona_reloj_20230627.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230627_persona",
+        "date": "20230627",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "TQ38",
+        "asset_name": "TQ38_persona_reloj_20230619",
+        "file_name": "TQ38_persona_reloj_20230619.gpx",
+        "folder_name": "TQ38",
+        "owner": "",
+        "group": "TQ38_20230619_persona",
+        "date": "20230619",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "code": "MG17",
+        "asset_name": "MG17_artefacto_reloj_20230523",
+        "file_name": "MG17_artefacto_reloj_20230523.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230523_artefacto",
+        "date": "20230523",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_artefacto_reloj_20230608",
+        "file_name": "MG17_artefacto_reloj_20230608.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230608_artefacto",
+        "date": "20230608",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_persona_reloj_20230608",
+        "file_name": "MG17_persona_reloj_20230608.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230608_persona",
+        "date": "20230608",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_persona_reloj_20230523",
+        "file_name": "MG17_persona_reloj_20230523.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230523_persona",
+        "date": "20230523",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_persona_reloj_20230516",
+        "file_name": "MG17_persona_reloj_20230516.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230516_persona",
+        "date": "20230516",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_persona_reloj_20230525",
+        "file_name": "MG17_persona_reloj_20230525.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230525_persona",
+        "date": "20230525",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_artefacto_reloj_20230516",
+        "file_name": "MG17_artefacto_reloj_20230516.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230516_artefacto",
+        "date": "20230516",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "MG17",
+        "asset_name": "MG17_artefacto_reloj_20230525",
+        "file_name": "MG17_artefacto_reloj_20230525.gpx",
+        "folder_name": "MG17",
+        "owner": "",
+        "group": "MG17_20230525_artefacto",
+        "date": "20230525",
+        "type": "artefacto",
+        "modalidad": "solo_gps"
+    }
+]

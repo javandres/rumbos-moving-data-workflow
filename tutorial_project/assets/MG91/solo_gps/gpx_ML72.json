@@ -1,0 +1,57 @@
+[
+    {
+        "code": "ML72",
+        "asset_name": "ML72_persona_reloj_20230526",
+        "file_name": "ML72_persona_reloj_20230526.gpx",
+        "folder_name": "ML72",
+        "owner": "",
+        "group": "ML72_20230526_persona",
+        "date": "20230526",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML72",
+        "asset_name": "ML72_persona_reloj_20230519",
+        "file_name": "ML72_persona_reloj_20230519.gpx",
+        "folder_name": "ML72",
+        "owner": "",
+        "group": "ML72_20230519_persona",
+        "date": "20230519",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML72",
+        "asset_name": "ML72_persona_reloj_20230522",
+        "file_name": "ML72_persona_reloj_20230522.gpx",
+        "folder_name": "ML72",
+        "owner": "",
+        "group": "ML72_20230522_persona",
+        "date": "20230522",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML72",
+        "asset_name": "ML72_persona_reloj_20230524",
+        "file_name": "ML72_persona_reloj_20230524.gpx",
+        "folder_name": "ML72",
+        "owner": "",
+        "group": "ML72_20230524_persona",
+        "date": "20230524",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    },
+    {
+        "code": "ML72",
+        "asset_name": "ML72_persona_reloj_20230531",
+        "file_name": "ML72_persona_reloj_20230531.gpx",
+        "folder_name": "ML72",
+        "owner": "",
+        "group": "ML72_20230531_persona",
+        "date": "20230531",
+        "type": "persona",
+        "modalidad": "solo_gps"
+    }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "code": "CD87",
+    "asset_name": "CD87_artefacto_reloj_20230620",
+    "file_name": "CD87_artefacto_reloj_20230620.gpx",
+    "folder_name": "diarios_viaje/AT87",
+    "owner": "",
+    "group": "CD87_20230620_artefacto",
+    "date": "20230620",
+    "type": "artefacto",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "CD87",
+    "asset_name": "CD87_persona_reloj_20230620",
+    "file_name": "CD87_persona_reloj_20230620.gpx",
+    "folder_name": "diarios_viaje/AT87",
+    "owner": "",
+    "group": "CD87_20230620_persona",
+    "date": "20230620",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  },
+  {
+    "code": "CD87",
+    "asset_name": "CD87_persona_reloj_20230622",
+    "file_name": "CD87_persona_reloj_20230622.gpx",
+    "folder_name": "diarios_viaje/AT87",
+    "owner": "",
+    "group": "CD87_20230622_persona",
+    "date": "20230622",
+    "type": "persona",
+    "modalidad": "diario_viaje"
+  }
+]
