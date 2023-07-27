@@ -1,6 +1,7 @@
 from dagster import Definitions, load_assets_from_modules
 from dagstermill import ConfigurableLocalOutputNotebookIOManager
-from dagster_duckdb_pandas import DuckDBPandasIOManager
+
+# from dagster_duckdb_pandas import DuckDBPandasIOManager
 from .geopandas_io import (
     PostgreSQLPandasIOManager,
     PostGISGeoPandasIOManager,
@@ -13,7 +14,8 @@ from .assets.MG91 import assets_mg91
 from .assets.LH52 import assets_lh52
 from tutorial_project.jobs import hello_job
 import os
-from dagster_dbt import load_assets_from_dbt_project
+
+# from dagster_dbt import load_assets_from_dbt_project
 from dagster import file_relative_path
 
 from dagster_dbt import DbtCliClientResource

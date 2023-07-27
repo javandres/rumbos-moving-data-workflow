@@ -1,46 +1,46 @@
 [
-    {
-        "code": "RZ63",
-        "asset_name": "RZ63_persona_reloj_20230518",
-        "file_name": "RZ63_persona_reloj_20230518.gpx",
-        "folder_name": "RZ63",
-        "owner": "",
-        "group": "RZ63_20230518_persona",
-        "date": "20230518",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "RZ63",
-        "asset_name": "RZ63_persona_reloj_20230516",
-        "file_name": "RZ63_persona_reloj_20230516.gpx",
-        "folder_name": "RZ63",
-        "owner": "",
-        "group": "RZ63_20230516_persona",
-        "date": "20230516",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "RZ63",
-        "asset_name": "RZ63_sujeto_reloj_20230525",
-        "file_name": "RZ63_sujeto_reloj_20230525.gpx",
-        "folder_name": "RZ63",
-        "owner": "",
-        "group": "RZ63_20230525_sujeto",
-        "date": "20230525",
-        "type": "sujeto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "RZ63",
-        "asset_name": "RZ63_persona_reloj_20230523",
-        "file_name": "RZ63_persona_reloj_20230523.gpx",
-        "folder_name": "RZ63",
-        "owner": "",
-        "group": "RZ63_20230523_persona",
-        "date": "20230523",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    }
+  {
+    "code": "RZ63",
+    "asset_name": "RZ63_persona_reloj_20230518",
+    "file_name": "RZ63_persona_reloj_20230518.gpx",
+    "folder_name": "solo_gps/RZ63",
+    "owner": "",
+    "group": "RZ63_20230518_persona",
+    "date": "20230518",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "RZ63",
+    "asset_name": "RZ63_persona_reloj_20230516",
+    "file_name": "RZ63_persona_reloj_20230516.gpx",
+    "folder_name": "solo_gps/RZ63",
+    "owner": "",
+    "group": "RZ63_20230516_persona",
+    "date": "20230516",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "RZ63",
+    "asset_name": "RZ63_sujeto_reloj_20230525",
+    "file_name": "RZ63_sujeto_reloj_20230525.gpx",
+    "folder_name": "solo_gps/RZ63",
+    "owner": "",
+    "group": "RZ63_20230525_sujeto",
+    "date": "20230525",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "RZ63",
+    "asset_name": "RZ63_persona_reloj_20230523",
+    "file_name": "RZ63_persona_reloj_20230523.gpx",
+    "folder_name": "solo_gps/RZ63",
+    "owner": "",
+    "group": "RZ63_20230523_persona",
+    "date": "20230523",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  }
 ]

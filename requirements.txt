@@ -1,0 +1,28 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+geos
+dagstermill
+dagster_dbt
+dbt-core
+dbt-duckdb
+dbt-extractor
+dbt-postgres
+geoalchemy2
+# geojson
+geopandas
+# geoviews
+gpxpy
+# hologram
+# holoviews
+# hvplot
+# matplotlib
+movingpandas
+psycopg2-binary
+# pygeos
+# pymove
+# rtree
+shapely==1.8.5
+scikit-mobility
+SQLAlchemy==1.4.46
+stonesoup

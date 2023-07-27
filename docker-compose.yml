@@ -8,10 +8,6 @@ services:
       - ./data_db:/var/lib/postgresql/data
     ports:
       - 45432:5432
-    # environment:
-    #   - POSTGRES_DB=llactalabs
-    #   - POSTGRES_USER=llactalab
-    #   - POSTGRES_PASSWORD=movilidad.llactalab
     env_file:
       - .env
     restart: on-failure
@@ -24,8 +20,26 @@ services:
     environment:
       - GF_INSTALL_PLUGINS=foursquare-studio-panel
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
-    # - GF_SMTP_ENABLED=true
-    # - GF_SMTP_HOST=smtp.gmail.com:587
-    # - GF_SMTP_SKIP_VERIFY=true
+      - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
     volumes:
       - ./grafana-data:/var/lib/grafana
+  dagster:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_dagster
+    ports:
+      - 4000:3000
+    volumes:
+      - ./data:/opt/dagster/app/data
+      - .:/opt/dagster/app
+    env_file:
+      - .env
+
+    # environment:
+    #   DAGSTER_HOME: "/opt/dagster/app"
+    #   POSTGRES_DB=: "lactalab"
+    #   POSTGRES_USER: "llactalab"
+    #   POSTGRES_PASSWORD: "movilidad.llactalabs"
+    #   POSTGRES_PORT: 5432
+    #   POSTGRES_HOST: "mobilitydb"
+    #   LANG: "es_ES.utf8"

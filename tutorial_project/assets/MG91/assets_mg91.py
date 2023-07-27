@@ -121,7 +121,7 @@ config = {
 def make_raw_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_gpx",
-        group_name=asset_to_make["group"],
+        group_name=asset_to_make["code"],
         compute_kind="gpx",
         key_prefix=["workdir", asset_to_make["code"], asset_to_make["group"], "gpx"],
     )
@@ -160,7 +160,7 @@ def make_raw_assets(asset_to_make):
 def make_postgres_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"],
-        group_name=asset_to_make["group"],
+        group_name=asset_to_make["code"],
         compute_kind="postgres",
         ins={"asset_gpx": AssetIn(asset_to_make["asset_name"] + "_gpx")},
         io_manager_key="mobilityDb_manager",
@@ -232,7 +232,7 @@ def make_jupyter_explore_assets(asset_to_make):
 def make_trajectory_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_traj",
-        group_name=asset_to_make["group"],
+        group_name=asset_to_make["code"],
         compute_kind="trajectory",
         ins={"asset_gpx": AssetIn(asset_to_make["asset_name"])},
         # key_prefix=["workdir"],
@@ -270,7 +270,7 @@ def make_trajectory_assets(asset_to_make):
 def make_trajectory_clean_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_traj_clean",
-        group_name=asset_to_make["group"],
+        group_name=asset_to_make["code"],
         compute_kind="trajectory",
         ins={"traj": AssetIn(asset_to_make["asset_name"] + "_traj")},
         # key_prefix=["workdir"],
@@ -283,8 +283,8 @@ def make_trajectory_clean_assets(asset_to_make):
 
         cleaned.add_speed(overwrite=True)
 
-        cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 3})
-        # cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 10})
+        # cleaned = mpd.OutlierCleaner(cleaned).clean({"speed_kmh": 3})
+        # cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 20})
 
         cleaned = mpd.MinDistanceGeneralizer(cleaned).generalize(tolerance=0.0001)
         # cleaned = mpd.OutlierCleaner(cleaned).clean({"distance": 40})
@@ -317,7 +317,7 @@ def make_trajectory_clean_assets(asset_to_make):
 
         print(tdf.head())
         # ftdf = filtering.filter(
-        #     tdf, max_speed_kmh=100, include_loops=True, max_loop=10, ratio_max=0.7
+        #     tdf, max_speed_kmh=50, include_loops=True, max_loop=10, ratio_max=0.7
         # )
 
         # ftdf = filtering.filter(
@@ -325,9 +325,11 @@ def make_trajectory_clean_assets(asset_to_make):
         #     max_speed_kmh=200,
         # )
 
-        max_speed_kmh = 100
+        # ftdf = tdf
+
+        max_speed_kmh = 50
         max_loop = 10
-        ratio_max = 0.5
+        ratio_max = 0.25
 
         ftdf = filtering.filter(
             tdf,
@@ -337,6 +339,7 @@ def make_trajectory_clean_assets(asset_to_make):
             ratio_max=ratio_max,
         )
 
+        # ftdf = tdf
         # ftdf = filtering.filter(ftdf, max_speed_kmh=50, include_loops=True)
         # print("=======>", 4)
 
@@ -396,7 +399,7 @@ def make_trajectory_clean_assets(asset_to_make):
 def make_trajectory_smooth_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_traj_smooth",
-        group_name=asset_to_make["group"],
+        group_name=asset_to_make["code"],
         compute_kind="trajectory",
         ins={"traj": AssetIn(asset_to_make["asset_name"] + "_traj_clean")},
         io_manager_key="trajectory_collection_manager",
@@ -569,7 +572,8 @@ factory_assets_trajectory_by_date_type_names = []
 grouped = assets_df.groupby(["code", "group", "date", "type"])
 for (code, group, date, type), group_data in grouped:
     name = group + "_traj"
-    group_name = code + "_" + date + "_" + type
+    # group_name = code + "_" + date + "_" + type
+    group_name = code
     inputs = []
 
     for index, row in group_data.iterrows():
@@ -582,14 +586,14 @@ for (code, group, date, type), group_data in grouped:
     )
 
     factory_assets_trajectory_by_date_type.append(result)
-    result_track = make_assets_db(
-        group + "_traj",
-        group + "_traj_line",
-        code + "_" + date + "_" + type,
-        "postgres",
-        "line",
-    )
-    factory_assets_trajectory_by_date_type_db_track.append(result_track)
+    # result_track = make_assets_db(
+    #     group + "_traj",
+    #     group + "_traj_line",
+    #     code + "_" + date + "_" + type,
+    #     "postgres",
+    #     "line",
+    # )
+    # factory_assets_trajectory_by_date_type_db_track.append(result_track)
 
 
 factory_assets_trajectory_by_code_type = []
@@ -605,7 +609,8 @@ for (code, type), group_data in grouped:
         inputs.append(group2 + "_traj")
 
     name = code + "_" + type + "_traj"
-    group_name = code + "_" + type
+    # group_name = code + "_" + type
+    group_name = code
     result = make_trajectory_collection_asset(name, group_name, inputs)
     factory_assets_trajectory_by_code_type.append(result)
 
@@ -650,11 +655,11 @@ def make_assets_by_code(codigo):
     return asset_template
 
 
-by_code = []
-grouped = assets_df.groupby(["code"])
-for (code), group_data in grouped:
-    r = make_assets_by_code(code)
-    by_code.append(r)
+# by_code = []
+# grouped = assets_df.groupby(["code"])
+# for (code), group_data in grouped:
+#     r = make_assets_by_code(code)
+#     by_code.append(r)
 
 
 # Stop detection
@@ -729,31 +734,31 @@ def make_assets_stops(
 #     min_duration_seconds=120,
 # )
 
-stops = []
+# stops = []
 
-for item in config.get("stop_detection_artefacto", []):
-    stop_asset = make_assets_stops(
-        output_name="trajectories_stops_artefacto_"
-        + str(item["max_diameter_meters"])
-        + "_"
-        + str(item["min_duration_seconds"]),
-        input_name="trajectories_artefacto",
-        max_diameter_meters=item["max_diameter_meters"],
-        min_duration_seconds=item["min_duration_seconds"],
-        type="artefacto",
-    )
-    stops.append(stop_asset)
-    # stopsInputs.append()
+# for item in config.get("stop_detection_artefacto", []):
+#     stop_asset = make_assets_stops(
+#         output_name="trajectories_stops_artefacto_"
+#         + str(item["max_diameter_meters"])
+#         + "_"
+#         + str(item["min_duration_seconds"]),
+#         input_name="trajectories_artefacto",
+#         max_diameter_meters=item["max_diameter_meters"],
+#         min_duration_seconds=item["min_duration_seconds"],
+#         type="artefacto",
+#     )
+#     stops.append(stop_asset)
+#     # stopsInputs.append()
 
-for item in config.get("stop_detection_persona", []):
-    stop_asset = make_assets_stops(
-        output_name="trajectories_stops_persona_"
-        + str(item["max_diameter_meters"])
-        + "_"
-        + str(item["min_duration_seconds"]),
-        input_name="trajectories_persona",
-        max_diameter_meters=item["max_diameter_meters"],
-        min_duration_seconds=item["min_duration_seconds"],
-        type="artefacto",
-    )
-    stops.append(stop_asset)
+# for item in config.get("stop_detection_persona", []):
+#     stop_asset = make_assets_stops(
+#         output_name="trajectories_stops_persona_"
+#         + str(item["max_diameter_meters"])
+#         + "_"
+#         + str(item["min_duration_seconds"]),
+#         input_name="trajectories_persona",
+#         max_diameter_meters=item["max_diameter_meters"],
+#         min_duration_seconds=item["min_duration_seconds"],
+#         type="artefacto",
+#     )
+#     stops.append(stop_asset)

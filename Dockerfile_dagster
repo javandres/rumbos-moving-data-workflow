@@ -1,0 +1,41 @@
+FROM python:3.10
+
+RUN apt-get update && \
+    apt-get install -y locales && \
+    sed -i -e 's/# es_EC UTF-8/es_EC UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales
+
+RUN export LC_ALL=”es_EC.UTF-8″ && export LC_CTYPE=”es_EC.UTF-8″ && dpkg-reconfigure locales
+RUN locale-gen es_EC.UTF-8
+ENV LANG es_EC.UTF-8
+ENV LANGUAGE es_EC:es
+ENV LC_ALL es_EC.UTF-8
+
+RUN echo "LANG=es_EC.UTF-8" > /etc/default/locale
+
+RUN localedef -i es_EC -c -f UTF-8 -A /usr/share/locale/locale.alias es_EC.UTF-8
+ENV LANG es_EC.utf8
+
+WORKDIR /opt/dagster/app
+
+RUN mkdir -p /opt/dagster/dagster_home /opt/dagster/app
+
+RUN pip3 install --upgrade pip setuptools wheel
+
+RUN pip install dagster-webserver dagster-postgres dagster-aws
+
+COPY . /opt/dagster/app/
+
+RUN python3 -m pip install -r requirements.txt
+
+# Copy your code and workspace to /opt/dagster/app
+
+ENV DAGSTER_HOME=/opt/dagster/dagster_home/
+
+# Copy dagster instance YAML to $DAGSTER_HOME
+#
+
+
+EXPOSE 3000
+
+ENTRYPOINT ["dagster-webserver", "-h", "0.0.0.0", "-p", "3000"]

@@ -1,156 +1,135 @@
 [
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230616",
-        "file_name": "CN83_persona_reloj_20230616.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230616_persona",
-        "date": "20230616",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_artefacto_reloj_20230619",
-        "file_name": "CN83_artefacto_reloj_20230619.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230619_artefacto",
-        "date": "20230619",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_artefacto_reloj_20230626",
-        "file_name": "CN83_artefacto_reloj_20230626.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230626_artefacto",
-        "date": "20230626",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230628",
-        "file_name": "CN83_persona_reloj_20230628.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230628_persona",
-        "date": "20230628",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_artefacto_reloj_20230616",
-        "file_name": "CN83_artefacto_reloj_20230616.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230616_artefacto",
-        "date": "20230616",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230619",
-        "file_name": "CN83_persona_reloj_20230619.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230619_persona",
-        "date": "20230619",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN38_persona_reloj_20230630",
-        "file_name": "CN38_persona_reloj_20230630.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230630_persona",
-        "date": "20230630",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_artefacto_reloj_20230621",
-        "file_name": "CN83_artefacto_reloj_20230621.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230621_artefacto",
-        "date": "20230621",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230621",
-        "file_name": "CN83_persona_reloj_20230621.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230621_persona",
-        "date": "20230621",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_artefacto_reloj_20230614",
-        "file_name": "CN83_artefacto_reloj_20230614.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230614_artefacto",
-        "date": "20230614",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN38_artecfacto_reloj_20230630",
-        "file_name": "CN38_artecfacto_reloj_20230630.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230630_artecfacto",
-        "date": "20230630",
-        "type": "artecfacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN38_artefacto_reloj_20230628",
-        "file_name": "CN38_artefacto_reloj_20230628.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230628_artefacto",
-        "date": "20230628",
-        "type": "artefacto",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230626",
-        "file_name": "CN83_persona_reloj_20230626.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230626_persona",
-        "date": "20230626",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    },
-    {
-        "code": "CN83",
-        "asset_name": "CN83_persona_reloj_20230614",
-        "file_name": "CN83_persona_reloj_20230614.gpx",
-        "folder_name": "CN83",
-        "owner": "",
-        "group": "CN83_20230614_persona",
-        "date": "20230614",
-        "type": "persona",
-        "modalidad": "solo_gps"
-    }
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230616",
+    "file_name": "CN83_persona_reloj_20230616.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230616_persona",
+    "date": "20230616",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_artefacto_reloj_20230619",
+    "file_name": "CN83_artefacto_reloj_20230619.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230619_artefacto",
+    "date": "20230619",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_artefacto_reloj_20230626",
+    "file_name": "CN83_artefacto_reloj_20230626.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230626_artefacto",
+    "date": "20230626",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230628",
+    "file_name": "CN83_persona_reloj_20230628.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230628_persona",
+    "date": "20230628",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_artefacto_reloj_20230616",
+    "file_name": "CN83_artefacto_reloj_20230616.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230616_artefacto",
+    "date": "20230616",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230619",
+    "file_name": "CN83_persona_reloj_20230619.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230619_persona",
+    "date": "20230619",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN38_persona_reloj_20230630",
+    "file_name": "CN38_persona_reloj_20230630.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230630_persona",
+    "date": "20230630",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_artefacto_reloj_20230621",
+    "file_name": "CN83_artefacto_reloj_20230621.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230621_artefacto",
+    "date": "20230621",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230621",
+    "file_name": "CN83_persona_reloj_20230621.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230621_persona",
+    "date": "20230621",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  },
+
+  {
+    "code": "CN83",
+    "asset_name": "CN38_artecfacto_reloj_20230630",
+    "file_name": "CN38_artecfacto_reloj_20230630.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230630_artecfacto",
+    "date": "20230630",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN38_artefacto_reloj_20230628",
+    "file_name": "CN38_artefacto_reloj_20230628.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230628_artefacto",
+    "date": "20230628",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230626",
+    "file_name": "CN83_persona_reloj_20230626.gpx",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230626_persona",
+    "date": "20230626",
+    "type": "persona",
+    "modalidad": "solo_gps"
+  }
 ]

@@ -3,27 +3,37 @@
     pre_hook = "set lc_time = 'es_EC.utf8'",
 ) }}
 
-SELECT
-    track_id,
-    codigo,
-    TYPE,
-    TO_DATE(
+WITH trajs AS (
+
+    SELECT
+        track_id,
+        codigo,
+        TYPE,
+        TO_DATE(
+            DATE,
+            'YYYYMMDD'
+        ) AS DATE,
+        modalidad,
+        to_char(TO_DATE(DATE, 'YYYYMMDD'), 'TMDay') AS day_of_week,
+        st_makeline(
+            geometry
+            ORDER BY
+                TIME
+        ) AS geometry
+    FROM
+        {{ source(
+            'public',
+            'trajectories'
+        ) }}
+    GROUP BY
+        track_id,
+        codigo,
+        TYPE,
         DATE,
-        'YYYYMMDD'
-    ) AS DATE,
-    to_char(TO_DATE(DATE, 'YYYYMMDD'), 'TMDay') AS day_of_week,
-    st_makeline(
-        geometry
-        ORDER BY
-            TIME
-    ) AS geometry
+        modalidad
+)
+SELECT
+    *,
+    st_length(st_transform(geometry, 32717)) AS recorrido_metros
 FROM
-    {{ source(
-        'public',
-        'trajectories'
-    ) }}
-GROUP BY
-    track_id,
-    codigo,
-    TYPE,
-    DATE
+    trajs
