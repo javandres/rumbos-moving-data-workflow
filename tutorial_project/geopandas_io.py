@@ -195,6 +195,17 @@ class TrajectoryCollectionIOManager(PostgreSQLPandasIOManager):
                 gdf = obj.to_point_gdf()
 
             gdf[self.timeColumn] = gdf.index
+            gdf.drop("id", axis="columns", inplace=True)
+            gdf.insert(0, "id", range(1, 1 + len(gdf)))
+            # track_id_num = abs(hash(s)) % (10**8)
+            gdf["track_id_num"] = gdf.apply(
+                lambda row: abs(hash(row["track_id"])) % (10**8), axis=1
+            )
+
+            gdf["codigo_num"] = gdf.apply(
+                lambda row: abs(hash(row["codigo"])) % (10**8), axis=1
+            )
+
             # TODO make chunksize configurable
             with connect_postgresql(config=self._config) as con:
                 gdf.to_postgis(

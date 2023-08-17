@@ -4,6 +4,7 @@ import requests
 import gpxpy
 import gpxpy.gpx
 import geopandas as gpd
+import hashlib
 
 from dagstermill import define_dagstermill_asset
 
@@ -55,37 +56,37 @@ data = []
 
 
 file_paths = [
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_AF79.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_AT87.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_CD87.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_LH52.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_MG91.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_MC59.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_ML43.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_MQ70.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_MV43.json",
-    "tutorial_project/assets/MG91/diarios_viaje/gpx_MZ49.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_BC51.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_AF79.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_AT87.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_CD87.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_LH52.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_MG91.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_MC59.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_ML43.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_MQ70.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_MV43.json",
+    # "tutorial_project/assets/MG91/diarios_viaje/gpx_MZ49.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_BC51.json",
     "tutorial_project/assets/MG91/solo_gps/gpx_BZ14.json",
     "tutorial_project/assets/MG91/solo_gps/gpx_CL74.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_CN83.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_JC73.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_LO71.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_LQ02.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_LQ07.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_MC30.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_MG17.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_ML09.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_ML24.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_ML72.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_MP88.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_MV79.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_RC57.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_RV07.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_RY43.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_RZ63.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_TQ38.json",
-    "tutorial_project/assets/MG91/solo_gps/gpx_TV55.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_CN83.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_JC73.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_LO71.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_LQ02.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_LQ07.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_MC30.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_MG17.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_ML09.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_ML24.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_ML72.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_MP88.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_MV79.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_RC57.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_RV07.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_RY43.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_RZ63.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_TQ38.json",
+    # "tutorial_project/assets/MG91/solo_gps/gpx_TV55.json",
 ]
 for file_path in file_paths:
     with open(file_path, "r") as read_file:
@@ -327,9 +328,9 @@ def make_trajectory_clean_assets(asset_to_make):
 
         # ftdf = tdf
 
-        max_speed_kmh = 50
+        max_speed_kmh = 40
         max_loop = 10
-        ratio_max = 0.25
+        ratio_max = 0.5
 
         ftdf = filtering.filter(
             tdf,

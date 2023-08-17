@@ -131,5 +131,28 @@
     "date": "20230626",
     "type": "persona",
     "modalidad": "solo_gps"
+  },
+  {
+    "code": "CN83",
+    "asset_name": "CN83_artefacto_reloj_20230614",
+    "file_name": "CN83_artefacto_reloj_20230614.gpkg",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230614_artefacto",
+    "date": "20230614",
+    "type": "artefacto",
+    "modalidad": "solo_gps"
+  },
+
+  {
+    "code": "CN83",
+    "asset_name": "CN83_persona_reloj_20230614",
+    "file_name": "CN83_persona_reloj_20230614.gpkg",
+    "folder_name": "solo_gps/CN83",
+    "owner": "",
+    "group": "CN83_20230614_persona",
+    "date": "20230614",
+    "type": "persona",
+    "modalidad": "solo_gps"
   }
 ]
