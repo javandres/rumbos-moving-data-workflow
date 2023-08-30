@@ -1,0 +1,94 @@
+{
+  "code": "AT87",
+  "folder_name": "diarios_viaje/AT87",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "07:30:00",
+  "hora_fin": "19:00:00",
+  "assets": [
+    {
+      "asset_name": "AT87_artefacto_reloj_20230516",
+      "file_name": "AT87_artefacto_reloj_20230516.gpx",
+      "group": "AT87_20230516_artefacto",
+      "date": "20230516",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_artefacto_reloj_20230518",
+      "file_name": "AT87_artefacto_reloj_20230518.gpx",
+      "group": "AT87_20230518_artefacto",
+      "date": "20230518",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_artefacto_reloj_20230520",
+      "file_name": "AT87_artefacto_reloj_20230520.gpx",
+      "group": "AT87_20230520_artefacto",
+      "date": "20230520",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_artefacto_reloj_20230620",
+      "file_name": "AT87_artefacto_reloj_20230620.gpx",
+      "group": "AT87_20230620_artefacto",
+      "date": "20230620",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_artefacto_reloj_20230622",
+      "file_name": "AT87_artefacto_reloj_20230622.gpx",
+      "group": "AT87_20230622_artefacto",
+      "date": "20230622",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_artefacto_reloj_20230624",
+      "file_name": "AT87_artefacto_reloj_20230624.gpx",
+      "group": "AT87_20230624_artefacto",
+      "date": "20230624",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230516",
+      "file_name": "AT87_persona_reloj_20230516.gpx",
+      "group": "AT87_20230516_persona",
+      "date": "20230516",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230518",
+      "file_name": "AT87_persona_reloj_20230518.gpx",
+      "group": "AT87_20230518_persona",
+      "date": "20230518",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230520",
+      "file_name": "AT87_persona_reloj_20230520.gpx",
+      "group": "AT87_20230520_persona",
+      "date": "20230520",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230620",
+      "file_name": "AT87_persona_reloj_20230620.gpx",
+      "group": "AT87_20230620_persona",
+      "date": "20230620",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230622",
+      "file_name": "AT87_persona_reloj_20230622.gpx",
+      "group": "AT87_20230622_persona",
+      "date": "20230622",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AT87_persona_reloj_20230624",
+      "file_name": "AT87_persona_reloj_20230624.gpx",
+      "group": "AT87_20230624_persona",
+      "date": "20230624",
+      "type": "persona"
+    }
+  ]
+}

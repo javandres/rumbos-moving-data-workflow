@@ -1,0 +1,66 @@
+{
+  "code": "LQ07",
+  "folder_name": "solo_gps/LQ07",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "07:00:00",
+  "hora_fin": "10:00:00",
+  "assets": [
+    {
+      "asset_name": "LQ07_persona_reloj_20230606",
+      "file_name": "LQ07_persona_reloj_20230606.gpx",
+      "group": "LQ07_20230606_persona",
+      "date": "20230606",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230613",
+      "file_name": "LQ07_persona_reloj_20230613.gpx",
+      "group": "LQ07_20230613_persona",
+      "date": "20230613",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230619",
+      "file_name": "LQ07_persona_reloj_20230619.gpx",
+      "group": "LQ07_20230619_persona",
+      "date": "20230619",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230608",
+      "file_name": "LQ07_persona_reloj_20230608.gpx",
+      "group": "LQ07_20230608_persona",
+      "date": "20230608",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230610",
+      "file_name": "LQ07_persona_reloj_20230610.gpx",
+      "group": "LQ07_20230610_persona",
+      "date": "20230610",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230617",
+      "file_name": "LQ07_persona_reloj_20230617.gpx",
+      "group": "LQ07_20230617_persona",
+      "date": "20230617",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230615",
+      "file_name": "LQ07_persona_reloj_20230615.gpx",
+      "group": "LQ07_20230615_persona",
+      "date": "20230615",
+      "type": "persona"
+    },
+    {
+      "asset_name": "LQ07_persona_reloj_20230612",
+      "file_name": "LQ07_persona_reloj_20230612.gpx",
+      "group": "LQ07_20230612_persona",
+      "date": "20230612",
+      "type": "persona"
+    }
+  ]
+}

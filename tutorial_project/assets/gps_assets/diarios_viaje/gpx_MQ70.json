@@ -1,0 +1,122 @@
+{
+  "code": "MQ70",
+  "folder_name": "diarios_viaje/MQ70",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:50:00",
+  "hora_fin": "17:30:00",
+  "assets": [
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230425",
+      "file_name": "MQ70_artefacto_reloj_20230425.gpx",
+      "group": "MQ70_20230425_artefacto",
+      "date": "20230425",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230427",
+      "file_name": "MQ70_artefacto_reloj_20230427.gpx",
+      "group": "MQ70_20230427_artefacto",
+      "date": "20230427",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230428",
+      "file_name": "MQ70_artefacto_reloj_20230428.gpx",
+      "group": "MQ70_20230428_artefacto",
+      "date": "20230428",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230429",
+      "file_name": "MQ70_artefacto_reloj_20230429.gpx",
+      "group": "MQ70_20230429_artefacto",
+      "date": "20230429",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230502",
+      "file_name": "MQ70_artefacto_reloj_20230502.gpx",
+      "group": "MQ70_20230502_artefacto",
+      "date": "20230502",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230503",
+      "file_name": "MQ70_artefacto_reloj_20230503.gpx",
+      "group": "MQ70_20230503_artefacto",
+      "date": "20230503",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230504",
+      "file_name": "MQ70_artefacto_reloj_20230504.gpx",
+      "group": "MQ70_20230504_artefacto",
+      "date": "20230504",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_artefacto_reloj_20230617",
+      "file_name": "MQ70_artefacto_reloj_20230617.gpx",
+      "group": "MQ70_20230617_artefacto",
+      "date": "20230617",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230425",
+      "file_name": "MQ70_persona_reloj_20230425.gpx",
+      "group": "MQ70_20230425_persona",
+      "date": "20230425",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230427",
+      "file_name": "MQ70_persona_reloj_20230427.gpx",
+      "group": "MQ70_20230427_persona",
+      "date": "20230427",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230428",
+      "file_name": "MQ70_persona_reloj_20230428.gpx",
+      "group": "MQ70_20230428_persona",
+      "date": "20230428",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230429",
+      "file_name": "MQ70_persona_reloj_20230429.gpx",
+      "group": "MQ70_20230429_persona",
+      "date": "20230429",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230502",
+      "file_name": "MQ70_persona_reloj_20230502.gpx",
+      "group": "MQ70_20230502_persona",
+      "date": "20230502",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230503",
+      "file_name": "MQ70_persona_reloj_20230503.gpx",
+      "group": "MQ70_20230503_persona",
+      "date": "20230503",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230504",
+      "file_name": "MQ70_persona_reloj_20230504.gpx",
+      "group": "MQ70_20230504_persona",
+      "date": "20230504",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MQ70_persona_reloj_20230617",
+      "file_name": "MQ70_persona_reloj_20230617.gpx",
+      "group": "MQ70_20230617_persona",
+      "date": "20230617",
+      "type": "persona"
+    }
+  ]
+}

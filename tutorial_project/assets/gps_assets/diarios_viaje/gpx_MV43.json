@@ -1,0 +1,94 @@
+{
+  "code": "MV43",
+  "folder_name": "diarios_viaje/MV43",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "18:00:00",
+  "assets": [
+    {
+      "asset_name": "MV43_artefacto_reloj_20230522",
+      "file_name": "MV43_artefacto_reloj_20230522.gpx",
+      "group": "MV43_20230522_artefacto",
+      "date": "20230522",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_artefacto_reloj_20230524",
+      "file_name": "MV43_artefacto_reloj_20230524.gpx",
+      "group": "MV43_20230524_artefacto",
+      "date": "20230524",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_artefacto_reloj_20230526",
+      "file_name": "MV43_artefacto_reloj_20230526.gpx",
+      "group": "MV43_20230526_artefacto",
+      "date": "20230526",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_artefacto_reloj_20230626",
+      "file_name": "MV43_artefacto_reloj_20230626.gpx",
+      "group": "MV43_20230626_artefacto",
+      "date": "20230626",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_artefacto_reloj_20230628",
+      "file_name": "MV43_artefacto_reloj_20230628.gpx",
+      "group": "MV43_20230628_artefacto",
+      "date": "20230628",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_artefacto_reloj_20230630",
+      "file_name": "MV43_artefacto_reloj_20230630.gpx",
+      "group": "MV43_20230630_artefacto",
+      "date": "20230630",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230522",
+      "file_name": "MV43_persona_reloj_20230522.gpx",
+      "group": "MV43_20230522_persona",
+      "date": "20230522",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230524",
+      "file_name": "MV43_persona_reloj_20230524.gpx",
+      "group": "MV43_20230524_persona",
+      "date": "20230524",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230526",
+      "file_name": "MV43_persona_reloj_20230526.gpx",
+      "group": "MV43_20230526_persona",
+      "date": "20230526",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230626",
+      "file_name": "MV43_persona_reloj_20230626.gpx",
+      "group": "MV43_20230626_persona",
+      "date": "20230626",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230628",
+      "file_name": "MV43_persona_reloj_20230628.gpx",
+      "group": "MV43_20230628_persona",
+      "date": "20230628",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MV43_persona_reloj_20230630",
+      "file_name": "MV43_persona_reloj_20230630.gpx",
+      "group": "MV43_20230630_persona",
+      "date": "20230630",
+      "type": "persona"
+    }
+  ]
+}

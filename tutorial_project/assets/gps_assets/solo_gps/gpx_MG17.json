@@ -1,0 +1,67 @@
+{
+  "code": "MG17",
+  "folder_name": "solo_gps/MG17",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:30:00",
+  "hora_fin": "17:30:00",
+  "assets": [
+    {
+      "asset_name": "MG17_artefacto_reloj_20230523",
+      "file_name": "MG17_artefacto_reloj_20230523.gpx",
+      "group": "MG17_20230523_artefacto",
+      "date": "20230523",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG17_artefacto_reloj_20230608",
+      "file_name": "MG17_artefacto_reloj_20230608.gpx",
+      "group": "MG17_20230608_artefacto",
+      "date": "20230608",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG17_persona_reloj_20230608",
+      "file_name": "MG17_persona_reloj_20230608.gpx",
+      "group": "MG17_20230608_persona",
+      "date": "20230608",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG17_persona_reloj_20230523",
+      "file_name": "MG17_persona_reloj_20230523.gpx",
+      "group": "MG17_20230523_persona",
+      "date": "20230523",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG17_persona_reloj_20230516",
+      "file_name": "MG17_persona_reloj_20230516.gpx",
+      "group": "MG17_20230516_persona",
+      "date": "20230516",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG17_persona_reloj_20230525",
+      "file_name": "MG17_persona_reloj_20230525.gpx",
+      "group": "MG17_20230525_persona",
+      "date": "20230525",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG17_artefacto_reloj_20230516",
+      "file_name": "MG17_artefacto_reloj_20230516.gpx",
+      "group": "MG17_20230516_artefacto",
+      "date": "20230516",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG17_artefacto_reloj_20230525",
+      "file_name": "MG17_artefacto_reloj_20230525.gpx",
+      "group": "MG17_20230525_artefacto",
+      "date": "20230525",
+      "type": "artefacto",
+      "modalidad": "solo_gps"
+    }
+  ]
+}

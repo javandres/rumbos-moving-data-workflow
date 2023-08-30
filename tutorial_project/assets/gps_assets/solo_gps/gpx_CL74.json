@@ -1,0 +1,87 @@
+{
+  "code": "CL74",
+  "folder_name": "solo_gps/CL74",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "17:00:00",
+  "hora_fin": "23:00:00",
+  "assets": [
+    {
+      "asset_name": "CL74_artefacto_reloj_20230524",
+      "file_name": "CL74_artefacto_reloj_20230524.gpx",
+      "group": "CL74_20230524_artefacto",
+      "date": "20230524",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230524",
+      "file_name": "CL74_persona_reloj_20230524.gpx",
+      "group": "CL74_20230524_persona",
+      "date": "20230524",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_artefacto_reloj_20230609",
+      "file_name": "CL74_artefacto_reloj_20230609.gpx",
+      "group": "CL74_20230609_artefacto",
+      "date": "20230609",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230609",
+      "file_name": "CL74_persona_reloj_20230609.gpx",
+      "group": "CL74_20230609_persona",
+      "date": "20230609",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_artefacto_reloj_20230602",
+      "file_name": "CL74_artefacto_reloj_20230602.gpx",
+      "group": "CL74_20230602_artefacto",
+      "date": "20230602",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230602",
+      "file_name": "CL74_persona_reloj_20230602.gpx",
+      "group": "CL74_20230602_persona",
+      "date": "20230602",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_artefacto_reloj_20230531",
+      "file_name": "CL74_artefacto_reloj_20230531.gpx",
+      "group": "CL74_20230531_artefacto",
+      "date": "20230531",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230529",
+      "file_name": "CL74_persona_reloj_20230529.gpx",
+      "group": "CL74_20230529_persona",
+      "date": "20230529",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230522",
+      "file_name": "CL74_persona_reloj_20230522.gpx",
+      "group": "CL74_20230522_persona",
+      "date": "20230522",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_persona_reloj_20230531",
+      "file_name": "CL74_persona_reloj_20230531.gpx",
+      "group": "CL74_20230531_persona",
+      "date": "20230531",
+      "type": "persona"
+    },
+    {
+      "asset_name": "CL74_artefacto_reloj_20230529",
+      "file_name": "CL74_artefacto_reloj_20230529.gpx",
+      "group": "CL74_20230529_artefacto",
+      "date": "20230529",
+      "type": "artefacto"
+    }
+  ]
+}

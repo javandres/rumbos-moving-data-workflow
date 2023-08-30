@@ -1,0 +1,108 @@
+{
+  "code": "BZ14",
+  "folder_name": "solo_gps/BZ14",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:30:00",
+  "hora_fin": "09:00:00",
+  "assets": [
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230522",
+      "file_name": "BZ14_artefacto_reloj_20230522.gpx",
+      "group": "BZ14_20230522_artefacto",
+      "date": "20230522",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230523",
+      "file_name": "BZ14_persona_reloj_20230523.gpx",
+      "group": "BZ14_20230523_persona",
+      "date": "20230523",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230519_2",
+      "file_name": "BZ14_persona_reloj_20230519_2.gpx",
+      "group": "BZ14_20230519_persona",
+      "date": "20230519",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230515",
+      "file_name": "BZ14_artefacto_reloj_20230515.gpx",
+      "group": "BZ14_20230515_artefacto",
+      "date": "20230515",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230517",
+      "file_name": "BZ14_artefacto_reloj_20230517.gpx",
+      "group": "BZ14_20230517_artefacto",
+      "date": "20230517",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230516",
+      "file_name": "BZ14_persona_reloj_20230516.gpx",
+      "group": "BZ14_20230516_persona",
+      "date": "20230516",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230516",
+      "file_name": "BZ14_artefacto_reloj_20230516.gpx",
+      "group": "BZ14_20230516_artefacto",
+      "date": "20230516",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230517",
+      "file_name": "BZ14_persona_reloj_20230517.gpx",
+      "group": "BZ14_20230517_persona",
+      "date": "20230517",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230519_1",
+      "file_name": "BZ14_persona_reloj_20230519_1.gpx",
+      "group": "BZ14_20230519_persona",
+      "date": "20230519",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230519_2",
+      "file_name": "BZ14_artefacto_reloj_20230519_2.gpx",
+      "group": "BZ14_20230519_artefacto",
+      "date": "20230519",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230522",
+      "file_name": "BZ14_persona_reloj_20230522.gpx",
+      "group": "BZ14_20230522_persona",
+      "date": "20230522",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_persona_reloj_20230515",
+      "file_name": "BZ14_persona_reloj_20230515.gpx",
+      "group": "BZ14_20230515_persona",
+      "date": "20230515",
+      "type": "persona"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230523",
+      "file_name": "BZ14_artefacto_reloj_20230523.gpx",
+      "group": "BZ14_20230523_artefacto",
+      "date": "20230523",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "BZ14_artefacto_reloj_20230519_1",
+      "file_name": "BZ14_artefacto_reloj_20230519_1.gpx",
+      "group": "BZ14_20230519_artefacto",
+      "date": "20230519",
+      "type": "artefacto"
+    }
+  ]
+}

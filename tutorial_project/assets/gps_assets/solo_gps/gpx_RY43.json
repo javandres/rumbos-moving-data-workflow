@@ -1,0 +1,38 @@
+{
+  "code": "RY43",
+  "folder_name": "solo_gps/RY43",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "05:30:00",
+  "hora_fin": "11:30:00",
+  "assets": [
+    {
+      "asset_name": "RY43_artefacto_reloj_20230621",
+      "file_name": "RY43_artefacto_reloj_20230621.gpx",
+      "group": "RY43_20230621_artefacto",
+      "date": "20230621",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "RY43_artefacto_reloj_20230623",
+      "file_name": "RY43_artefacto_reloj_20230623.gpx",
+      "group": "RY43_20230623_artefacto",
+      "date": "20230623",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "RY43_persona_reloj_20230621",
+      "file_name": "RY43_persona_reloj_20230621.gpx",
+      "group": "RY43_20230621_persona",
+      "date": "20230621",
+      "type": "persona"
+    },
+    {
+      "asset_name": "RY43_persona_reloj_20230623",
+      "file_name": "RY43_persona_reloj_20230623.gpx",
+      "group": "RY43_20230623_persona",
+      "date": "20230623",
+      "type": "persona"
+    }
+  ]
+}

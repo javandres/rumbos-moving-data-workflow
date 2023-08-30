@@ -12,8 +12,12 @@
   "cSpell.words": [
     "Acurio",
     "artefacto",
+    "diarios",
+    "inicio",
     "kargs",
-    "reloj"
+    "modalidad",
+    "reloj",
+    "viaje"
   ],
   "python.formatting.provider": "none",
   "editor.formatOnSave": true,

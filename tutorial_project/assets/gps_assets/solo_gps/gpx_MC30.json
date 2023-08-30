@@ -1,0 +1,38 @@
+{
+  "code": "MC30",
+  "folder_name": "solo_gps/MC30",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "07:00:00",
+  "hora_fin": "11:00:00",
+  "assets": [
+    {
+      "asset_name": "MC30_sujeto_reloj_20230602",
+      "file_name": "MC30_sujeto_reloj_20230602.gpx",
+      "group": "MC30_20230602_sujeto",
+      "date": "20230602",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC30_persona_reloj_20230606",
+      "file_name": "MC30_persona_reloj_20230606.gpx",
+      "group": "MC30_20230606_persona",
+      "date": "20230606",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC30_persona_reloj_20230613",
+      "file_name": "MC30_persona_reloj_20230613.gpx",
+      "group": "MC30_20230613_persona",
+      "date": "20230613",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC30_persona_reloj_20230609",
+      "file_name": "MC30_persona_reloj_20230609.gpx",
+      "group": "MC30_20230609_persona",
+      "date": "20230609",
+      "type": "persona"
+    }
+  ]
+}

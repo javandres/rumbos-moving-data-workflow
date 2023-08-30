@@ -1,0 +1,136 @@
+{
+  "code": "AF79",
+  "folder_name": "diarios_viaje/AF79",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "14:00:00",
+  "assets": [
+    {
+      "asset_name": "AF79_artefacto_reloj_20230426_01",
+      "file_name": "AF79_artefacto_reloj_20230426_01.gpx",
+      "group": "AF79_artefacto_20230426",
+      "date": "20230426",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230426_02",
+      "file_name": "AF79_artefacto_reloj_20230426_02.gpx",
+      "group": "AF79_artefacto_20230426",
+      "date": "20230426",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230428",
+      "file_name": "AF79_artefacto_reloj_20230428.gpx",
+      "group": "AF79_artefacto_20230428",
+      "date": "20230428",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230501",
+      "file_name": "AF79_artefacto_reloj_20230501.gpx",
+      "group": "AF79_artefacto_20230501",
+      "date": "20230501",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230503",
+      "file_name": "AF79_artefacto_reloj_20230503.gpx",
+      "group": "AF79_artefacto_20230503",
+      "date": "20230503",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230504",
+      "file_name": "AF79_artefacto_reloj_20230504.gpx",
+      "group": "AF79_artefacto_20230504",
+      "date": "20230504",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230505",
+      "file_name": "AF79_artefacto_reloj_20230505.gpx",
+      "group": "AF79_artefacto_20230505",
+      "date": "20230505",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_artefacto_reloj_20230506",
+      "file_name": "AF79_artefacto_reloj_20230506.gpx",
+      "group": "AF79_artefacto_20230506",
+      "date": "20230506",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230426_01",
+      "file_name": "AF79_persona_reloj_20230426_01.gpx",
+      "group": "AF79_persona_20230426",
+      "date": "20230426",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230426_02",
+      "file_name": "AF79_persona_reloj_20230426_02.gpx",
+      "group": "AF79_persona_20230426",
+      "date": "20230426",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230428_01",
+      "file_name": "AF79_persona_reloj_20230428_01.gpx",
+      "group": "AF79_persona_20230428",
+      "date": "20230428",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230428_02",
+      "file_name": "AF79_persona_reloj_20230428_02.gpx",
+      "group": "AF79_persona_20230428",
+      "date": "20230428",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230501",
+      "file_name": "AF79_persona_reloj_20230501.gpx",
+      "group": "AF79_persona_20230501",
+      "date": "20230501",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230503_1",
+      "file_name": "AF79_persona_reloj_20230503_1.gpx",
+      "group": "AF79_persona_20230503",
+      "date": "20230503",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230503_2",
+      "file_name": "AF79_persona_reloj_20230503_2.gpx",
+      "group": "AF79_persona_20230503",
+      "date": "20230503",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230504",
+      "file_name": "AF79_persona_reloj_20230504.gpx",
+      "group": "AF79_persona_20230504",
+      "date": "20230504",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230505",
+      "file_name": "AF79_persona_reloj_20230505.gpx",
+      "group": "AF79_persona_20230505",
+      "date": "20230505",
+      "type": "persona"
+    },
+    {
+      "asset_name": "AF79_persona_reloj_20230506",
+      "file_name": "AF79_persona_reloj_20230506.gpx",
+      "group": "AF79_persona_20230506",
+      "date": "20230506",
+      "type": "persona"
+    }
+  ]
+}

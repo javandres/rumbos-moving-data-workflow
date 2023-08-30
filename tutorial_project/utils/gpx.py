@@ -28,12 +28,15 @@ def load_gpx_file(file_path, asset_to_make):
                         "time": point.time,
                         "file_path": file_path,
                         "file_name": file_name,
-                        "track_id": track_id,
-                        "codigo": codigo,
+                        "track_id": asset_to_make["asset_name"],
+                        "codigo": asset_to_make["code"],
                         "type": asset_to_make["type"],
                         "date": asset_to_make["date"],
                         "group": asset_to_make["group"],
                         "modalidad": asset_to_make["modalidad"],
+                        "hora_inicio": asset_to_make["hora_inicio"],
+                        "hora_fin": asset_to_make["hora_fin"],
+                        "owner": asset_to_make["owner"],
                         "id": 1,
                     }
                 )
@@ -63,12 +66,15 @@ def load_gpkg_file(file_path, asset_to_make):
 
     gdf["file_path"] = file_path
     gdf["file_name"] = file_name
-    gdf["track_id"] = track_id
-    gdf["codigo"] = codigo
+    gdf["track_id"] = asset_to_make["asset_name"]
+    gdf["codigo"] = asset_to_make["code"]
     gdf["type"] = asset_to_make["type"]
     gdf["date"] = asset_to_make["date"]
     gdf["group"] = asset_to_make["group"]
     gdf["modalidad"] = asset_to_make["modalidad"]
+    gdf["hora_inicio"] = asset_to_make["hora_inicio"]
+    gdf["hora_fin"] = asset_to_make["hora_fin"]
+    gdf["owner"] = asset_to_make["owner"]
     gdf["id"] = 1
 
     if not pd.core.dtypes.common.is_datetime_or_timedelta_dtype(gdf["time"]):

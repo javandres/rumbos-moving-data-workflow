@@ -1,0 +1,94 @@
+{
+  "code": "ML09",
+  "folder_name": "solo_gps/ML09",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "14:00:00",
+  "hora_fin": "",
+  "assets": [
+    {
+      "asset_name": "ML09_artefacto_reloj_20230616",
+      "file_name": "ML09_artefacto_reloj_20230616.gpx",
+      "group": "ML09_20230616_artefacto",
+      "date": "20230616",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_artefacto_reloj_20230621",
+      "file_name": "ML09_artefacto_reloj_20230621.gpx",
+      "group": "ML09_20230621_artefacto",
+      "date": "20230621",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230612",
+      "file_name": "ML09_persona_reloj_20230612.gpx",
+      "group": "ML09_20230612_persona",
+      "date": "20230612",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230616",
+      "file_name": "ML09_persona_reloj_20230616.gpx",
+      "group": "ML09_20230616_persona",
+      "date": "20230616",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML09_artefacto_reloj_20230609",
+      "file_name": "ML09_artefacto_reloj_20230609.gpx",
+      "group": "ML09_20230609_artefacto",
+      "date": "20230609",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230621",
+      "file_name": "ML09_persona_reloj_20230621.gpx",
+      "group": "ML09_20230621_persona",
+      "date": "20230621",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230619",
+      "file_name": "ML09_persona_reloj_20230619.gpx",
+      "group": "ML09_20230619_persona",
+      "date": "20230619",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML09_artefacto_reloj_20230619",
+      "file_name": "ML09_artefacto_reloj_20230619.gpx",
+      "group": "ML09_20230619_artefacto",
+      "date": "20230619",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_artefacto_reloj_20230614",
+      "file_name": "ML09_artefacto_reloj_20230614.gpx",
+      "group": "ML09_20230614_artefacto",
+      "date": "20230614",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230609",
+      "file_name": "ML09_persona_reloj_20230609.gpx",
+      "group": "ML09_20230609_persona",
+      "date": "20230609",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML09_artefacto_reloj_2023012",
+      "file_name": "ML09_artefacto_reloj_2023012.gpx",
+      "group": "ML09_2023012_artefacto",
+      "date": "2023012",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "ML09_persona_reloj_20230614",
+      "file_name": "ML09_persona_reloj_20230614.gpx",
+      "group": "ML09_20230614_persona",
+      "date": "20230614",
+      "type": "persona"
+    }
+  ]
+}

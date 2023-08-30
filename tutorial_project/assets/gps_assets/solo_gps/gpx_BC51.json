@@ -1,0 +1,17 @@
+{
+  "code": "BC51",
+  "folder_name": "solo_gps/BC51",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "14:00:00",
+  "hora_fin": "19:00:00",
+  "assets": [
+    {
+      "asset_name": "BC51_persona_reloj_20230613",
+      "file_name": "BC51_persona_reloj_20230613.gpx",
+      "group": "BC51_20230613_persona",
+      "date": "20230613",
+      "type": "persona"
+    }
+  ]
+}
