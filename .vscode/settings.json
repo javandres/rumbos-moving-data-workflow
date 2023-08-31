@@ -16,7 +16,10 @@
     "inicio",
     "kargs",
     "modalidad",
+    "positionfixes",
     "reloj",
+    "staypoints",
+    "triplegs",
     "viaje"
   ],
   "python.formatting.provider": "none",

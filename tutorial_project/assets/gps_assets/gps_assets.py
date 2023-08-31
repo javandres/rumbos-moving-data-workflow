@@ -1,3 +1,5 @@
+from dagster import AssetOut, multi_asset
+
 import pandas as pd
 import requests
 
@@ -37,6 +39,9 @@ from fiona.crs import from_epsg
 from datetime import datetime, timedelta
 import os
 
+# TrackIntel
+import trackintel as ti
+
 
 data = []
 # with open("tutorial_project/assets/MG91/gpx_AF79.json", "r") as read_file:
@@ -56,37 +61,37 @@ data = []
 
 
 file_paths = [
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_LH52.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_LH52.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
     "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
 ]
 
 for file_path in file_paths:
@@ -651,11 +656,181 @@ for (code, group, date, type), group_data in grouped:
     # factory_assets_trajectory_by_date_type_db_track.append(result_track)
 
 
+def make_positionfixes(code, input, output):
+    @multi_asset(
+        name=output,
+        group_name=code,
+        compute_kind="trackintel",
+        ins={
+            "trajectories": AssetIn(
+                key=["public", input],
+                input_manager_key="mobilityDb_manager",
+            )
+        },
+        # key_prefix=["public"],
+        outs={
+            output
+            + "_positionfixes": AssetOut(
+                key_prefix=["public"],
+                io_manager_key="mobilityDb_manager",
+            ),
+            output
+            + "_staypoints": AssetOut(
+                key_prefix=["public"],
+                io_manager_key="mobilityDb_manager",
+            ),
+            output
+            + "_locations": AssetOut(
+                key_prefix=["public"],
+                io_manager_key="mobilityDb_manager",
+            ),
+            output
+            + "_triplegs": AssetOut(
+                key_prefix=["public"],
+                io_manager_key="mobilityDb_manager",
+            ),
+        },
+        # io_manager_key="mobilityDb_manager",
+    )
+    def asset_template(trajectories):
+        # Create positionfixes
+        pfs = ti.io.read_positionfixes_gpd(
+            trajectories,
+            geom_col="geometry",
+            tracked_at="time",
+            user_id="codigo_num",
+            # tz="ETC/GMT-5",
+        )
+
+        # Create staypoints
+        pfs, staypoints = pfs.as_positionfixes.generate_staypoints(
+            method="sliding", dist_threshold=5, time_threshold=0.25, include_last=False
+        )
+
+        # Add a flag whether or not a staypoint is considered an activity.
+        staypoints = ti.analysis.labelling.create_activity_flag(
+            staypoints,
+            method="time_threshold",
+            time_threshold=0.25,
+            activity_column_name="is_activity_15s",
+        )
+
+        staypoints = ti.analysis.labelling.create_activity_flag(
+            staypoints,
+            method="time_threshold",
+            time_threshold=0.5,
+            activity_column_name="is_activity_30s",
+        )
+
+        staypoints = ti.analysis.labelling.create_activity_flag(
+            staypoints,
+            method="time_threshold",
+            time_threshold=1,
+            activity_column_name="is_activity_60s",
+        )
+
+        # Generate locations https://trackintel.readthedocs.io/en/latest/modules/model.html#trackintel.model.staypoints.Staypoints.generate_locations
+        staypoints, locs = staypoints.as_staypoints.generate_locations(
+            method="dbscan", epsilon=100, num_samples=1
+        )
+
+        # Create triplegs
+        pfs, triplegs = pfs.as_positionfixes.generate_triplegs(
+            method="between_staypoints", gap_threshold=5  # minutes
+        )
+
+        triplegs = triplegs.as_triplegs.predict_transport_mode()
+
+        return (
+            Output(
+                value=pfs,
+                metadata={
+                    "description": "",
+                    "rows": len(pfs),
+                    "preview": MetadataValue.md(pfs.head().to_markdown()),
+                },
+            ),
+            Output(
+                value=staypoints,
+                metadata={
+                    "description": "",
+                    "rows": len(staypoints),
+                    "preview": MetadataValue.md(staypoints.head().to_markdown()),
+                },
+            ),
+            Output(
+                value=locs,
+                metadata={
+                    "description": "",
+                    "rows": len(locs),
+                    "preview": MetadataValue.md(locs.head().to_markdown()),
+                },
+            ),
+            Output(
+                value=triplegs,
+                metadata={
+                    "description": "",
+                    "rows": len(triplegs),
+                    "preview": MetadataValue.md(triplegs.head().to_markdown()),
+                },
+            ),
+        )
+        # return Output(
+        #     value=pfs,
+        #     metadata={
+        #         "description": "",
+        #         "rows": len(pfs),
+        #         "preview": MetadataValue.md(pfs.head().to_markdown()),
+        #     },
+        # )
+
+    return asset_template
+
+
+# def make_staypoints(code, input, output):
+#     @asset(
+#         name=output,
+#         group_name=code,
+#         compute_kind="trackintel_staypoint",
+#         ins={
+#             "trajectories": AssetIn(
+#                 key=["public", input],
+#                 # input_manager_key="mobilityDb_manager",
+#             )
+#         },
+#         key_prefix=["public"],
+#         # io_manager_key="mobilityDb_manager",
+#     )
+#     def asset_template(trajectories):
+#         print("============", trajectories)
+
+#         pfs = ti.io.read_positionfixes_gpd(
+#             trajectories,
+#             geom_col="geometry",
+#             tracked_at="time",
+#             user_id="track_id_num",
+#             # tz="ETC/GMT-5",
+#         )
+
+#         return Output(
+#             value=pfs,
+#             metadata={
+#                 "description": "",
+#                 "rows": len(pfs),
+#                 "preview": MetadataValue.md(pfs.head().to_markdown()),
+#             },
+#         )
+
+#     return asset_template
+
+
 factory_assets_trajectory_by_code_type = []
 
 
 all_inputs = []
 factory_assets_trajectory_by_code_type = []
+trackintel_positionfixes = []
+trackintel_staypoints = []
 grouped = assets_df.groupby(["code", "type"])
 for (code, type), group_data in grouped:
     grouped2 = group_data.groupby(["group"])
@@ -668,6 +843,12 @@ for (code, type), group_data in grouped:
     group_name = code
     result = make_trajectory_collection_asset(name, group_name, inputs)
     factory_assets_trajectory_by_code_type.append(result)
+
+    positionfixes = make_positionfixes(code, name, name + "_trackintel")
+    trackintel_positionfixes.append(positionfixes)
+
+    # staypoints = make_staypoints(code, name + "_positionfixes", name + "_staypoints")
+    # trackintel_staypoints.append(staypoints)
 
     # name_line = code + "_" + type + "_traj_line"
     # result_line = make_trajectory_collection_asset(name_line, group_name, [name])
@@ -817,3 +998,9 @@ def make_assets_stops(
 #         type="artefacto",
 #     )
 #     stops.append(stop_asset)
+
+
+################ TRACKINTEL
+
+
+# positionfixes = make_positionfixes()
