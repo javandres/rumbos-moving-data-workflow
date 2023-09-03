@@ -24,7 +24,7 @@ def load_gpx_file(file_path, asset_to_make):
                         # 'id': uuid.uuid4(),
                         "lat": point.latitude,
                         "lon": point.longitude,
-                        "elevation": point.elevation,
+                        "elevation": 0.0,
                         "time": point.time,
                         "file_path": file_path,
                         "file_name": file_name,
@@ -59,8 +59,9 @@ def load_gpkg_file(file_path, asset_to_make):
 
     gdf = gdf[["time", "ele", "geometry"]].copy()
 
-    gdf.rename(columns={"ele": "elevation"}, inplace=True)
+    # gdf.rename(columns={"ele": "elevation"}, inplace=True)
 
+    gdf["elevation"] = 0.0
     gdf["lon"] = gdf.geometry.x
     gdf["lat"] = gdf.geometry.y
 

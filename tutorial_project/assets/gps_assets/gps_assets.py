@@ -38,6 +38,9 @@ import skmob
 from fiona.crs import from_epsg
 from datetime import datetime, timedelta
 import os
+from sqlalchemy import create_engine
+from sqlalchemy.engine import URL, Connection
+
 
 # TrackIntel
 import trackintel as ti
@@ -61,7 +64,7 @@ data = []
 
 
 file_paths = [
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
     # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
     # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
     # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_LH52.json",
@@ -72,10 +75,10 @@ file_paths = [
     # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
     # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
     # "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
     # "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
     # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
     # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
@@ -656,7 +659,7 @@ for (code, group, date, type), group_data in grouped:
     # factory_assets_trajectory_by_date_type_db_track.append(result_track)
 
 
-def make_positionfixes(code, input, output):
+def make_positionfixes(code, input, output, type):
     @multi_asset(
         name=output,
         group_name=code,
@@ -729,9 +732,21 @@ def make_positionfixes(code, input, output):
             activity_column_name="is_activity_60s",
         )
 
+        staypoints["duration"] = staypoints["finished_at"] - staypoints["started_at"]
+
+        staypoints["duration_seconds"] = (
+            staypoints["finished_at"] - staypoints["started_at"]
+        ).dt.total_seconds()
+
+        staypoints["duration_minutes"] = staypoints["duration_seconds"] / 60
+
+        # staypoints["duration_minutes"] = (
+        #     staypoints["finished_at"] - staypoints["started_at"]
+        # ) / 60
+
         # Generate locations https://trackintel.readthedocs.io/en/latest/modules/model.html#trackintel.model.staypoints.Staypoints.generate_locations
         staypoints, locs = staypoints.as_staypoints.generate_locations(
-            method="dbscan", epsilon=100, num_samples=1
+            method="dbscan", epsilon=100, num_samples=10
         )
 
         # Create triplegs
@@ -740,6 +755,12 @@ def make_positionfixes(code, input, output):
         )
 
         triplegs = triplegs.as_triplegs.predict_transport_mode()
+        staypoints["type"] = type
+        staypoints["codigo"] = code
+        locs["type"] = type
+        locs["codigo"] = code
+        triplegs["type"] = type
+        triplegs["codigo"] = code
 
         return (
             Output(
@@ -824,13 +845,73 @@ def make_positionfixes(code, input, output):
 #     return asset_template
 
 
+def make_asset_union_tables(name, group_name, asset_inputs):
+    ins = {
+        f"asset{i+1}": AssetIn(key=["public", asset_input])
+        for i, asset_input in enumerate(asset_inputs)
+    }
+
+    @asset(
+        name=name,
+        group_name=group_name,
+        compute_kind="postgres",
+        # ins=ins,
+        # io_manager_key="mobilityDb_manager",
+        key_prefix=["public"],
+    )
+    def asset_template(**kargs):
+        select = ""
+        count = 0
+        for arg in asset_inputs:
+            # result.append(kargs[arg])
+            union = "UNION"
+            if count == len(asset_inputs) - 1 or len(asset_inputs) == 1:
+                union = ""
+            select = select + f' SELECT * FROM public."{arg}" {union} '
+            count = count + 1
+
+        url = URL.create(
+            "postgresql+psycopg2",
+            username=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
+            host=os.getenv("POSTGRES_HOST"),
+            port=os.getenv("POSTGRES_PORT"),
+            database=os.getenv("POSTGRES_DB"),
+        )
+        conn = create_engine(url).connect()
+
+        print("SELECT=========", select)
+        output = conn.execute(
+            f"""
+                DROP TABLE IF EXISTS {name};
+                CREATE TABLE {name} as
+                    {select}
+            """
+        )
+
+        return Output(
+            value=[],
+            metadata={
+                "description": "",
+                # "rows": len(traj_gdf),
+                # "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
+            },
+        )
+
+    return asset_template
+
+
 factory_assets_trajectory_by_code_type = []
 
 
 all_inputs = []
 factory_assets_trajectory_by_code_type = []
 trackintel_positionfixes = []
-trackintel_staypoints = []
+positionfixes_inputs = []
+staypoints_inputs = []
+locations_inputs = []
+triplegs_inputs = []
+
 grouped = assets_df.groupby(["code", "type"])
 for (code, type), group_data in grouped:
     grouped2 = group_data.groupby(["group"])
@@ -844,8 +925,12 @@ for (code, type), group_data in grouped:
     result = make_trajectory_collection_asset(name, group_name, inputs)
     factory_assets_trajectory_by_code_type.append(result)
 
-    positionfixes = make_positionfixes(code, name, name + "_trackintel")
+    positionfixes = make_positionfixes(code, name, name + "_trackintel", type)
     trackintel_positionfixes.append(positionfixes)
+    positionfixes_inputs.append(name + "_trackintel_positionfixes")
+    staypoints_inputs.append(name + "_trackintel_staypoints")
+    locations_inputs.append(name + "_trackintel_locations")
+    triplegs_inputs.append(name + "_trackintel_triplegs")
 
     # staypoints = make_staypoints(code, name + "_positionfixes", name + "_staypoints")
     # trackintel_staypoints.append(staypoints)
@@ -860,6 +945,18 @@ for (code, type), group_data in grouped:
 all_assets = make_trajectory_collection_asset(
     "trajectories", "trajectories", all_inputs
 )
+
+positionfixes_asset = make_asset_union_tables(
+    "_positionfixes", "trackintel", positionfixes_inputs
+)
+
+staypoints_asset = make_asset_union_tables(
+    "_staypoints", "trackintel", staypoints_inputs
+)
+
+locations_asset = make_asset_union_tables("_locations", "trackintel", locations_inputs)
+
+triplegs_asset = make_asset_union_tables("_triplegs", "trackintel", triplegs_inputs)
 
 
 def make_assets_by_code(codigo):

@@ -168,8 +168,6 @@ class PostGISGeoPandasIOManager(PostgreSQLPandasIOManager):
             # crs=from_epsg(32716),
         )
 
-        print("GDF========>", gdf)
-
         return gdf
 
 
