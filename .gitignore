@@ -138,3 +138,5 @@ dmypy.json
 **/schedules
 **/storage/workdir
 **/compute_logs
+
+/grafana-data

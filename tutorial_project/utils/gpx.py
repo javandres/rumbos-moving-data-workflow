@@ -61,10 +61,9 @@ def load_gpkg_file(file_path, asset_to_make):
 
     # gdf.rename(columns={"ele": "elevation"}, inplace=True)
 
-    gdf["elevation"] = 0.0
     gdf["lon"] = gdf.geometry.x
     gdf["lat"] = gdf.geometry.y
-
+    gdf["elevation"] = 0.0
     gdf["file_path"] = file_path
     gdf["file_name"] = file_name
     gdf["track_id"] = asset_to_make["asset_name"]
@@ -81,6 +80,27 @@ def load_gpkg_file(file_path, asset_to_make):
     if not pd.core.dtypes.common.is_datetime_or_timedelta_dtype(gdf["time"]):
         gdf["time"] = pd.to_datetime(gdf["time"], format="%Y/%m/%d %H:%M:%S.%f")
 
-    print(gdf)
+    new_gdf = gdf[
+        [
+            "lat",
+            "lon",
+            "elevation",
+            "time",
+            "file_path",
+            "file_name",
+            "track_id",
+            "codigo",
+            "type",
+            "date",
+            "group",
+            "modalidad",
+            "hora_inicio",
+            "hora_fin",
+            "owner",
+            "id",
+            "geometry",
+        ]
+    ].copy()
 
-    return gdf
+    print("============= NEW", new_gdf)
+    return new_gdf
