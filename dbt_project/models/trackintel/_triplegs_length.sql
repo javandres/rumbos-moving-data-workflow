@@ -4,7 +4,8 @@
 ) }}
 
 SELECT
-    user_id AS codigo_num,
+    id,
+    tl.user_id AS codigo_num,
     codigo,
     TYPE,
     MODE,
@@ -16,9 +17,17 @@ SELECT
     ) AS day_of_week,
     geom AS geometry,
     st_length(st_transform(geom, 32717)) AS recorrido_metros,
-    duration_seconds
+    duration_seconds,
+    pbt.date,
+    pbt.group,
+    pbt.track_id
 FROM
     {{ source(
         'public',
         '_triplegs'
     ) }}
+    tl
+    LEFT JOIN {{ ref("_positionfixes_by_triplegs") }}
+    pbt
+    ON pbt.tripleg_id = tl.id
+    AND pbt.user_id = tl.user_id

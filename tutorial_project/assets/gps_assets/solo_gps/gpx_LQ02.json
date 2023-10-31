@@ -19,7 +19,7 @@
       "group": "LQ02_20230608_persona",
       "date": "20230608",
       "type": "persona",
-      "hora_inicio": "08:00:00",
+      "hora_inicio": "06:00:00",
       "hora_fin": "19:30:00"
     },
     {
@@ -28,7 +28,7 @@
       "group": "LQ02_20230608_artefacto",
       "date": "20230608",
       "type": "artefacto",
-      "hora_inicio": "08:00:00",
+      "hora_inicio": "06:00:00",
       "hora_fin": "19:30:00"
     },
     {

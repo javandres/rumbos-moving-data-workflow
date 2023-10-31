@@ -64,37 +64,37 @@ data = []
 
 
 file_paths = [
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_LH52.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
-    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
+    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
     "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
+    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
 ]
 
 for file_path in file_paths:
@@ -388,9 +388,10 @@ def make_trajectory_clean_assets(asset_to_make):
 
         # ftdf = tdf
 
-        max_speed_kmh = 25
-        max_loop = 15
-        ratio_max = 0.5
+        max_speed_kmh = 50
+        max_loop = 150
+        ratio_max = 0.80
+        speed_kmh = 4
 
         ftdf = filtering.filter(
             tdf,
@@ -398,6 +399,7 @@ def make_trajectory_clean_assets(asset_to_make):
             include_loops=True,
             max_loop=max_loop,
             ratio_max=ratio_max,
+            speed_kmh=speed_kmh,
         )
 
         # ftdf = tdf
@@ -701,9 +703,11 @@ def make_positionfixes(code, input, output, type):
             trajectories,
             geom_col="geometry",
             tracked_at="time",
-            user_id="codigo_num",
+            user_id="group_num",
             # tz="ETC/GMT-5",
         )
+
+        print("======", pfs)
 
         # Create staypoints
         pfs, staypoints = pfs.as_positionfixes.generate_staypoints(
@@ -767,6 +771,9 @@ def make_positionfixes(code, input, output, type):
             triplegs["finished_at"] - triplegs["started_at"]
         ).dt.total_seconds()
         triplegs["duration_minutes"] = triplegs["duration_seconds"] / 60
+
+        staypoints["id"] = staypoints.index
+        triplegs["id"] = triplegs.index
 
         return (
             Output(

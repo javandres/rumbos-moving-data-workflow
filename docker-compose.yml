@@ -18,7 +18,7 @@ services:
     ports:
       - "3002:3000"
     environment:
-      - GF_INSTALL_PLUGINS=foursquare-studio-panel
+      # - GF_INSTALL_PLUGINS=foursquare-studio-panel
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
       - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
       - GF_PANELS_ENABLE_ALPHA=true

@@ -6,14 +6,13 @@
 WITH trajs AS (
 
     SELECT
-        track_id,
+        "group",
         codigo,
         TYPE,
-        DATE,
         TO_DATE(
             DATE,
             'YYYYMMDD'
-        ) AS date_formatted,
+        ) AS DATE,
         modalidad,
         to_char(TO_DATE(DATE, 'YYYYMMDD'), 'TMDay') AS day_of_week,
         st_makeline(
@@ -27,7 +26,7 @@ WITH trajs AS (
             'trajectories'
         ) }}
     GROUP BY
-        track_id,
+        "group",
         codigo,
         TYPE,
         DATE,

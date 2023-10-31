@@ -200,6 +200,10 @@ class TrajectoryCollectionIOManager(PostgreSQLPandasIOManager):
                 lambda row: abs(hash(row["track_id"])) % (10**8), axis=1
             )
 
+            gdf["group_num"] = gdf.apply(
+                lambda row: abs(hash(row["group"])) % (10**8), axis=1
+            )
+
             gdf["codigo_num"] = gdf.apply(
                 lambda row: abs(hash(row["codigo"])) % (10**8), axis=1
             )
