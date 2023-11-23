@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "13:00:00",
   "hora_fin": "18:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "RC57_persona_reloj_20230529",

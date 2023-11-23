@@ -1,0 +1,67 @@
+{
+  "code": "DS76",
+  "folder_name": "diarios_viaje/DS76",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "22:00:00",
+  "ciudad": "Macas",
+  "assets": [
+    {
+      "asset_name": "DS76_artefacto_reloj_20230418",
+      "file_name": "DS76_artefacto_reloj_20230418.gpx",
+      "group": "DS76_20230418_artefacto",
+      "date": "20230418",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "DS76_artefacto_reloj_20230420",
+      "file_name": "DS76_artefacto_reloj_20230420.gpx",
+      "group": "DS76_20230420_artefacto",
+      "date": "20230420",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "DS76_artefacto_reloj_20230426",
+      "file_name": "DS76_artefacto_reloj_20230426.gpx",
+      "group": "DS76_20230426_artefacto",
+      "date": "20230426",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "DS76_persona_reloj_20230418",
+      "file_name": "DS76_persona_reloj_20230418.gpx",
+      "group": "DS76_20230418_persona",
+      "date": "20230418",
+      "type": "persona"
+    },
+    {
+      "asset_name": "DS76_persona_reloj_20230420",
+      "file_name": "DS76_persona_reloj_20230420.gpx",
+      "group": "DS76_20230420_persona",
+      "date": "20230420",
+      "type": "persona"
+    },
+    {
+      "asset_name": "DS76_persona_reloj_20230424",
+      "file_name": "DS76_persona_reloj_20230424.gpkg",
+      "group": "DS76_20230424_persona",
+      "date": "20230424",
+      "type": "persona"
+    },
+    {
+      "asset_name": "DS76_persona_reloj_20230426",
+      "file_name": "DS76_persona_reloj_20230426.gpkg",
+      "group": "DS76_20230426_persona",
+      "date": "20230426",
+      "type": "persona"
+    },
+    {
+      "asset_name": "DS76_persona_reloj_20230428",
+      "file_name": "DS76_persona_reloj_20230428.gpkg",
+      "group": "DS76_20230428_persona",
+      "date": "20230428",
+      "type": "persona"
+    }
+  ]
+}

@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "15:30:00",
   "hora_fin": "20:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "RZ63_persona_reloj_20230518",
@@ -21,9 +22,9 @@
       "type": "persona"
     },
     {
-      "asset_name": "RZ63_sujeto_reloj_20230525",
-      "file_name": "RZ63_sujeto_reloj_20230525.gpx",
-      "group": "RZ63_20230525_sujeto",
+      "asset_name": "RZ63_persona_reloj_20230525",
+      "file_name": "RZ63_persona_reloj_20230525.gpx",
+      "group": "RZ63_20230525_persona",
       "date": "20230525",
       "type": "persona"
     },

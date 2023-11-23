@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "06:50:00",
   "hora_fin": "17:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "MQ70_artefacto_reloj_20230425",

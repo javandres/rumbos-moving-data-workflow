@@ -20,7 +20,8 @@ SELECT
     duration_seconds,
     pbt.date,
     pbt.group,
-    pbt.track_id
+    pbt.track_id,
+    pbt.ciudad
 FROM
     {{ source(
         'public',

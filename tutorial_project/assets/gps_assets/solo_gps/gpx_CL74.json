@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "17:00:00",
   "hora_fin": "23:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "CL74_artefacto_reloj_20230524",
@@ -43,7 +44,7 @@
     },
     {
       "asset_name": "CL74_persona_reloj_20230602",
-      "file_name": "CL74_persona_reloj_20230602.gpx",
+      "file_name": "CL74_persona_reloj_20230602.gpkg",
       "group": "CL74_20230602_persona",
       "date": "20230602",
       "type": "persona"

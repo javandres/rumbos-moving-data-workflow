@@ -10,6 +10,7 @@ WITH trajs AS (
         codigo,
         TYPE,
         DATE,
+        ciudad,
         TO_DATE(
             DATE,
             'YYYYMMDD'
@@ -31,6 +32,7 @@ WITH trajs AS (
         codigo,
         TYPE,
         DATE,
+        ciudad,
         modalidad
 )
 SELECT

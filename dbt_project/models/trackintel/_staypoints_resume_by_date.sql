@@ -5,6 +5,7 @@
 WITH sp AS (
 
     SELECT
+        ciudad,
         codigo,
         TYPE,
         "date",
@@ -18,15 +19,18 @@ WITH sp AS (
             '_staypoints_actividad'
         ) }}
     GROUP BY
+        ciudad,
         codigo,
         TYPE,
         "date"
     ORDER BY
+        ciudad,
         codigo,
         TYPE,
         "date"
 )
 SELECT
+    sp_persona.ciudad,
     sp_persona.codigo,
     sp_persona.date,
     sp_persona.count AS staypoints_persona_count,

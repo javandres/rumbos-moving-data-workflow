@@ -22,6 +22,7 @@ psycopg2-binary
 # pygeos
 # pymove
 # rtree
+rasterio
 shapely==1.8.5
 scikit-mobility
 SQLAlchemy==1.4.46

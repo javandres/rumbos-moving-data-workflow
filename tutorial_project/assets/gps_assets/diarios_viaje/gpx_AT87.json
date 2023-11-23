@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "07:30:00",
   "hora_fin": "19:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "AT87_artefacto_reloj_20230516",
@@ -57,7 +58,7 @@
     },
     {
       "asset_name": "AT87_persona_reloj_20230518",
-      "file_name": "AT87_persona_reloj_20230518.gpx",
+      "file_name": "AT87_persona_reloj_20230518.gpkg",
       "group": "AT87_20230518_persona",
       "date": "20230518",
       "type": "persona"

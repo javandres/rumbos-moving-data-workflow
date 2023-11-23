@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "06:45:00",
   "hora_fin": "19:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "ML43_artefacto_reloj_20230424",
@@ -43,7 +44,7 @@
     },
     {
       "asset_name": "ML43_persona_reloj_20230424",
-      "file_name": "ML43_persona_reloj_20230424.gpx",
+      "file_name": "ML43_persona_reloj_20230424.gpkg",
       "group": "ML43_20230424_persona",
       "date": "20230424",
       "type": "persona"
@@ -74,6 +75,13 @@
       "file_name": "ML43_persona_reloj_20230703.gpx",
       "group": "ML43_20230703_persona",
       "date": "20230703",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML43_persona_reloj_20230428",
+      "file_name": "ML43_persona_reloj_20230428.gpx",
+      "group": "ML43_20230428_persona",
+      "date": "20230428",
       "type": "persona"
     }
   ]

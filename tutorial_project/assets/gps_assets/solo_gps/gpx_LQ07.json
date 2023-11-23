@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "07:00:00",
   "hora_fin": "10:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "LQ07_persona_reloj_20230606",

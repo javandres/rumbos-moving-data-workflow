@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "08:00:00",
   "hora_fin": "11:45:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "ML72_persona_reloj_20230526",
@@ -39,6 +40,20 @@
       "file_name": "ML72_persona_reloj_20230531.gpx",
       "group": "ML72_20230531_persona",
       "date": "20230531",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230517",
+      "file_name": "ML72_persona_reloj_20230517.gpkg",
+      "group": "ML72_20230517_persona",
+      "date": "20230517",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230529",
+      "file_name": "ML72_persona_reloj_20230529.gpkg",
+      "group": "ML72_20230529_persona",
+      "date": "20230529",
       "type": "persona"
     }
   ]

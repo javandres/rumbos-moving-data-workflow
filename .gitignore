@@ -130,6 +130,7 @@ dmypy.json
 
 /data
 /data_db
+/data_bk**
 
 **.logs_queue
 **/.telemetry

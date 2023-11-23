@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "06:00:00",
   "hora_fin": "14:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "AF79_artefacto_reloj_20230426_01",

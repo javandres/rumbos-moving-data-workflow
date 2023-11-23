@@ -121,7 +121,6 @@ class PostgreSQLPandasIOManager(ConfigurableIOManager):
             where = f"WHERE {where}"
         col_str = ", ".join(columns) if columns else "*"
         sql = f"""SELECT {col_str} FROM {schema}.\"{table}\" {where} """
-        print("==== sql", sql)
         return sql
 
 
@@ -159,8 +158,6 @@ class PostGISGeoPandasIOManager(PostgreSQLPandasIOManager):
         else:
             where = ""
 
-        print("==== where", where)
-
         gdf = geopandas.read_postgis(
             sql=self._get_select_statement(table, schema, columns, where),
             geom_col=(context.metadata or {}).get("geom_col", "geometry"),
@@ -193,6 +190,13 @@ class TrajectoryCollectionIOManager(PostgreSQLPandasIOManager):
                 gdf = obj.to_point_gdf()
 
             gdf[self.timeColumn] = gdf.index
+
+            ## Add timezone to gdf.time
+            gdf["time"] = gdf["time"].dt.tz_localize("America/Guayaquil")
+            gdf["time"] = gdf["time"].dt.tz_convert("UTC")
+            # gdf["time"] = gdf["time"].dt.tz_localize(None)
+            # "df = df.set_index('t').tz_localize(None)\n",
+
             gdf.drop("id", axis="columns", inplace=True)
             gdf.insert(0, "id", range(1, 1 + len(gdf)))
             # track_id_num = abs(hash(s)) % (10**8)
@@ -237,6 +241,8 @@ class TrajectoryCollectionIOManager(PostgreSQLPandasIOManager):
             geom_col=(context.metadata or {}).get("geom_col", "geometry"),
             con=con,
         )
+
+        df["time"] = df["time"].dt.tz_convert("America/Guayaquil")
 
         try:
             trajectory_type = context.upstream_output.metadata["trajectory_type"]

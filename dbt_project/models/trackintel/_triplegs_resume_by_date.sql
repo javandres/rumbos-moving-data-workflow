@@ -92,6 +92,7 @@ resume AS (
 )
 SELECT
     tr.*,
+    tlr.ciudad,
     tlr.recorrido_metros_persona AS recorrido_metros_persona_line,
     tlr.recorrido_metros_artefacto AS recorrido_metros_artefacto_line
 FROM

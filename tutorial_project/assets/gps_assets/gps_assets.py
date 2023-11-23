@@ -40,6 +40,7 @@ from datetime import datetime, timedelta
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL, Connection
+from datetime import datetime, time, timedelta
 
 
 # TrackIntel
@@ -63,38 +64,40 @@ data = []
 #     data = json.load(read_file)
 
 
+
 file_paths = [
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_DS76.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_LH52.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
-    # "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_BC51.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MG91.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MJ63.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MC59.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_ML43.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
+    "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
     "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
-    # "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ07.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_MC30.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_MG17.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML09.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML24.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_ML72.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_MP88.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_MV79.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_RC57.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_RV07.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_RY43.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_RZ63.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
 ]
 
 for file_path in file_paths:
@@ -113,6 +116,8 @@ for file_path in file_paths:
                 x["hora_inicio"] = json_data["hora_inicio"]
             if not "hora_fin" in x:
                 x["hora_fin"] = json_data["hora_fin"]
+            if not "ciudad" in x:
+                x["ciudad"] = json_data["ciudad"]
 
             data.append(x)
 
@@ -157,15 +162,9 @@ def make_raw_assets(asset_to_make):
         file_extension = os.path.splitext(asset_to_make["file_name"])[1][1:]
 
         if file_extension == "gpx":
-            gdf = load_gpx_file(
-                file_name,
-                asset_to_make,
-            )
+            gdf = load_gpx_file(file_name, asset_to_make)
         elif file_extension == "gpkg":
-            gdf = load_gpkg_file(
-                file_name,
-                asset_to_make,
-            )
+            gdf = load_gpkg_file(file_name, asset_to_make)
 
         return Output(
             value=gdf,
@@ -188,9 +187,24 @@ def make_postgres_assets(asset_to_make):
         key_prefix=["public"],
     )
     def asset_template(asset_gpx):
+        print("=======>", asset_gpx["time"])
         gdf = asset_gpx
+        # gdf["time"] = gdf["time"].dt.tz_localize("UTC")
+        # gdf["time"] = pd.to_datetime(gdf["time"]).dt.tz_localize("UTC")
+        # gdf = gdf.tz_convert("UTC")
+        # gdf.to_datetime(gdf, unit='ms').dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
+        # gdf["time"] = gdf["time"].dt.tz_convert("US/Eastern")
+        # gdf["time"] = gdf["time"].dt.tz_convert("UTC")
+        # gdf["time"] = (
+        #     gdf["time"]
+        #     .dt.tz_convert("Etc/GMT+5")
+        #     .dt.strftime("%Y-%m-%d %H:%M:%S-05:00")
+        # )
+        gdf["time"] = gdf["time"].dt.tz_localize(None)
+        gdf["time"] = gdf["time"].dt.tz_localize("America/Guayaquil")
+
         gdf["day_of_week"] = gdf["time"].dt.day_name(locale="es_EC.utf8")
-        print(asset_gpx.head())
+        print(gdf["time"])
 
         return Output(
             value=gdf,
@@ -261,12 +275,12 @@ def filter_by_time_assets(asset_to_make):
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
+        gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
 
         first_row = gdf.iloc[0]
         start_time = first_row["hora_inicio"]
         end_time = first_row["hora_fin"]
-
-        # max_time = gdf["time"].max()
+        track_id = first_row["track_id"]
 
         if end_time == "" or end_time == None:
             end_time = "23:59:59"
@@ -275,8 +289,33 @@ def filter_by_time_assets(asset_to_make):
             gdf.set_index("time").between_time(start_time, end_time).reset_index()
         )
 
+        filters_df = pd.read_csv("./data/filters_v2.csv")
+        filters_df["desde"] = pd.to_datetime(
+            filters_df["desde"], format="%H:%M:%S"
+        ).dt.time
+        filters_df["hasta"] = pd.to_datetime(
+            filters_df["hasta"], format="%H:%M:%S"
+        ).dt.time
+
+        # Filter filters_df by track_id
+        filters_df = filters_df[filters_df["track_id"] == track_id]
+
+        filtered_gdf_result = filtered_gdf
+        filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
+
+        for index, row in filters_df.iterrows():
+            to_filter = (
+                filtered_gdf_result.set_index("time")
+                .between_time(row["desde"], row["hasta"])
+                .reset_index()
+            )
+
+            filtered_gdf_result = filtered_gdf_result[
+                ~filtered_gdf_result["time"].isin(to_filter["time"])
+            ]
+
         return Output(
-            value=filtered_gdf,
+            value=filtered_gdf_result,
             metadata={
                 "description": "",
                 "rows": len(filtered_gdf),
@@ -303,8 +342,9 @@ def make_trajectory_assets(asset_to_make):
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
-        traj = mpd.Trajectory(gdf, traj_id="track_id", t="time")
+        gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
 
+        traj = mpd.Trajectory(gdf, traj_id="track_id", t="time")
         traj.add_speed()
         traj.add_speed(overwrite=True, name="speed_kmh", units="km")
         traj.add_distance(overwrite=True)
@@ -388,9 +428,9 @@ def make_trajectory_clean_assets(asset_to_make):
 
         # ftdf = tdf
 
-        max_speed_kmh = 50
+        max_speed_kmh = 100
         max_loop = 150
-        ratio_max = 0.80
+        ratio_max = 0.99
         speed_kmh = 4
 
         ftdf = filtering.filter(
@@ -761,6 +801,8 @@ def make_positionfixes(code, input, output, type):
         triplegs = triplegs.as_triplegs.predict_transport_mode()
         staypoints["type"] = type
         staypoints["codigo"] = code
+        
+        
         locs["type"] = type
         locs["codigo"] = code
 
@@ -893,7 +935,6 @@ def make_asset_union_tables(name, group_name, asset_inputs):
         )
         conn = create_engine(url).connect()
 
-        print("SELECT=========", select)
         output = conn.execute(
             f"""
                 DROP TABLE IF EXISTS {name};
@@ -988,7 +1029,6 @@ def make_assets_by_code(codigo):
         key_prefix=["public"],
     )
     def asset_template(trajectories_line):
-        print("======>>>>", trajectories_line)
         return Output(
             value=trajectories_line,
             metadata={
@@ -1114,3 +1154,22 @@ def make_assets_stops(
 
 
 # positionfixes = make_positionfixes()
+
+
+@asset(
+    name="test_elevation",
+    group_name="test",
+    compute_kind="dem",
+)
+def test_elevation():
+    latitude = -3.1594  # Example latitude
+    longitude = -79.0024  # Example longitude
+
+    elevation_value = get_elevation_by_coordinates(dem_path, latitude, longitude)
+    print("elevation_value", elevation_value)
+    # print(f"Elevation at ({latitude}, {longitude}): {elevation_value} meters")
+
+    return Output(
+        value=[],
+        metadata={},
+    )

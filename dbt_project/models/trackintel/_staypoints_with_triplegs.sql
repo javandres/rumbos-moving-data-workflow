@@ -9,6 +9,7 @@ SELECT
     pfs.date,
     pfs.group,
     pfs.track_id,
+    pfs.ciudad,
     pfs.positionfixes_count
 FROM
     {{ source(

@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "06:45:00",
   "hora_fin": "11:45:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "LO71_artefacto_reloj_20230522",

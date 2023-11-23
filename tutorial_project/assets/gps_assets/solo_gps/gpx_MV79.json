@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "07:20:00",
   "hora_fin": "18:20:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "MV79_artefacto_reloj_20230520",

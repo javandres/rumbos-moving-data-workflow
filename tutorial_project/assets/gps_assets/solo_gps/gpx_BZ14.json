@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "06:30:00",
   "hora_fin": "09:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "BZ14_artefacto_reloj_20230522",
@@ -39,20 +40,6 @@
       "file_name": "BZ14_artefacto_reloj_20230517.gpx",
       "group": "BZ14_20230517_artefacto",
       "date": "20230517",
-      "type": "artefacto"
-    },
-    {
-      "asset_name": "BZ14_persona_reloj_20230516",
-      "file_name": "BZ14_persona_reloj_20230516.gpx",
-      "group": "BZ14_20230516_persona",
-      "date": "20230516",
-      "type": "persona"
-    },
-    {
-      "asset_name": "BZ14_artefacto_reloj_20230516",
-      "file_name": "BZ14_artefacto_reloj_20230516.gpx",
-      "group": "BZ14_20230516_artefacto",
-      "date": "20230516",
       "type": "artefacto"
     },
     {

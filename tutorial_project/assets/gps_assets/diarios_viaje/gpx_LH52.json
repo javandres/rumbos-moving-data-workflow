@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "05:40:00",
   "hora_fin": "18:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "LH52_persona_reloj_20230425",
@@ -15,7 +16,7 @@
     },
     {
       "asset_name": "LH52_persona_reloj_20230427",
-      "file_name": "LH52_persona_reloj_20230427.gpx",
+      "file_name": "LH52_persona_reloj_20230427.gpkg",
       "group": "LH52_20230427_persona",
       "date": "20230427",
       "type": "persona"

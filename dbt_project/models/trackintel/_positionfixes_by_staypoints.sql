@@ -8,6 +8,7 @@ SELECT
     "group",
     track_id,
     user_id,
+    ciudad,
     COUNT(*) AS positionfixes_count
 FROM
     {{ source(
@@ -19,4 +20,5 @@ GROUP BY
     DATE,
     "group",
     track_id,
-    user_id
+    user_id,
+    ciudad

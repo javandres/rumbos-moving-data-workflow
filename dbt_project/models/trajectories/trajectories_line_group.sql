@@ -13,6 +13,7 @@ WITH trajs AS (
             DATE,
             'YYYYMMDD'
         ) AS DATE,
+        ciudad,
         modalidad,
         to_char(TO_DATE(DATE, 'YYYYMMDD'), 'TMDay') AS day_of_week,
         st_makeline(
@@ -30,6 +31,7 @@ WITH trajs AS (
         codigo,
         TYPE,
         DATE,
+        ciudad,
         modalidad
 )
 SELECT

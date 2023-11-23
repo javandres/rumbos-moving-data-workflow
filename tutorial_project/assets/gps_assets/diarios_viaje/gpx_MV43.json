@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "06:00:00",
   "hora_fin": "18:00:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "MV43_artefacto_reloj_20230522",

@@ -5,6 +5,7 @@
   "modalidad": "diario_viaje",
   "hora_inicio": "13:30:00",
   "hora_fin": "22:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "MZ49_artefacto_reloj_20230627",
@@ -18,6 +19,34 @@
       "file_name": "MZ49_persona_reloj_20230627.gpx",
       "group": "MZ49_20230627_persona",
       "date": "20230627",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MZ49_artefacto_reloj_20230629",
+      "file_name": "MZ49_artefacto_reloj_20230629.gpx",
+      "group": "MZ49_20230629_artefacto",
+      "date": "20230629",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MZ49_persona_reloj_20230629",
+      "file_name": "MZ49_persona_reloj_20230629.gpx",
+      "group": "MZ49_20230629_persona",
+      "date": "20230629",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MZ49_persona_reloj_20230704",
+      "file_name": "MZ49_persona_reloj_20230704.gpx",
+      "group": "MZ49_20230704_persona",
+      "date": "20230704",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MZ49_persona_reloj_20230706",
+      "file_name": "MZ49_persona_reloj_20230706.gpx",
+      "group": "MZ49_20230706_persona",
+      "date": "20230706",
       "type": "persona"
     }
   ]

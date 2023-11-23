@@ -8,6 +8,7 @@ FROM
     (
         SELECT
             codigo,
+            ciudad,
             COUNT(DATE) AS tracks,
             SUM(recorrido_metros_persona) AS recorrido_metros_persona_sum,
             SUM(recorrido_metros_persona) / COUNT(DATE) AS recorrido_metros_persona_avg,
@@ -44,7 +45,8 @@ FROM
         FROM
             {{ ref('_triplegs_resume_by_date') }}
         GROUP BY
-            codigo
+            codigo,
+            ciudad
     ) A
 ORDER BY
     codigo

@@ -5,6 +5,7 @@
   "modalidad": "solo_gps",
   "hora_inicio": "17:00:00",
   "hora_fin": "20:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "ML24_persona_reloj_20230612",

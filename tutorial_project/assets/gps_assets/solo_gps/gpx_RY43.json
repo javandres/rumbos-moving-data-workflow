@@ -5,12 +5,27 @@
   "modalidad": "solo_gps",
   "hora_inicio": "05:30:00",
   "hora_fin": "11:30:00",
+  "ciudad": "Cuenca",
   "assets": [
     {
       "asset_name": "RY43_artefacto_reloj_20230621",
       "file_name": "RY43_artefacto_reloj_20230621.gpx",
       "group": "RY43_20230621_artefacto",
       "date": "20230621",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "RY43_persona_reloj_20230703",
+      "file_name": "RY43_persona_reloj_20230703.gpx",
+      "group": "RY43_20230703_persona",
+      "date": "20230703",
+      "type": "persona"
+    },
+    {
+      "asset_name": "RY43_artefacto_reloj_20230705",
+      "file_name": "RY43_artefacto_reloj_20230705.gpx",
+      "group": "RY43_20230705_artefacto",
+      "date": "20230705",
       "type": "artefacto"
     },
     {
@@ -21,10 +36,38 @@
       "type": "artefacto"
     },
     {
+      "asset_name": "RY43_artefacto_reloj_20230703",
+      "file_name": "RY43_artefacto_reloj_20230703.gpx",
+      "group": "RY43_20230703_artefacto",
+      "date": "20230703",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "RY43_artefacto_reloj_20230707",
+      "file_name": "RY43_artefacto_reloj_20230707.gpx",
+      "group": "RY43_20230707_artefacto",
+      "date": "20230707",
+      "type": "artefacto"
+    },
+    {
       "asset_name": "RY43_persona_reloj_20230621",
       "file_name": "RY43_persona_reloj_20230621.gpx",
       "group": "RY43_20230621_persona",
       "date": "20230621",
+      "type": "persona"
+    },
+    {
+      "asset_name": "RY43_persona_reloj_20230705",
+      "file_name": "RY43_persona_reloj_20230705.gpx",
+      "group": "RY43_20230705_persona",
+      "date": "20230705",
+      "type": "persona"
+    },
+    {
+      "asset_name": "RY43_persona_reloj_20230707",
+      "file_name": "RY43_persona_reloj_20230707.gpx",
+      "group": "RY43_20230707_persona",
+      "date": "20230707",
       "type": "persona"
     },
     {
