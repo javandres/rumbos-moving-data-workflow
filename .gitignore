@@ -141,4 +141,4 @@ dmypy.json
 **/compute_logs
 
 /grafana-data
-**/utils/ecu_dem
+tutorial_project/utils/ecu_dem/*
