@@ -1,0 +1,95 @@
+{
+  "code": "MC59",
+  "folder_name": "diarios_viaje/MC59",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "10:30:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "MC59_artefacto_20230612",
+      "file_name": "MC59_artefacto_20230612.gpx",
+      "group": "MC59_20230612_artefacto",
+      "date": "20230612",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_artefacto_20230614",
+      "file_name": "MC59_artefacto_20230614.gpx",
+      "group": "MC59_20230614_artefacto",
+      "date": "20230614",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_artefacto_20230616",
+      "file_name": "MC59_artefacto_20230616.gpx",
+      "group": "MC59_20230616_artefacto",
+      "date": "20230616",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_artefacto_20230619",
+      "file_name": "MC59_artefacto_20230619.gpx",
+      "group": "MC59_20230619_artefacto",
+      "date": "20230619",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_artefacto_20230621",
+      "file_name": "MC59_artefacto_20230621.gpx",
+      "group": "MC59_20230621_artefacto",
+      "date": "20230621",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_artefacto_20230623",
+      "file_name": "MC59_artefacto_20230623.gpx",
+      "group": "MC59_20230623_artefactp",
+      "date": "20230623",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MC59_persona_20230612",
+      "file_name": "MC59_persona_20230612.gpx",
+      "group": "MC59_20230612_persona",
+      "date": "20230612",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC59_persona_20230614",
+      "file_name": "MC59_persona_20230614.gpx",
+      "group": "MC59_20230614_persona",
+      "date": "20230614",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC59_persona_20230616",
+      "file_name": "MC59_persona_20230616.gpx",
+      "group": "MC59_20230616_persona",
+      "date": "20230616",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC59_persona_20230619",
+      "file_name": "MC59_persona_20230619.gpx",
+      "group": "MC59_20230619_persona",
+      "date": "20230619",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC59_persona_20230621",
+      "file_name": "MC59_persona_20230621.gpx",
+      "group": "MC59_20230621_persona",
+      "date": "20230621",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MC59_persona_20230623",
+      "file_name": "MC59_persona_20230623.gpx",
+      "group": "MC59_20230623_persona",
+      "date": "20230623",
+      "type": "persona"
+    }
+  ]
+}

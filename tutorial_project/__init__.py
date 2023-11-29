@@ -10,9 +10,8 @@ from .geopandas_io import (
 
 from . import assets
 
-from .assets.MG91 import assets_mg91
-from .assets.LH52 import assets_lh52
-from tutorial_project.jobs import hello_job
+from .assets.gps_assets import gps_assets
+from .assets.gps_assets import positionfixes_clean
 import os
 
 # from dagster_dbt import load_assets_from_dbt_project
@@ -35,7 +34,7 @@ from .assets.dbt import DBT_PROFILES
 # )
 
 # print("=====", dbt_assets)
-all_assets = load_assets_from_modules([assets_mg91, assets_lh52])
+all_assets = load_assets_from_modules([gps_assets, positionfixes_clean])
 
 defs = Definitions(
     assets=all_assets + dbt_assets,

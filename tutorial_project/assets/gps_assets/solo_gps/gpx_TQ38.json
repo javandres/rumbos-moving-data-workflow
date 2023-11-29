@@ -1,0 +1,67 @@
+{
+  "code": "TQ38",
+  "folder_name": "solo_gps/TQ38",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "07:00:00",
+  "hora_fin": "14:00:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "TQ38_persona_reloj_20230623",
+      "file_name": "TQ38_persona_reloj_20230623.gpx",
+      "group": "TQ38_20230623_persona",
+      "date": "20230623",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230629",
+      "file_name": "TQ38_persona_reloj_20230629.gpx",
+      "group": "TQ38_20230629_persona",
+      "date": "20230629",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230622",
+      "file_name": "TQ38_persona_reloj_20230622.gpx",
+      "group": "TQ38_20230622_persona",
+      "date": "20230622",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230620",
+      "file_name": "TQ38_persona_reloj_20230620.gpx",
+      "group": "TQ38_20230620_persona",
+      "date": "20230620",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230616",
+      "file_name": "TQ38_persona_reloj_20230616.gpx",
+      "group": "TQ38_20230616_persona",
+      "date": "20230616",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230612",
+      "file_name": "TQ38_persona_reloj_20230612.gpx",
+      "group": "TQ38_20230612_persona",
+      "date": "20230612",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230627",
+      "file_name": "TQ38_persona_reloj_20230627.gpx",
+      "group": "TQ38_20230627_persona",
+      "date": "20230627",
+      "type": "persona"
+    },
+    {
+      "asset_name": "TQ38_persona_reloj_20230619",
+      "file_name": "TQ38_persona_reloj_20230619.gpx",
+      "group": "TQ38_20230619_persona",
+      "date": "20230619",
+      "type": "persona"
+    }
+  ]
+}

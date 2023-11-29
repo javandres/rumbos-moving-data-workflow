@@ -9,10 +9,12 @@ WITH trajs AS (
         track_id,
         codigo,
         TYPE,
+        DATE,
+        ciudad,
         TO_DATE(
             DATE,
             'YYYYMMDD'
-        ) AS DATE,
+        ) AS date_formatted,
         modalidad,
         to_char(TO_DATE(DATE, 'YYYYMMDD'), 'TMDay') AS day_of_week,
         st_makeline(
@@ -30,6 +32,7 @@ WITH trajs AS (
         codigo,
         TYPE,
         DATE,
+        ciudad,
         modalidad
 )
 SELECT

@@ -1,0 +1,137 @@
+{
+  "code": "MG91",
+  "folder_name": "diarios_viaje/MG91",
+  "owner": "Emilia Acurio",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "07:30:00",
+  "hora_fin": "22:30:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "MG91_artefacto_reloj_20230505_01",
+      "file_name": "MG91_ artefacto_reloj_20230505_01.gpx",
+      "group": "MG91_20230505_artefacto",
+      "date": "20230505",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230428_01",
+      "file_name": "MG91_artefacto_reloj_20230428_01.gpx",
+      "group": "MG91_20230428_artefacto",
+      "date": "20230428",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230428_02",
+      "file_name": "MG91_artefacto_reloj_20230428_02.gpx",
+      "group": "MG91_20230428_artefacto",
+      "date": "20230428",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230503_01",
+      "file_name": "MG91_artefacto_reloj_20230503_01.gpx",
+      "group": "MG91_20230503_artefacto",
+      "date": "20230503",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230503_02",
+      "file_name": "MG91_artefacto_reloj_20230503_02.gpx",
+      "group": "MG91_20230503_artefacto",
+      "date": "20230503",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230505_02",
+      "file_name": "MG91_artefacto_reloj_20230505_02.gpx",
+      "group": "MG91_20230505_artefacto",
+      "date": "20230505",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230508_1",
+      "file_name": "MG91_artefacto_reloj_20230508_1.gpx",
+      "group": "MG91_20230508_artefacto",
+      "date": "20230508",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230508_2",
+      "file_name": "MG91_artefacto_reloj_20230508_2.gpx",
+      "group": "MG91_20230508_artefacto",
+      "date": "20230508",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_artefacto_reloj_20230510_1",
+      "file_name": "MG91_artefacto_reloj_20230510_1.gpx",
+      "group": "MG91_20230510_artefacto",
+      "date": "20230510",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230428_02",
+      "file_name": "MG91_persona_reloj_20230428_02.gpx",
+      "group": "MG91_20230428_persona",
+      "date": "20230428",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230428_01",
+      "file_name": "MG91_persona_reloj_20230428_01.gpx",
+      "group": "MG91_20230428_persona",
+      "date": "20230428",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230503_01",
+      "file_name": "MG91_persona_reloj_20230503_01.gpx",
+      "group": "MG91_20230503_persona",
+      "date": "20230503",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230503_02",
+      "file_name": "MG91_persona_reloj_20230503_02.gpx",
+      "group": "MG91_20230503_persona",
+      "date": "20230503",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230505_01",
+      "file_name": "MG91_persona_reloj_20230505_01.gpx",
+      "group": "MG91_20230505_persona",
+      "date": "20230505",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230505_02",
+      "file_name": "MG91_persona_reloj_20230505_02.gpx",
+      "group": "MG91_20230505_persona",
+      "date": "20230505",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230508_1",
+      "file_name": "MG91_persona_reloj_20230508_1.gpx",
+      "group": "MG91_20230508_persona",
+      "date": "20230508",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230508_2",
+      "file_name": "MG91_persona_reloj_20230508_2.gpx",
+      "group": "MG91_20230508_persona",
+      "date": "20230508",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MG91_persona_reloj_20230510_1",
+      "file_name": "MG91_persona_reloj_20230510_1.gpx",
+      "group": "MG91_20230510_persona",
+      "date": "20230510",
+      "type": "persona"
+    }
+  ]
+}

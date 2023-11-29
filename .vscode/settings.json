@@ -12,8 +12,20 @@
   "cSpell.words": [
     "Acurio",
     "artefacto",
+    "ciudad",
+    "codigo",
+    "diarios",
+    "inicio",
     "kargs",
-    "reloj"
+    "modalidad",
+    "positionfixes",
+    "reloj",
+    "staypoint",
+    "staypoints",
+    "trackintel",
+    "tripleg",
+    "triplegs",
+    "viaje"
   ],
   "python.formatting.provider": "none",
   "editor.formatOnSave": true,

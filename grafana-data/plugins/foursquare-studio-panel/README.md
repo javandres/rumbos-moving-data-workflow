@@ -1,6 +1,6 @@
 # Foursquare Studio Panel
 
-The Foursquare Studio Panel Plugin enables you to add Unfolded Studio Maps to your Grafana dashboard.
+The Foursquare Studio Panel Plugin enables you to add Foursquare Studio Maps to your Grafana dashboard.
 
 ![Plugin Preview](https://storage.googleapis.com/unfolded_public/grafana-plugin-images/plugin-preview.png)
 
@@ -10,7 +10,7 @@ The Foursquare Studio Panel Plugin enables you to add Unfolded Studio Maps to yo
 
   - Points on the map
   - A line (LineString) that connects the points based on the passed timestamp
-  - [TripLayer](https://docs.unfolded.ai/studio/layer-reference/trip) that allows you to animate the received data based on the passed timestamp
+  - [TripLayer](https://location.foursquare.com/studio/docs/layer-trip) that allows you to animate the received data based on the passed timestamp
   - A GeoJSON layer
 
 - [Save your map configuration](#save-your-map-configuration) in the Grafana instance so you don't lose your map settings when the data refreshes.
@@ -77,9 +77,9 @@ ORDER BY time
 
 ### Animate the data using the TripLayer
 
-If you want to leverage more advanced features of Unfolded Studio you can animate the time-based data by toggling the `Enable animation` to `true` in the panel options. To enable this option, `Create line path from points` must be set to `true` in the panel options. Same query as in the line creation should be provided.
+If you want to leverage more advanced features of Foursquare Studio you can animate the time-based data by toggling the `Enable animation` to `true` in the panel options. To enable this option, `Create line path from points` must be set to `true` in the panel options. Same query as in the line creation should be provided.
 
-This will create a TripLayer on the map and add a timeline animation control on the map. To customize this control see our [official documentation](https://docs.unfolded.ai/studio/layer-reference/trip).
+This will create a `TripLayer` on the map and add a timeline animation control on the map. To customize this control see our [official documentation](https://location.foursquare.com/studio/docs/layer-trip).
 
 ```sql
 SELECT long AS longitude,
@@ -128,7 +128,7 @@ FROM nyc_subway_stations
 
 ### Save your Map Configuration
 
-Any changes made in Unfolded Studio (layers, filters, interactions, base map settings) can be saved in your Grafana instance, and they will be applied when the plugin is initialized.
+Any changes made in Foursquare Studio (layers, filters, interactions, base map settings) can be saved in your Grafana instance, and they will be applied when the plugin is initialized.
 For example if you changed the `Base Map Style` from `Dark` to `Light` and you want to save that setting you need to:
 
 1.  Click the `Save` button under the `Save map configuration` section
@@ -137,16 +137,16 @@ For example if you changed the `Base Map Style` from `Dark` to `Light` and you w
 
 2.  Apply that change with clicking `Save` in the top right corner of your Grafana panel settings to confirm your changes
 
-![Save map configuration](https://storage.googleapis.com/unfolded_public/grafana-plugin-images/grafana-unfolded-settings.png)
+![Save map configuration](https://storage.googleapis.com/unfolded_public/grafana-plugin-images/grafana-studio-settings.png)
 
 ### Save Grafana Maps to your Foursquare Cloud Account
 
-In case you want to save and share maps visible in your Grafana Panel, you have the ability to save a map (along with any data from the panel's queries) to your [Unfolded](https://studio.unfolded.ai/home) account.
+In case you want to save and share maps visible in your Grafana Panel, you have the ability to save a map (along with any data from the panel's queries) to your [Foursquare Studio](https://studio.foursquare.com/home) account.
 
 Required steps to save your map:
 
-1. Log in to your account in [Unfolded Studio](https://studio.unfolded.ai/home)
-2. Copy your [Access Token](https://studio.unfolded.ai/tokens.html)
+1. Log in to your account in [Foursquare Studio](https://studio.foursquare.com/home)
+2. Copy your [Access Token](https://studio.foursquare.com/tokens.html)
 
 ![Get Access Token](https://storage.googleapis.com/unfolded_public/grafana-plugin-images/auth-token.jpg)
 
@@ -159,7 +159,7 @@ Required steps to save your map:
 
 If the request is successful you will get the saved map URL at the bottom of the section.
 
-Keep in mind that the created map is still private and you would have to [publish it in Unfolded Studio](https://docs.unfolded.ai/studio/user-guide/publish) to be able to share it publicly.
+Keep in mind that the created map is still private and you would have to [publish it in Foursquare Studio](https://location.foursquare.com/studio/docs/maps-publish) to be able to share it publicly.
 
 ### Add multiple queries
 
@@ -169,5 +169,5 @@ Plugin allows you to add multiple queries where the result of each query will be
 
 ## Learn more
 
-- [Website](https://foursquare.com/products/unfolded/)
-- [Documentation](https://docs.unfolded.ai/)
+- [Website](https://location.foursquare.com/products/studio/)
+- [Documentation](https://location.foursquare.com/studio/docs)

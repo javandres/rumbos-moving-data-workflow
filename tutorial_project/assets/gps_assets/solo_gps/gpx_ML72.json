@@ -1,0 +1,60 @@
+{
+  "code": "ML72",
+  "folder_name": "solo_gps/ML72",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "08:00:00",
+  "hora_fin": "11:45:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "ML72_persona_reloj_20230526",
+      "file_name": "ML72_persona_reloj_20230526.gpx",
+      "group": "ML72_20230526_persona",
+      "date": "20230526",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230519",
+      "file_name": "ML72_persona_reloj_20230519.gpx",
+      "group": "ML72_20230519_persona",
+      "date": "20230519",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230522",
+      "file_name": "ML72_persona_reloj_20230522.gpx",
+      "group": "ML72_20230522_persona",
+      "date": "20230522",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230524",
+      "file_name": "ML72_persona_reloj_20230524.gpx",
+      "group": "ML72_20230524_persona",
+      "date": "20230524",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230531",
+      "file_name": "ML72_persona_reloj_20230531.gpx",
+      "group": "ML72_20230531_persona",
+      "date": "20230531",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230517",
+      "file_name": "ML72_persona_reloj_20230517.gpkg",
+      "group": "ML72_20230517_persona",
+      "date": "20230517",
+      "type": "persona"
+    },
+    {
+      "asset_name": "ML72_persona_reloj_20230529",
+      "file_name": "ML72_persona_reloj_20230529.gpkg",
+      "group": "ML72_20230529_persona",
+      "date": "20230529",
+      "type": "persona"
+    }
+  ]
+}

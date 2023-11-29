@@ -130,6 +130,7 @@ dmypy.json
 
 /data
 /data_db
+/data_bk**
 
 **.logs_queue
 **/.telemetry
@@ -138,3 +139,7 @@ dmypy.json
 **/schedules
 **/storage/workdir
 **/compute_logs
+
+/grafana-data
+**/ecu_dem/*
+**/ecu_dem

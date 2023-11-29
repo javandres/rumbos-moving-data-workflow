@@ -1,0 +1,88 @@
+{
+  "code": "MJ63",
+  "folder_name": "diarios_viaje/MJ63",
+  "owner": "",
+  "modalidad": "diario_viaje",
+  "hora_inicio": "06:10:00",
+  "hora_fin": "22:00:00",
+  "ciudad": "Macas",
+  "assets": [
+    {
+      "asset_name": "MJ63_artefacto_reloj_20230418",
+      "file_name": "MJ63_artefacto_reloj_20230418.gpx",
+      "group": "MJ63_20230418_artefacto",
+      "date": "20230418",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MJ63_artefacto_reloj_20230420",
+      "file_name": "MJ63_artefacto_reloj_20230420.gpx",
+      "group": "MJ63_20230420_artefacto",
+      "date": "20230420",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MJ63_artefacto_reloj_20230424",
+      "file_name": "MJ63_artefacto_reloj_20230424.gpx",
+      "group": "MJ63_20230424_artefacto",
+      "date": "20230424",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MJ63_artefacto_reloj_20230426",
+      "file_name": "MJ63_artefacto_reloj_20230426.gpx",
+      "group": "MJ63_20230426_artefacto",
+      "date": "20230426",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MJ63_artefacto_reloj_20230428",
+      "file_name": "MJ63_artefacto_reloj_20230428.gpx",
+      "group": "MJ63_20230428_artefacto",
+      "date": "20230428",
+      "type": "artefacto"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230418_01",
+      "file_name": "MJ63_persona_reloj_20230418_01.gpx",
+      "group": "MJ63_20230418_persona",
+      "date": "20230418",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230418_02",
+      "file_name": "MJ63_persona_reloj_20230418_02.gpx",
+      "group": "MJ63_20230418_persona",
+      "date": "20230418",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230420",
+      "file_name": "MJ63_persona_reloj_20230420.gpx",
+      "group": "MJ63_20230420_persona",
+      "date": "20230420",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230424",
+      "file_name": "MJ63_persona_reloj_20230424.gpkg",
+      "group": "MJ63_20230424_persona",
+      "date": "20230424",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230426",
+      "file_name": "MJ63_persona_reloj_20230426.gpx",
+      "group": "MJ63_20230426_persona",
+      "date": "20230426",
+      "type": "persona"
+    },
+    {
+      "asset_name": "MJ63_persona_reloj_20230428",
+      "file_name": "MJ63_persona_reloj_20230428.gpx",
+      "group": "MJ63_20230428_persona",
+      "date": "20230428",
+      "type": "persona"
+    }
+  ]
+}

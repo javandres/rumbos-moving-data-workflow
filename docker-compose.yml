@@ -18,9 +18,18 @@ services:
     ports:
       - "3002:3000"
     environment:
-      - GF_INSTALL_PLUGINS=foursquare-studio-panel
+      # - GF_INSTALL_PLUGINS=foursquare-studio-panel
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
       - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
+      - GF_PANELS_ENABLE_ALPHA=true
+      # - GF_SERVER_DOMAIN=ubica.app
+      # - GF_SERVER_ROOT_URL=https://ubica.app/
+      # - GF_SERVER_SERVE_FROM_SUB_PATH=false
+      # - GF_AUTH_PROXY_ENABLED=true
+      # - GF_AUTH_PROXY_HEADER_NAME=X-WEBAUTH-USER
+      # - GF_AUTH_PROXY_HEADER_PROPERTY=username
+      # - GF_AUTH_PROXY_AUTO_SIGN_UP=true
+      # - GF_AUTH_PROXY_WHITELIST=
     volumes:
       - ./grafana-data:/var/lib/grafana
   dagster:

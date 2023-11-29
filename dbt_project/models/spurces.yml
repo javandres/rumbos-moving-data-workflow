@@ -4,3 +4,6 @@ sources:
   - name: public
     tables:
       - name: trajectories
+      - name: _staypoints
+      - name: _triplegs
+      - name: _positionfixes
