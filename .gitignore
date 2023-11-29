@@ -142,3 +142,4 @@ dmypy.json
 
 /grafana-data
 **/ecu_dem/*
+**/ecu_dem
