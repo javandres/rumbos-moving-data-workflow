@@ -2,6 +2,8 @@
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
 geos
+dagster
+dagster-webserver
 dagstermill
 dagster_dbt
 dbt-core

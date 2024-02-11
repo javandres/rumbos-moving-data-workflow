@@ -845,59 +845,16 @@ def make_positionfixes(code, input, output, type):
             Output(
                 value=triplegs,
                 metadata={
-                    "description": "",
+                    "description": "Trackintel triplegs",
                     "rows": len(triplegs),
                     "preview": MetadataValue.md(triplegs.head().to_markdown()),
                 },
-            ),
+            )            
         )
-        # return Output(
-        #     value=pfs,
-        #     metadata={
-        #         "description": "",
-        #         "rows": len(pfs),
-        #         "preview": MetadataValue.md(pfs.head().to_markdown()),
-        #     },
-        # )
+
 
     return asset_template
 
-
-# def make_staypoints(code, input, output):
-#     @asset(
-#         name=output,
-#         group_name=code,
-#         compute_kind="trackintel_staypoint",
-#         ins={
-#             "trajectories": AssetIn(
-#                 key=["public", input],
-#                 # input_manager_key="mobilityDb_manager",
-#             )
-#         },
-#         key_prefix=["public"],
-#         # io_manager_key="mobilityDb_manager",
-#     )
-#     def asset_template(trajectories):
-#         print("============", trajectories)
-
-#         pfs = ti.io.read_positionfixes_gpd(
-#             trajectories,
-#             geom_col="geometry",
-#             tracked_at="time",
-#             user_id="track_id_num",
-#             # tz="ETC/GMT-5",
-#         )
-
-#         return Output(
-#             value=pfs,
-#             metadata={
-#                 "description": "",
-#                 "rows": len(pfs),
-#                 "preview": MetadataValue.md(pfs.head().to_markdown()),
-#             },
-#         )
-
-#     return asset_template
 
 
 def make_asset_union_tables(name, group_name, asset_inputs):
@@ -986,13 +943,7 @@ for (code, type), group_data in grouped:
     locations_inputs.append(name + "_trackintel_locations")
     triplegs_inputs.append(name + "_trackintel_triplegs")
 
-    # staypoints = make_staypoints(code, name + "_positionfixes", name + "_staypoints")
-    # trackintel_staypoints.append(staypoints)
-
-    # name_line = code + "_" + type + "_traj_line"
-    # result_line = make_trajectory_collection_asset(name_line, group_name, [name])
-    # result_line = make_assets_db(name, name_line, group_name, "postgres", "line")
-    # factory_assets_trajectory_by_code_type_line.append(result_line)
+    
 
     all_inputs.append(name)
 
@@ -1040,15 +991,6 @@ def make_assets_by_code(codigo):
 
     return asset_template
 
-
-# by_code = []
-# grouped = assets_df.groupby(["code"])
-# for (code), group_data in grouped:
-#     r = make_assets_by_code(code)
-#     by_code.append(r)
-
-
-# Stop detection
 
 
 def make_assets_stops(
@@ -1114,46 +1056,6 @@ def make_assets_stops(
     return asset_template
 
 
-# stops = make_assets_stops(
-#     output_name="trajectories_stops_10_10",
-#     max_diameter_meters=20,
-#     min_duration_seconds=120,
-# )
-
-# stops = []
-
-# for item in config.get("stop_detection_artefacto", []):
-#     stop_asset = make_assets_stops(
-#         output_name="trajectories_stops_artefacto_"
-#         + str(item["max_diameter_meters"])
-#         + "_"
-#         + str(item["min_duration_seconds"]),
-#         input_name="trajectories_artefacto",
-#         max_diameter_meters=item["max_diameter_meters"],
-#         min_duration_seconds=item["min_duration_seconds"],
-#         type="artefacto",
-#     )
-#     stops.append(stop_asset)
-#     # stopsInputs.append()
-
-# for item in config.get("stop_detection_persona", []):
-#     stop_asset = make_assets_stops(
-#         output_name="trajectories_stops_persona_"
-#         + str(item["max_diameter_meters"])
-#         + "_"
-#         + str(item["min_duration_seconds"]),
-#         input_name="trajectories_persona",
-#         max_diameter_meters=item["max_diameter_meters"],
-#         min_duration_seconds=item["min_duration_seconds"],
-#         type="artefacto",
-#     )
-#     stops.append(stop_asset)
-
-
-################ TRACKINTEL
-
-
-# positionfixes = make_positionfixes()
 
 
 @asset(
