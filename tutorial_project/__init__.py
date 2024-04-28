@@ -26,6 +26,7 @@ from .assets.dbt import DBT_PROFILES
 
 
 all_assets = load_assets_from_modules([gps_assets, positionfixes_clean, aggregations])
+# all_assets = load_assets_from_modules([gps_assets])
 
 defs = Definitions(
     assets=all_assets + dbt_assets,

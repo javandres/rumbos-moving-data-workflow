@@ -1,0 +1,38 @@
+{
+  "code": "JA21",
+  "folder_name": "piloto/JA21_03_FinalPiloto",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "20:00:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "JA21_persona_20240302",
+      "file_name": "JA21_persona_20240302.gpx",
+      "group": "JA21_20240302_persona",
+      "date": "20240302",
+      "type": "persona",
+      "hora_inicio": "06:27:00",
+      "hora_fin": "12:59:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240305",
+      "file_name": "JA21_persona_20240305.gpx",
+      "group": "JA21_20240305_persona",
+      "date": "20240305",
+      "type": "persona",
+      "hora_inicio": "06:23:00",
+      "hora_fin": "15:20:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240307",
+      "file_name": "JA21_persona_20240307.gpx",
+      "group": "JA21_20240307_persona",
+      "date": "20240307",
+      "type": "persona",
+      "hora_inicio": "06:28:00",
+      "hora_fin": "15:11:00"
+    }
+  ]
+}

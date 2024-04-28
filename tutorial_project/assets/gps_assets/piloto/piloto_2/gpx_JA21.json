@@ -1,0 +1,65 @@
+{
+  "code": "JA21",
+  "folder_name": "piloto/JA21_02_Piloto",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "20:00:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "JA21_persona_20240127",
+      "file_name": "JA21_persona_20240127.gpx",
+      "group": "JA21_20240127_persona",
+      "date": "20240127",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "20:00:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240130",
+      "file_name": "JA21_persona_20240130.gpx",
+      "group": "JA21_20240130_persona",
+      "date": "20240130",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "20:00:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240201",
+      "file_name": "JA21_persona_20240201.gpx",
+      "group": "JA21_20240201_persona",
+      "date": "20240201",
+      "type": "persona",
+      "hora_inicio": "06:22:00",
+      "hora_fin": "14:49:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240203",
+      "file_name": "JA21_persona_20240203.gpx",
+      "group": "JA21_20240203_persona",
+      "date": "20240203",
+      "type": "persona",
+      "hora_inicio": "06:24:00",
+      "hora_fin": "12:31:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240206",
+      "file_name": "JA21_persona_20240206.gpx",
+      "group": "JA21_20240206_persona",
+      "date": "20240206",
+      "type": "persona",
+      "hora_inicio": "06:22:00",
+      "hora_fin": "15:00:00"
+    },
+    {
+      "asset_name": "JA21_persona_20240208",
+      "file_name": "JA21_persona_20240208.gpx",
+      "group": "JA21_20240208_persona",
+      "date": "20240208",
+      "type": "persona",
+      "hora_inicio": "06:27:00",
+      "hora_fin": "15:21:00"
+    }
+  ]
+}

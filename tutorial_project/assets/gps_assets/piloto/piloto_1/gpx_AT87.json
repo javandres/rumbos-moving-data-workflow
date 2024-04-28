@@ -1,0 +1,56 @@
+{
+  "code": "AT87",
+  "folder_name": "piloto/AT87_01_PrePiloto",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:30:00",
+  "hora_fin": "20:00:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "AT87_persona_20231107",
+      "file_name": "AT87_persona_20231107.gpx",
+      "group": "AT87_20231107_persona",
+      "date": "20231107",
+      "type": "persona",
+      "hora_inicio": "06:53:00",
+      "hora_fin": "18:40:00"
+    },
+    {
+      "asset_name": "AT87_persona_20231111",
+      "file_name": "AT87_persona_20231111.gpx",
+      "group": "AT87_20231111_persona",
+      "date": "20231111",
+      "type": "persona",
+      "hora_inicio": "06:56:00",
+      "hora_fin": "13:00:00"
+    },
+    {
+      "asset_name": "AT87_persona_20231116",
+      "file_name": "AT87_persona_20231116.gpx",
+      "group": "AT87_20231116_persona",
+      "date": "20231116",
+      "type": "persona",
+      "hora_inicio": "07:11:00",
+      "hora_fin": "19:05:00"
+    },
+    {
+      "asset_name": "AT87_persona_20231121",
+      "file_name": "AT87_persona_20231121.gpkg",
+      "group": "AT87_20231121_persona",
+      "date": "20231121",
+      "type": "persona",
+      "hora_inicio": "07:27:00",
+      "hora_fin": "19:00:00"
+    },
+    {
+      "asset_name": "AT87_persona_20231123",
+      "file_name": "AT87_persona_20231123.gpx",
+      "group": "AT87_20231123_persona",
+      "date": "20231123",
+      "type": "persona",
+      "hora_inicio": "07:08:00",
+      "hora_fin": "16:00:00"
+    }
+  ]
+}

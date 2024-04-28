@@ -65,7 +65,7 @@ data = []
 
 
 
-file_paths = [
+file_paths_diagnostico = [
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AT87.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_CD87.json",
@@ -99,6 +99,27 @@ file_paths = [
     "tutorial_project/assets/gps_assets/solo_gps/gpx_TQ38.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_TV55.json",
 ]
+
+file_paths_piloto1 = [
+    "tutorial_project/assets/gps_assets/piloto/piloto_1/gpx_AT87.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_1/gpx_JA21.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_1/gpx_LH52.json",
+]
+
+file_paths_piloto2 = [
+    "tutorial_project/assets/gps_assets/piloto/piloto_2/gpx_AT87.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_2/gpx_JA21.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_2/gpx_LH52.json",
+]
+
+file_paths_piloto3 = [
+    "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_AT87.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_JA21.json",
+    "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_LH52.json",
+]
+
+file_paths = file_paths_piloto3
+
 
 for file_path in file_paths:
     with open(file_path, "r") as read_file:
@@ -152,6 +173,7 @@ def make_raw_assets(asset_to_make):
         key_prefix=["workdir", asset_to_make["code"], asset_to_make["group"], "gpx"],
     )
     def asset_template():
+        print(1)
         file_name = (
             "data"
             + "/"
@@ -159,13 +181,15 @@ def make_raw_assets(asset_to_make):
             + "/"
             + asset_to_make["file_name"]
         )
+        print(2, file_name)
         file_extension = os.path.splitext(asset_to_make["file_name"])[1][1:]
-
+        print(3, file_extension)
         if file_extension == "gpx":
             gdf = load_gpx_file(file_name, asset_to_make)
         elif file_extension == "gpkg":
             gdf = load_gpkg_file(file_name, asset_to_make)
 
+        print(4, gdf.head())
         return Output(
             value=gdf,
             metadata={
@@ -275,7 +299,9 @@ def filter_by_time_assets(asset_to_make):
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
-        gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
+        # gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
+        gdf["time"] = pd.to_datetime(gdf["time"]).dt.tz_convert("America/Guayaquil")
+
 
         first_row = gdf.iloc[0]
         start_time = first_row["hora_inicio"]
@@ -299,9 +325,11 @@ def filter_by_time_assets(asset_to_make):
 
         # Filter filters_df by track_id
         filters_df = filters_df[filters_df["track_id"] == track_id]
+        print("FILTER", filters_df.head())
 
-        filtered_gdf_result = filtered_gdf
-        filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
+        filtered_gdf_result = filtered_gdf.copy()
+        print(filtered_gdf_result.head())
+        # filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
 
         for index, row in filters_df.iterrows():
             to_filter = (
@@ -310,19 +338,23 @@ def filter_by_time_assets(asset_to_make):
                 .reset_index()
             )
 
-            filtered_gdf_result = filtered_gdf_result[
-                ~filtered_gdf_result["time"].isin(to_filter["time"])
-            ]
+            print("TO_FILTER", to_filter.head())
+
+            # filtered_gdf_result = filtered_gdf_result[
+            #     ~filtered_gdf_result["time"].isin(to_filter["time"])
+            # ]
+
+            filtered_gdf_result = to_filter.copy()
 
         return Output(
             value=filtered_gdf_result,
             metadata={
                 "description": "",
-                "rows": len(filtered_gdf),
+                "rows": len(filtered_gdf_result),
                 "duration": "{}".format(
-                    filtered_gdf.time.max() - filtered_gdf.time.min()
+                    filtered_gdf_result.time.max() - filtered_gdf_result.time.min()
                 ),
-                "preview": MetadataValue.md(filtered_gdf.head().to_markdown()),
+                "preview": MetadataValue.md(filtered_gdf_result.head().to_markdown()),
             },
         )
 
@@ -342,6 +374,7 @@ def make_trajectory_assets(asset_to_make):
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
+        print("============", gdf.head())
         gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
 
         traj = mpd.Trajectory(gdf, traj_id="track_id", t="time")

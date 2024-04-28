@@ -1,0 +1,56 @@
+{
+  "code": "LH52",
+  "folder_name": "piloto/LH52_01_PrePiloto",
+  "owner": "",
+  "modalidad": "solo_gps",
+  "hora_inicio": "06:00:00",
+  "hora_fin": "20:00:00",
+  "ciudad": "Cuenca",
+  "assets": [
+    {
+      "asset_name": "LH52_persona_20231107",
+      "file_name": "LH52_persona_20231107.gpx",
+      "group": "LH52_20231107_persona",
+      "date": "20231107",
+      "type": "persona",
+      "hora_inicio": "07:27:00",
+      "hora_fin": "15:20:00"
+    },
+    {
+      "asset_name": "LH52_persona_20231109",
+      "file_name": "LH52_persona_20231109.gpx",
+      "group": "LH52_20231109_persona",
+      "date": "20231109",
+      "type": "persona",
+      "hora_inicio": "06:22:00",
+      "hora_fin": "15:20:00"
+    },
+    {
+      "asset_name": "LH52_persona_20231111",
+      "file_name": "LH52_persona_20231111.gpx",
+      "group": "LH52_20231111_persona",
+      "date": "20231111",
+      "type": "persona",
+      "hora_inicio": "06:27:00",
+      "hora_fin": "12:46:00"
+    },
+    {
+      "asset_name": "LH52_persona_20231116",
+      "file_name": "LH52_persona_20231116.gpx",
+      "group": "LH52_20231116_persona",
+      "date": "20231116",
+      "type": "persona",
+      "hora_inicio": "06:22:00",
+      "hora_fin": "15:26:00"
+    },
+    {
+      "asset_name": "LH52_persona_20231118",
+      "file_name": "LH52_persona_20231118.gpx",
+      "group": "LH52_20231118_persona",
+      "date": "20231118",
+      "type": "persona",
+      "hora_inicio": "06:26:00",
+      "hora_fin": "12:42:00"
+    }
+  ]
+}
