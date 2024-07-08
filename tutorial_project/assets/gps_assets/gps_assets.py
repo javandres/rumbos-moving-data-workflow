@@ -118,7 +118,8 @@ file_paths_piloto3 = [
     "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_LH52.json",
 ]
 
-file_paths = file_paths_piloto3
+file_paths = file_paths_piloto2
+file_paths = file_paths_diagnostico
 
 
 for file_path in file_paths:
@@ -239,40 +240,6 @@ def make_postgres_assets(asset_to_make):
         )
 
     return asset_template
-
-
-# def make_project_asset(parent_asset_name, asset_name, group_name, compute_kind, to_crs):
-#     print("=======>", parent_asset_name, asset_name, group_name, compute_kind)
-
-#     @asset(
-#         name=asset_name,
-#         group_name=group_name,
-#         compute_kind=compute_kind,
-#         ins={
-#             "input_asset": AssetIn(
-#                 key=["public", parent_asset_name],
-#                 input_manager_key="mobilityDb_manager",
-#             )
-#         },
-#         io_manager_key="mobilityDb_manager",
-#         key_prefix=["public"],
-#     )
-#     def asset_template(input_asset):
-#         # output = input_asset.to_crs("epsg:" + to_crs)
-#         outpput = input.to_crs(CRS(32717))
-
-#         output["time"] = output.index
-
-#         return Output(
-#             value=output,
-#             metadata={
-#                 "description": "",
-#                 "rows": len(output),
-#                 "preview": MetadataValue.md(output.head().to_markdown()),
-#             },
-#         )
-
-#     return asset_template
 
 
 def make_jupyter_explore_assets(asset_to_make):
@@ -782,9 +749,10 @@ def make_positionfixes(code, input, output, type):
 
         print("======", pfs)
 
+        STAYPOINTS_TIME_THRESHOLD = 0.5    
         # Create staypoints
         pfs, staypoints = pfs.as_positionfixes.generate_staypoints(
-            method="sliding", dist_threshold=5, time_threshold=0.25, include_last=False
+            method="sliding", dist_threshold=5, time_threshold=STAYPOINTS_TIME_THRESHOLD, include_last=False
         )
 
         # Add a flag whether or not a staypoint is considered an activity.
@@ -828,7 +796,7 @@ def make_positionfixes(code, input, output, type):
 
         # Create triplegs
         pfs, triplegs = pfs.as_positionfixes.generate_triplegs(
-            method="between_staypoints", gap_threshold=5  # minutes
+            staypoints=staypoints, method="between_staypoints", gap_threshold=5  # minutes
         )
 
         triplegs = triplegs.as_triplegs.predict_transport_mode()
@@ -915,6 +883,8 @@ def make_asset_union_tables(name, group_name, asset_inputs):
             select = select + f' SELECT * FROM public."{arg}" {union} '
             count = count + 1
 
+        print("=================", name)
+        print("=?=?=?=?=?=?=?=?=?=?=", select)
         url = URL.create(
             "postgresql+psycopg2",
             username=os.getenv("POSTGRES_USER"),

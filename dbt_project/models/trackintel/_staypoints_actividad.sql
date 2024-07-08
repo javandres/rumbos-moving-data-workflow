@@ -11,5 +11,4 @@ FROM
     ) }}
     sp
 WHERE
-    prev_tripleg_mode <> 'motorized_mobility'
-    AND next_tripleg_mode <> 'motorized_mobility'
+   next_tripleg_mode <> 'motorized_mobility'
