@@ -15,24 +15,10 @@
       "type": "persona"
     },
     {
-      "asset_name": "LH52_persona_reloj_20230427",
-      "file_name": "LH52_persona_reloj_20230427.gpkg",
-      "group": "LH52_20230427_persona",
-      "date": "20230427",
-      "type": "persona"
-    },
-    {
       "asset_name": "LH52_persona_reloj_20230429",
       "file_name": "LH52_persona_reloj_20230429.gpx",
       "group": "LH52_20230429_persona",
       "date": "20230429",
-      "type": "persona"
-    },
-    {
-      "asset_name": "LH52_persona_reloj_20230502",
-      "file_name": "LH52_persona_reloj_20230502.gpkg",
-      "group": "LH52_20230502_persona",
-      "date": "20230502",
       "type": "persona"
     },
     {

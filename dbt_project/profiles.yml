@@ -7,7 +7,7 @@ rumbos-pgs:
       user: llactalab
       password: movilidad.llactalabs
       port: 45432
-      dbname: llactalab-piloto
+      dbname: llactalabv2
       schema: public
       # user: "{{ env_var('DBT_USER') }}"
       # password: "{{ env_var('DBT_PASSWORD') }}"

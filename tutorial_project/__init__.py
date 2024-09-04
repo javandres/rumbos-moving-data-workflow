@@ -11,7 +11,8 @@ from .geopandas_io import (
 from . import assets
 
 from .assets.gps_assets import gps_assets
-from .assets.gps_assets import positionfixes_clean
+
+# from .assets.gps_assets import positionfixes_clean
 from .assets.gps_assets import aggregations
 import os
 
@@ -54,4 +55,3 @@ defs = Definitions(
         ),
     },
 )
-

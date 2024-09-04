@@ -7,6 +7,7 @@ import gpxpy
 import gpxpy.gpx
 import geopandas as gpd
 import hashlib
+import numpy as np
 
 from dagstermill import define_dagstermill_asset
 
@@ -63,7 +64,9 @@ data = []
 # with open("tutorial_project/assets/MG91/gpx_files.json", "r") as read_file:
 #     data = json.load(read_file)
 
-
+file_paths_test = [
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
+]
 
 file_paths_diagnostico = [
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_AF79.json",
@@ -118,8 +121,9 @@ file_paths_piloto3 = [
     "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_LH52.json",
 ]
 
-file_paths = file_paths_piloto2
+# file_paths = file_paths_piloto2
 file_paths = file_paths_diagnostico
+# file_paths = file_paths_test
 
 
 for file_path in file_paths:
@@ -255,6 +259,82 @@ def make_jupyter_explore_assets(asset_to_make):
     return asset_template
 
 
+# def filter_by_time_assets(asset_to_make):
+#     @asset(
+#         name=asset_to_make["asset_name"] + "_filtered",
+#         group_name=asset_to_make["code"],
+#         compute_kind="postgres",
+#         ins={"asset_gpx": AssetIn(asset_to_make["asset_name"])},
+#         io_manager_key="mobilityDb_manager",
+#         key_prefix=["public"],
+#     )
+#     def asset_template(asset_gpx):
+#         gdf = asset_gpx
+#         # gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
+#         gdf["time"] = pd.to_datetime(gdf["time"]).dt.tz_convert("America/Guayaquil")
+
+#         first_row = gdf.iloc[0]
+#         start_time = first_row["hora_inicio"]
+#         end_time = first_row["hora_fin"]
+#         track_id = first_row["track_id"]
+#         group = first_row["group"]
+
+#         if end_time == "" or end_time == None:
+#             end_time = "23:59:59"
+
+#         filtered_gdf = (
+#             gdf.set_index("time").between_time(start_time, end_time).reset_index()
+#         )
+
+#         filters_df = pd.read_csv("./data/filters_v2.csv")
+#         filters_df["desde"] = pd.to_datetime(
+#             filters_df["desde"], format="%H:%M:%S"
+#         ).dt.time
+#         filters_df["hasta"] = pd.to_datetime(
+#             filters_df["hasta"], format="%H:%M:%S"
+#         ).dt.time
+
+#         print("FILTER GROUP =====", group)
+#         # Filter filters_df by track_id
+#         filters_df = filters_df[filters_df["track_id"] == group]
+#         print("FILTER", filters_df.head())
+
+#         filtered_gdf_result = filtered_gdf.copy()
+#         print(filtered_gdf_result.head())
+#         # filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
+
+#         for index, row in filters_df.iterrows():
+#             print(row)
+#             to_filter = (
+#                 filtered_gdf_result.set_index("time")
+#                 .between_time(row["desde"], row["hasta"])
+#                 .reset_index()
+#             )
+
+#             print("TO_FILTER", to_filter.head())
+
+#             # filtered_gdf_result = filtered_gdf_result[
+#             #     ~filtered_gdf_result["time"].isin(to_filter["time"])
+#             # ]
+
+#             # filtered_gdf_result = to_filter.copy()
+#             filtered_gdf = filtered_gdf[~filtered_gdf["time"].isin(to_filter["time"])]
+
+#         return Output(
+#             value=filtered_gdf_result,
+#             metadata={
+#                 "description": "",
+#                 "rows": len(filtered_gdf_result),
+#                 "duration": "{}".format(
+#                     filtered_gdf_result.time.max() - filtered_gdf_result.time.min()
+#                 ),
+#                 "preview": MetadataValue.md(filtered_gdf_result.head().to_markdown()),
+#             },
+#         )
+
+#     return asset_template
+
+
 def filter_by_time_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_filtered",
@@ -266,17 +346,16 @@ def filter_by_time_assets(asset_to_make):
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
-        # gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
-        gdf["time"] = pd.to_datetime(gdf["time"]).dt.tz_convert("America/Guayaquil")
-
+        gdf["time"] = pd.to_datetime(gdf["time"])
+        if gdf["time"].dt.tz is None:
+            gdf["time"] = gdf["time"].dt.tz_localize("UTC")
+        gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
 
         first_row = gdf.iloc[0]
-        start_time = first_row["hora_inicio"]
-        end_time = first_row["hora_fin"]
+        start_time = first_row["hora_inicio"] or "00:00:00"
+        end_time = first_row["hora_fin"] or "23:59:59"
         track_id = first_row["track_id"]
-
-        if end_time == "" or end_time == None:
-            end_time = "23:59:59"
+        group = first_row["group"]
 
         filtered_gdf = (
             gdf.set_index("time").between_time(start_time, end_time).reset_index()
@@ -290,38 +369,26 @@ def filter_by_time_assets(asset_to_make):
             filters_df["hasta"], format="%H:%M:%S"
         ).dt.time
 
-        # Filter filters_df by track_id
-        filters_df = filters_df[filters_df["track_id"] == track_id]
-        print("FILTER", filters_df.head())
-
-        filtered_gdf_result = filtered_gdf.copy()
-        print(filtered_gdf_result.head())
-        # filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
+        filters_df = filters_df[filters_df["track_id"] == group]
 
         for index, row in filters_df.iterrows():
             to_filter = (
-                filtered_gdf_result.set_index("time")
+                filtered_gdf.set_index("time")
                 .between_time(row["desde"], row["hasta"])
                 .reset_index()
             )
 
-            print("TO_FILTER", to_filter.head())
-
-            # filtered_gdf_result = filtered_gdf_result[
-            #     ~filtered_gdf_result["time"].isin(to_filter["time"])
-            # ]
-
-            filtered_gdf_result = to_filter.copy()
+            filtered_gdf = filtered_gdf[~filtered_gdf["time"].isin(to_filter["time"])]
 
         return Output(
-            value=filtered_gdf_result,
+            value=filtered_gdf,
             metadata={
-                "description": "",
-                "rows": len(filtered_gdf_result),
+                "description": f"Filtered asset for {asset_to_make['asset_name']}",
+                "rows": len(filtered_gdf),
                 "duration": "{}".format(
-                    filtered_gdf_result.time.max() - filtered_gdf_result.time.min()
+                    filtered_gdf.time.max() - filtered_gdf.time.min()
                 ),
-                "preview": MetadataValue.md(filtered_gdf_result.head().to_markdown()),
+                "preview": MetadataValue.md(filtered_gdf.head().to_markdown()),
             },
         )
 
@@ -346,7 +413,7 @@ def make_trajectory_assets(asset_to_make):
 
         traj = mpd.Trajectory(gdf, traj_id="track_id", t="time")
         traj.add_speed()
-        traj.add_speed(overwrite=True, name="speed_kmh", units="km")
+        traj.add_speed(overwrite=True, name="speed_kmh", units=("km", "h"))
         traj.add_distance(overwrite=True)
 
         traj_gdf = traj.to_point_gdf()
@@ -487,7 +554,7 @@ def make_trajectory_clean_assets(asset_to_make):
                 "deleted_points": n_deleted_points,
                 "max_speed_kmh": max_speed_kmh,
                 "max_loop": max_loop,
-                "ratio_max": ratio_max
+                "ratio_max": ratio_max,
                 # "start_time": MetadataValue.text(
                 #     cleaned.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")
                 # ),
@@ -749,10 +816,14 @@ def make_positionfixes(code, input, output, type):
 
         print("======", pfs)
 
-        STAYPOINTS_TIME_THRESHOLD = 0.5    
+        # STAYPOINTS_TIME_THRESHOLD = 0.5  # Para datos piloto
+        STAYPOINTS_TIME_THRESHOLD = 0.25  # Para datos diagnóstico
         # Create staypoints
         pfs, staypoints = pfs.as_positionfixes.generate_staypoints(
-            method="sliding", dist_threshold=5, time_threshold=STAYPOINTS_TIME_THRESHOLD, include_last=False
+            method="sliding",
+            dist_threshold=5,
+            time_threshold=STAYPOINTS_TIME_THRESHOLD,
+            include_last=False,
         )
 
         # Add a flag whether or not a staypoint is considered an activity.
@@ -796,14 +867,21 @@ def make_positionfixes(code, input, output, type):
 
         # Create triplegs
         pfs, triplegs = pfs.as_positionfixes.generate_triplegs(
-            staypoints=staypoints, method="between_staypoints", gap_threshold=5  # minutes
+            staypoints=staypoints,
+            method="between_staypoints",
+            gap_threshold=5,  # minutes
         )
 
-        triplegs = triplegs.as_triplegs.predict_transport_mode()
+        custom_categories = {
+            2: "slow_mobility",  # 0-2 m/s as slow_mobility
+            np.inf: "motorized_mobility",  # >5 m/s as motorized_mobility
+        }
+        triplegs = triplegs.as_triplegs.predict_transport_mode(
+            method="simple-coarse", categories=custom_categories
+        )
         staypoints["type"] = type
         staypoints["codigo"] = code
-        
-        
+
         locs["type"] = type
         locs["codigo"] = code
 
@@ -850,12 +928,10 @@ def make_positionfixes(code, input, output, type):
                     "rows": len(triplegs),
                     "preview": MetadataValue.md(triplegs.head().to_markdown()),
                 },
-            )            
+            ),
         )
 
-
     return asset_template
-
 
 
 def make_asset_union_tables(name, group_name, asset_inputs):
@@ -946,8 +1022,6 @@ for (code, type), group_data in grouped:
     locations_inputs.append(name + "_trackintel_locations")
     triplegs_inputs.append(name + "_trackintel_triplegs")
 
-    
-
     all_inputs.append(name)
 
 all_assets = make_trajectory_collection_asset(
@@ -993,7 +1067,6 @@ def make_assets_by_code(codigo):
         )
 
     return asset_template
-
 
 
 def make_assets_stops(
@@ -1057,8 +1130,6 @@ def make_assets_stops(
         )
 
     return asset_template
-
-
 
 
 @asset(

@@ -71,39 +71,11 @@
       "type": "persona"
     },
     {
-      "asset_name": "CN83_artefacto_reloj_20230614",
-      "file_name": "CN83_artefacto_reloj_20230614.gpkg",
-      "group": "CN83_20230614_artefacto",
-      "date": "20230614",
-      "type": "artefacto"
-    },
-    {
-      "asset_name": "CN83_persona_reloj_20230614",
-      "file_name": "CN83_persona_reloj_20230614.gpkg",
-      "group": "CN83_20230614_persona",
-      "date": "20230614",
-      "type": "persona"
-    },
-    {
-      "asset_name": "CN83_artefacto_reloj_20230630",
-      "file_name": "CN83_artefacto_reloj_20230630.gpx",
-      "group": "CN83_20230630_artefacto",
-      "date": "20230630",
-      "type": "artefacto"
-    },
-    {
       "asset_name": "CN83_artefacto_reloj_20230628",
       "file_name": "CN83_artefacto_reloj_20230628.gpx",
       "group": "CN83_20230628_artefacto",
       "date": "20230628",
       "type": "artefacto"
-    },
-    {
-      "asset_name": "CN83_persona_reloj_20230630",
-      "file_name": "CN83_persona_reloj_20230630.gpkg",
-      "group": "CN83_20230630_persona",
-      "date": "20230630",
-      "type": "persona"
     }
   ]
 }
