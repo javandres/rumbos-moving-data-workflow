@@ -58,20 +58,13 @@ def get_elevation_by_coordinates(ciudad, latitude, longitude):
 
 
 def load_gpx_file(file_path, asset_to_make):
-    print(3.1, file_path)
     with open(file_path, "r") as gpx_file:
         gpx = gpxpy.parse(gpx_file)
 
-    print(3.2, gpx)
     file_name = file_path.split("/")[-1]
-    print(3.3, file_name)
     track_id = file_name.split(".")[0]
-    print(3.4, track_id)
     route_info = []
-
-
     codigo = track_id.split("_")[0]
-    print(3.5, codigo)
 
     for track in gpx.tracks:
         for segment in track.segments:
@@ -102,13 +95,11 @@ def load_gpx_file(file_path, asset_to_make):
                     }
                 )
     route_df = pd.DataFrame(route_info)
-    print(3.6, route_df)
     gdf = gpd.GeoDataFrame(
         route_df,
         geometry=gpd.points_from_xy(route_df.lon, route_df.lat),
         crs=from_epsg(4326),
     )
-    print(3.7, gdf)
 
     return gdf
 

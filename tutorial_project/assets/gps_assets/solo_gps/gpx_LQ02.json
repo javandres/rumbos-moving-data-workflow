@@ -15,6 +15,60 @@
       "hora_fin": "22:00:00"
     },
     {
+      "asset_name": "LQ02_persona_reloj_20230608",
+      "file_name": "LQ02_persona_reloj_20230608.gpx",
+      "group": "LQ02_20230608_persona",
+      "date": "20230608",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto_reloj_20230608",
+      "file_name": "LQ02_artefacto_reloj_20230608.gpx",
+      "group": "LQ02_20230608_artefacto",
+      "date": "20230608",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
+      "asset_name": "LQ02_persona_reloj_20230609",
+      "file_name": "LQ02_persona_reloj_20230609.gpx",
+      "group": "LQ02_20230609_persona",
+      "date": "20230609",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_persona_reloj_20230607_02",
+      "file_name": "LQ02_persona_reloj_20230607_02.gpx",
+      "group": "LQ02_20230607_persona",
+      "date": "20230607",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto02_reloj_20230607_02",
+      "file_name": "LQ02_artefacto02_reloj_20230607_02.gpx",
+      "group": "LQ02_20230607_artefacto",
+      "date": "20230607",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto_reloj_20230607_02",
+      "file_name": "LQ02_artefacto_reloj_20230607_02.gpx",
+      "group": "LQ02_20230607_artefacto",
+      "date": "20230607",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
       "asset_name": "LQ02_persona_reloj_20230605_01",
       "file_name": "LQ02_persona_reloj_20230605_01.gpx",
       "group": "LQ02_20230605_persona",
@@ -24,6 +78,69 @@
       "hora_fin": "22:00:00"
     },
     {
+      "asset_name": "LQ02_artefacto_reloj_20230607_01",
+      "file_name": "LQ02_artefacto_reloj_20230607_01.gpx",
+      "group": "LQ02_20230607_artefacto",
+      "date": "20230607",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto02_reloj_20230608",
+      "file_name": "LQ02_artefacto02_reloj_20230608.gpx",
+      "group": "LQ02_20230608_artefacto",
+      "date": "20230608",
+      "type": "artefacto",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto02_reloj_20230609",
+      "file_name": "LQ02_artefacto02_reloj_20230609.gpx",
+      "group": "LQ02_20230609_artefacto",
+      "date": "20230609",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_persona_reloj_20230606_01",
+      "file_name": "LQ02_persona_reloj_20230606_01.gpx",
+      "group": "LQ02_20230606_persona",
+      "date": "20230606",
+      "type": "persona",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto_reloj_20230606_01",
+      "file_name": "LQ02_artefacto_reloj_20230606_01.gpx",
+      "group": "LQ02_20230606_artefacto",
+      "date": "20230606",
+      "type": "artefacto",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto_reloj_20230609",
+      "file_name": "LQ02_artefacto_reloj_20230609.gpx",
+      "group": "LQ02_20230609_artefacto",
+      "date": "20230609",
+      "type": "artefacto",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_artefacto_reloj_20230606_02",
+      "file_name": "LQ02_artefacto_reloj_20230606_02.gpx",
+      "group": "LQ02_20230606_artefacto",
+      "date": "20230606",
+      "type": "artefacto",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "19:30:00"
+    },
+    {
       "asset_name": "LQ02_artefacto_reloj_20230605_01",
       "file_name": "LQ02_artefacto_reloj_20230605_01.gpx",
       "group": "LQ02_20230605_artefacto",
@@ -31,6 +148,24 @@
       "type": "artefacto",
       "hora_inicio": "06:00:00",
       "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_persona_reloj_20230607_01",
+      "file_name": "LQ02_persona_reloj_20230607_01.gpx",
+      "group": "LQ02_20230607_persona",
+      "date": "20230607",
+      "type": "persona",
+      "hora_inicio": "06:00:00",
+      "hora_fin": "22:00:00"
+    },
+    {
+      "asset_name": "LQ02_persona_reloj_20230606_02",
+      "file_name": "LQ02_persona_reloj_20230606_02.gpx",
+      "group": "LQ02_20230606_persona",
+      "date": "20230606",
+      "type": "persona",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "19:30:00"
     },
     {
       "asset_name": "LQ02_artefacto_reloj_20230605_02",

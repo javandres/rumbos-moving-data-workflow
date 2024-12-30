@@ -43,26 +43,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import URL, Connection
 from datetime import datetime, time, timedelta
 
-
-# TrackIntel
 import trackintel as ti
 
 
 data = []
-# with open("tutorial_project/assets/MG91/gpx_AF79.json", "r") as read_file:
-#     data_AF79 = json.load(read_file)
-# for x in data_AF79:
-#     data.append(x)
-
-
-# with open("tutorial_project/assets/MG91/gpx_MG91.json", "r") as read_file:
-#     data_MG91 = json.load(read_file)
-# for x in data_AF79:
-#     data.append(x)
-
-
-# with open("tutorial_project/assets/MG91/gpx_files.json", "r") as read_file:
-#     data = json.load(read_file)
 
 file_paths_test = [
     "tutorial_project/assets/gps_assets/solo_gps/gpx_LQ02.json",
@@ -81,8 +65,8 @@ file_paths_diagnostico = [
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MQ70.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MV43.json",
     "tutorial_project/assets/gps_assets/diarios_viaje/gpx_MZ49.json",
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",  ###
-    "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",  ###
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_BZ14.json",
+    "tutorial_project/assets/gps_assets/solo_gps/gpx_CL74.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_CN83.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_JC73.json",
     "tutorial_project/assets/gps_assets/solo_gps/gpx_LO71.json",
@@ -121,10 +105,7 @@ file_paths_piloto3 = [
     "tutorial_project/assets/gps_assets/piloto/piloto_3/gpx_LH52.json",
 ]
 
-# file_paths = file_paths_piloto2
 file_paths = file_paths_diagnostico
-# file_paths = file_paths_test
-
 
 for file_path in file_paths:
     with open(file_path, "r") as read_file:
@@ -259,82 +240,6 @@ def make_jupyter_explore_assets(asset_to_make):
     return asset_template
 
 
-# def filter_by_time_assets(asset_to_make):
-#     @asset(
-#         name=asset_to_make["asset_name"] + "_filtered",
-#         group_name=asset_to_make["code"],
-#         compute_kind="postgres",
-#         ins={"asset_gpx": AssetIn(asset_to_make["asset_name"])},
-#         io_manager_key="mobilityDb_manager",
-#         key_prefix=["public"],
-#     )
-#     def asset_template(asset_gpx):
-#         gdf = asset_gpx
-#         # gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
-#         gdf["time"] = pd.to_datetime(gdf["time"]).dt.tz_convert("America/Guayaquil")
-
-#         first_row = gdf.iloc[0]
-#         start_time = first_row["hora_inicio"]
-#         end_time = first_row["hora_fin"]
-#         track_id = first_row["track_id"]
-#         group = first_row["group"]
-
-#         if end_time == "" or end_time == None:
-#             end_time = "23:59:59"
-
-#         filtered_gdf = (
-#             gdf.set_index("time").between_time(start_time, end_time).reset_index()
-#         )
-
-#         filters_df = pd.read_csv("./data/filters_v2.csv")
-#         filters_df["desde"] = pd.to_datetime(
-#             filters_df["desde"], format="%H:%M:%S"
-#         ).dt.time
-#         filters_df["hasta"] = pd.to_datetime(
-#             filters_df["hasta"], format="%H:%M:%S"
-#         ).dt.time
-
-#         print("FILTER GROUP =====", group)
-#         # Filter filters_df by track_id
-#         filters_df = filters_df[filters_df["track_id"] == group]
-#         print("FILTER", filters_df.head())
-
-#         filtered_gdf_result = filtered_gdf.copy()
-#         print(filtered_gdf_result.head())
-#         # filtered_gdf_result["time"] = pd.to_datetime(filtered_gdf_result["time"])
-
-#         for index, row in filters_df.iterrows():
-#             print(row)
-#             to_filter = (
-#                 filtered_gdf_result.set_index("time")
-#                 .between_time(row["desde"], row["hasta"])
-#                 .reset_index()
-#             )
-
-#             print("TO_FILTER", to_filter.head())
-
-#             # filtered_gdf_result = filtered_gdf_result[
-#             #     ~filtered_gdf_result["time"].isin(to_filter["time"])
-#             # ]
-
-#             # filtered_gdf_result = to_filter.copy()
-#             filtered_gdf = filtered_gdf[~filtered_gdf["time"].isin(to_filter["time"])]
-
-#         return Output(
-#             value=filtered_gdf_result,
-#             metadata={
-#                 "description": "",
-#                 "rows": len(filtered_gdf_result),
-#                 "duration": "{}".format(
-#                     filtered_gdf_result.time.max() - filtered_gdf_result.time.min()
-#                 ),
-#                 "preview": MetadataValue.md(filtered_gdf_result.head().to_markdown()),
-#             },
-#         )
-
-#     return asset_template
-
-
 def filter_by_time_assets(asset_to_make):
     @asset(
         name=asset_to_make["asset_name"] + "_filtered",
@@ -401,14 +306,12 @@ def make_trajectory_assets(asset_to_make):
         group_name=asset_to_make["code"],
         compute_kind="trajectory",
         ins={"asset_gpx": AssetIn(asset_to_make["asset_name"] + "_filtered")},
-        # key_prefix=["workdir"],
         io_manager_key="trajectory_collection_manager",
         key_prefix=["public"],
         metadata={"trajectory_type": "Trajectory"},
     )
     def asset_template(asset_gpx):
         gdf = asset_gpx
-        print("============", gdf.head())
         gdf["time"] = gdf["time"].dt.tz_convert("America/Guayaquil")
 
         traj = mpd.Trajectory(gdf, traj_id="track_id", t="time")
@@ -451,49 +354,11 @@ def make_trajectory_clean_assets(asset_to_make):
 
         cleaned.add_speed(overwrite=True)
 
-        # cleaned = mpd.OutlierCleaner(cleaned).clean({"speed_kmh": 3})
-        # cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 20})
-
         cleaned = mpd.MinDistanceGeneralizer(cleaned).generalize(tolerance=0.0001)
-        # cleaned = mpd.OutlierCleaner(cleaned).clean({"distance": 40})
-
-        # cleaned = mpd.DouglasPeuckerGeneralizer(cleaned).generalize(tolerance=0.001)
-
-        # cleaned = mpd.TopDownTimeRatioGeneralizer(cleaned).generalize(
-        #     tolerance=0.00000001
-        # )
-
-        # for i in range(0, 10):
-        #     cleaned = mpd.OutlierCleaner(cleaned).clean({"speed": 12})
-
-        # traj_gdf = cleaned.to_point_gdf()
-
-        print("=======>", 1)
         gdf = cleaned.to_point_gdf()
         gdf["time"] = gdf.index
-
-        print("=======>", 2)
-
         df = pd.DataFrame(gdf)
-        print("=======>", df.head())
-        # df["datetime"] = df["time"]
-
-        print(df.head())
-
         tdf = skmob.TrajDataFrame(df, latitude="lat", longitude="lon", datetime="time")
-        print("=======>", 3)
-
-        print(tdf.head())
-        # ftdf = filtering.filter(
-        #     tdf, max_speed_kmh=50, include_loops=True, max_loop=10, ratio_max=0.7
-        # )
-
-        # ftdf = filtering.filter(
-        #     tdf,
-        #     max_speed_kmh=200,
-        # )
-
-        # ftdf = tdf
 
         max_speed_kmh = 100
         max_loop = 150
@@ -509,42 +374,15 @@ def make_trajectory_clean_assets(asset_to_make):
             speed_kmh=speed_kmh,
         )
 
-        # ftdf = tdf
-        # ftdf = filtering.filter(ftdf, max_speed_kmh=50, include_loops=True)
-        # print("=======>", 4)
-
         n_deleted_points = len(tdf) - len(ftdf)  # number of deleted points
-        print(n_deleted_points)
-        print("=======>", 5)
-
-        # gdf = gpd.GeoDataFrame(
-        #     ftdf,
-        #     geometry=gpd.points_from_xy(ftdf.lon, ftdf.lat),
-        #     crs=from_epsg(4326),
-        # )
 
         gdf2 = ftdf.to_geodataframe()
 
         gdf2["time"] = gdf2["datetime"]
-        print("GDF", gdf2.head())
-
-        print("GDF LEN", len(gdf2))
-
         traj2 = mpd.Trajectory(gdf2, traj_id="track_id", t="time")
 
         traj2.add_speed(overwrite=True)
         traj2.add_distance(overwrite=True)
-        print("=======>", 6)
-
-        # traj2 = mpd.OutlierCleaner(traj2).clean({"speed": 15})
-
-        # traj2 = mpd.DouglasPeuckerGeneralizer(traj2).generalize(tolerance=0.000001)
-
-        # cleaned = mpd.TopDownTimeRatioGeneralizer(cleaned).generalize(
-        #     tolerance=0.00000001
-        # )
-
-        # cleaned = mpd.MinDistanceGeneralizer(cleaned).generalize(tolerance=0.001)
 
         return Output(
             value=traj2,
@@ -555,11 +393,6 @@ def make_trajectory_clean_assets(asset_to_make):
                 "max_speed_kmh": max_speed_kmh,
                 "max_loop": max_loop,
                 "ratio_max": ratio_max,
-                # "start_time": MetadataValue.text(
-                #     cleaned.get_start_time().strftime("%m/%d/%Y, %H:%M:%S")
-                # ),
-                # "end_time": cleaned.get_end_time().strftime(("%m/%d/%Y, %H:%M:%S")),
-                # "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
             },
         )
 
@@ -620,14 +453,6 @@ if config["make_notebooks"]:
     factory_assets_jupyter_explore = [
         make_jupyter_explore_assets(asset) for asset in data
     ]
-
-# factory_assets_projected = []
-# for index, row in assets_df.iterrows():
-#     print(row["code"], row["group"])
-#     a = make_project_asset(
-#         row["asset_name"], row["asset_name"] + "_proj", row["group"], "postgres", 32717
-#     )
-#     factory_assets_projected.append(a)
 
 
 factory_assets_filter_time = [filter_by_time_assets(asset) for asset in data]
@@ -728,8 +553,6 @@ def make_assets_db(
             metadata={
                 "description": "",
                 "rows": len(gdf),
-                # "start_time": MetadataValue.text(gdf['time'].min().strftime("%m/%d/%Y, %H:%M:%S")),
-                # "end_time": MetadataValue.text(gdf['time'].max().strftime("%m/%d/%Y, %H:%M:%S")),
                 "preview": MetadataValue.md(gdf.head().to_markdown()),
             },
         )
@@ -744,7 +567,6 @@ factory_assets_trajectory_by_date_type_names = []
 grouped = assets_df.groupby(["code", "group", "date", "type"])
 for (code, group, date, type), group_data in grouped:
     name = group + "_traj"
-    # group_name = code + "_" + date + "_" + type
     group_name = code
     inputs = []
 
@@ -758,14 +580,6 @@ for (code, group, date, type), group_data in grouped:
     )
 
     factory_assets_trajectory_by_date_type.append(result)
-    # result_track = make_assets_db(
-    #     group + "_traj",
-    #     group + "_traj_line",
-    #     code + "_" + date + "_" + type,
-    #     "postgres",
-    #     "line",
-    # )
-    # factory_assets_trajectory_by_date_type_db_track.append(result_track)
 
 
 def make_positionfixes(code, input, output, type):
@@ -779,7 +593,6 @@ def make_positionfixes(code, input, output, type):
                 input_manager_key="mobilityDb_manager",
             )
         },
-        # key_prefix=["public"],
         outs={
             output
             + "_positionfixes": AssetOut(
@@ -802,7 +615,6 @@ def make_positionfixes(code, input, output, type):
                 io_manager_key="mobilityDb_manager",
             ),
         },
-        # io_manager_key="mobilityDb_manager",
     )
     def asset_template(trajectories):
         # Create positionfixes
@@ -811,13 +623,12 @@ def make_positionfixes(code, input, output, type):
             geom_col="geometry",
             tracked_at="time",
             user_id="group_num",
-            # tz="ETC/GMT-5",
         )
 
         print("======", pfs)
 
-        # STAYPOINTS_TIME_THRESHOLD = 0.5  # Para datos piloto
-        STAYPOINTS_TIME_THRESHOLD = 0.25  # Para datos diagnóstico
+        STAYPOINTS_TIME_THRESHOLD = 0.25
+
         # Create staypoints
         pfs, staypoints = pfs.as_positionfixes.generate_staypoints(
             method="sliding",
@@ -856,10 +667,6 @@ def make_positionfixes(code, input, output, type):
 
         staypoints["duration_minutes"] = staypoints["duration_seconds"] / 60
 
-        # staypoints["duration_minutes"] = (
-        #     staypoints["finished_at"] - staypoints["started_at"]
-        # ) / 60
-
         # Generate locations https://trackintel.readthedocs.io/en/latest/modules/model.html#trackintel.model.staypoints.Staypoints.generate_locations
         staypoints, locs = staypoints.as_staypoints.generate_locations(
             method="dbscan", epsilon=100, num_samples=10
@@ -873,8 +680,8 @@ def make_positionfixes(code, input, output, type):
         )
 
         custom_categories = {
-            2: "slow_mobility",  # 0-2 m/s as slow_mobility
-            np.inf: "motorized_mobility",  # >5 m/s as motorized_mobility
+            2.2: "slow_mobility",  # ~8 km/h as slow_mobility
+            np.inf: "motorized_mobility",  # >8 km/h as motorized_mobility
         }
         triplegs = triplegs.as_triplegs.predict_transport_mode(
             method="simple-coarse", categories=custom_categories
@@ -944,23 +751,18 @@ def make_asset_union_tables(name, group_name, asset_inputs):
         name=name,
         group_name=group_name,
         compute_kind="postgres",
-        # ins=ins,
-        # io_manager_key="mobilityDb_manager",
         key_prefix=["public"],
     )
     def asset_template(**kargs):
         select = ""
         count = 0
         for arg in asset_inputs:
-            # result.append(kargs[arg])
             union = "UNION"
             if count == len(asset_inputs) - 1 or len(asset_inputs) == 1:
                 union = ""
             select = select + f' SELECT * FROM public."{arg}" {union} '
             count = count + 1
 
-        print("=================", name)
-        print("=?=?=?=?=?=?=?=?=?=?=", select)
         url = URL.create(
             "postgresql+psycopg2",
             username=os.getenv("POSTGRES_USER"),
@@ -983,8 +785,6 @@ def make_asset_union_tables(name, group_name, asset_inputs):
             value=[],
             metadata={
                 "description": "",
-                # "rows": len(traj_gdf),
-                # "preview": MetadataValue.md(traj_gdf.head().to_markdown()),
             },
         )
 
@@ -1010,7 +810,6 @@ for (code, type), group_data in grouped:
         inputs.append(group2 + "_traj")
 
     name = code + "_" + type + "_traj"
-    # group_name = code + "_" + type
     group_name = code
     result = make_trajectory_collection_asset(name, group_name, inputs)
     factory_assets_trajectory_by_code_type.append(result)
@@ -1076,9 +875,6 @@ def make_assets_stops(
         name=output_name,
         group_name="trajectories",
         compute_kind="postgres",
-        # ins={
-        #     "trajectories": AssetIn("trajectories"),
-        # },
         ins={
             "trajectories": AssetIn(
                 key=["public", input_name],
@@ -1100,20 +896,7 @@ def make_assets_stops(
         )
 
         stops["track_id"] = stops["traj_id"]
-
-        # gdf_traj = trajectories.to_point_gdf()
-        # traj_row = gdf.loc[gdf['track_id'] == 'x']
-
-        print("=============", trajectories_line)
         trajectories_line.index(["modalidad"])
-
-        # merged_stops = stops.merge(
-        #     trajectories_line[["track_id", "modalidad", "codigo", "fecha", "tipo"]],
-        #     left_on="track_id",
-        #     right_on="track_id",
-        #     how="left",
-        # )
-
         merged_stops = stops.merge(
             trajectories_line[["track_id", "modalidad"]], on="track_id", how="left"
         )
@@ -1130,22 +913,3 @@ def make_assets_stops(
         )
 
     return asset_template
-
-
-@asset(
-    name="test_elevation",
-    group_name="test",
-    compute_kind="dem",
-)
-def test_elevation():
-    latitude = -3.1594  # Example latitude
-    longitude = -79.0024  # Example longitude
-
-    elevation_value = get_elevation_by_coordinates(dem_path, latitude, longitude)
-    print("elevation_value", elevation_value)
-    # print(f"Elevation at ({latitude}, {longitude}): {elevation_value} meters")
-
-    return Output(
-        value=[],
-        metadata={},
-    )

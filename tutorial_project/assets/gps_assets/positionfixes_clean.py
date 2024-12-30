@@ -75,11 +75,6 @@ def process_track(track):
         ftdf, geometry=gpd.points_from_xy(ftdf.lng, ftdf.lat), crs="EPSG:4326"
     )
     cleaned_gdf.set_crs(epsg=4326, inplace=True)
-    print("=======> cleaned_gdf", cleaned_gdf.head(2))
-
-    print(1)
-
-    print(2)
 
     cleaned_gdf.to_postgis(
         positionfixes_table + "_slowmobility_cleaned",
@@ -88,8 +83,6 @@ def process_track(track):
         schema="public",
     )
 
-    print("Done")
-
 
 def positionfixes_clean():
     @asset(
@@ -97,10 +90,6 @@ def positionfixes_clean():
         group_name="positionfixes_clean",
         compute_kind="trajectory",
         ins={},
-        # key_prefix=["workdir"],
-        # io_manager_key="trajectory_collection_manager",
-        # key_prefix=["public"],
-        # metadata={"trajectory_type": "Trajectory"},
     )
     def asset_template():
         tracksList = conn.execute(
@@ -112,7 +101,6 @@ def positionfixes_clean():
         )
         tracks = list(tracksList)
         size = len(tracks)
-        print("====== Start processing", size, "tracks ======")
         count = 0
 
         conn.execute(
